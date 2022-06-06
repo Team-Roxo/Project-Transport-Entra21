@@ -1,5 +1,9 @@
 package br.com.entra21.teamroxo.transport.classes;
 
-public class Login {
+import br.com.entra21.teamroxo.transport.herancas.*;
 
+public class Login extends PessoaDados {
+
+	
+	
 }
