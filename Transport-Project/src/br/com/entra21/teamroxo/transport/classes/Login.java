@@ -1,10 +1,10 @@
 package br.com.entra21.teamroxo.transport.classes;
 
 import java.util.Scanner;
-
 import br.com.entra21.teamroxo.transport.herancas.*;
 
 public class Login extends PessoaDados {
+  
 	static Scanner input = new Scanner(System.in);
 
 	public static void aprender() {
@@ -21,7 +21,7 @@ public class Login extends PessoaDados {
 
 			case 0:
 				System.out.println("Voltando ao menu anterior..");
-				//função do menu anterior
+				//funï¿½ï¿½o do menu anterior
 				break;
 
 			case 1:
@@ -33,7 +33,7 @@ public class Login extends PessoaDados {
 				break;
 
 			default:
-				System.out.println("Digite o número do menu");
+				System.out.println("Digite o nï¿½mero do menu");
 				break;
 			}
 
