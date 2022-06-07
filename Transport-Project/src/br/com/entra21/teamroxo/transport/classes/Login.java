@@ -21,7 +21,7 @@ public class Login extends PessoaDados {
 
 			case 0:
 				System.out.println("Voltando ao menu anterior..");
-				//fun��o do menu anterior
+				//função do menu anterior
 				break;
 
 			case 1:
@@ -33,7 +33,7 @@ public class Login extends PessoaDados {
 				break;
 
 			default:
-				System.out.println("Digite o n�mero do menu");
+				System.out.println("Digite o número do menu");
 				break;
 			}
 
@@ -73,9 +73,9 @@ public class Login extends PessoaDados {
 	}
 
 	private static void login() {
-		// TODO Auto-generated method stub
 		
 	}
 
+	
 	
 }
