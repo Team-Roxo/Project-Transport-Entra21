@@ -1,7 +1,6 @@
 package br.com.entra21.teamroxo.transport.log;
 
-import br.com.entra21.teamroxo.transport.anotacoes.Haversine;
-import br.com.entra21.teamroxo.transport.anotacoes.PesoCubico;
+import br.com.entra21.teamroxo.transport.anotacoes.*;
 
 public class Logistica {
 
@@ -33,7 +32,7 @@ public class Logistica {
 	}
 	
 	@PesoCubico
-	public float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, float largura, float altura) {
+	public float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, float largura, float altura, float distIndex, float pesoIndex, float volIndex) {
 		
 		float precoFinal;
 		float pesoCubico;
@@ -41,7 +40,7 @@ public class Logistica {
 		
 		pesoCubico = volume(comprimento, largura, altura)/6000;
 		distancia = haversine(lat1, long1, lat2, long2);
-		precoFinal = (float) ((distancia*0.01)+(pesoCubico*0.02)+(volume(comprimento, largura, altura)*0.003));
+		precoFinal = (float) ((distancia*distIndex)+(pesoCubico*pesoIndex)+(volume(comprimento, largura, altura)*volIndex));
 		
 		return precoFinal;
 		

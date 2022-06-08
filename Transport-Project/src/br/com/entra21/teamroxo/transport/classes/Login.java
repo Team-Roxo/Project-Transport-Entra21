@@ -7,6 +7,26 @@ public class Login extends PessoaDados {
   
 	static Scanner input = new Scanner(System.in);
 
+	//IDEIA PARA FAZER NA CLASSE LOGIN
+	
+	/*
+	 * 
+	 * -> Construtor da classe para chamar (primeiro vazio e depois com os objetos)
+	 * 
+	 * -> Segundo construtor de validação (eu (kalil) irei fazer as validações) para se 
+	 * 	  ele já estiver Logado mostrar um Menu para ALTERAR, LISTAR SEUS PEDIDOS, etc 
+	 * 	  
+	 * -> Se não, mostrar OUTRO Menu com opções para fazer LOGIN e CADASTRAR-SE (se houver
+	 * 	  mais pontos, só adicionarem). 	 
+	 * 
+	 * -> Depois dos construtores de LOGADO ou NÃO LOGADO, chamar função pra alternativas acima
+	 * 	  como: listar pedidos, alterar cadastro (oferecendo opção doq ele quer trocar). 
+	 * 
+	 * 
+	 */
+	
+	
+	
 	public static void aprender() {
 		byte option;
 
@@ -73,6 +93,8 @@ public class Login extends PessoaDados {
 	}
 
 	private static void login() {
+		
+		
 		
 	}
 
