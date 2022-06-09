@@ -4,7 +4,7 @@ import java.util.Scanner;
 import br.com.entra21.teamroxo.transport.herancas.*;
 
 public class Login extends PessoaDados {
-  
+
 	static Scanner input = new Scanner(System.in);
 
 	public static void aprender() {
@@ -14,6 +14,8 @@ public class Login extends PessoaDados {
 			System.out.println("0 - Voltar");
 			System.out.println("1 - Login");
 			System.out.println("2 - Cadastro");
+			System.out.println("3 - Alterar cadastro");
+			System.out.println("4 - Excluir usuário");
 
 			option = input.nextByte();
 
@@ -21,7 +23,7 @@ public class Login extends PessoaDados {
 
 			case 0:
 				System.out.println("Voltando ao menu anterior..");
-				//funï¿½ï¿½o do menu anterior
+				// funï¿½ï¿½o do menu anterior
 				break;
 
 			case 1:
@@ -30,6 +32,14 @@ public class Login extends PessoaDados {
 
 			case 2:
 				cadastroLogin();
+				break;
+
+			case 3:
+				alterarCadastro();
+				break;
+
+			case 4:
+				excluirUsuario();
 				break;
 
 			default:
@@ -43,39 +53,44 @@ public class Login extends PessoaDados {
 
 	private static void cadastroLogin() {
 		String nome, user, email, cpf, senha1, senha2;
-		
+
 		System.out.println("Digite seu nome completo: ");
 		nome = input.next();
-		
+
 		System.out.println("Digite um login: ");
 		user = input.next();
-		
+
 		System.out.println("Digite seu e-mail: ");
 		email = input.next();
-		
+
 		System.out.println("Digite seu CPF: ");
 		cpf = input.next();
-		
+
 		System.out.println("Digite sua senha: ");
 		senha1 = input.next();
-		
+
 		System.out.println("Repita sua senha: ");
 		senha2 = input.next();
-		
-		//Teste de validade da senha
-		if(senha1==senha2) {
+
+		// Teste de validade da senha
+		if (senha1 == senha2) {
 			System.out.println("Sucesso, seu cadastro foi realizado.");
-			
-		} 
-		else {
-			
+
+		} else {
+
 		}
 	}
 
 	private static void login() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
+	private static void alterarCadastro() {
+
+	}
+
+	private static void excluirUsuario() {
+
+	}
 }
