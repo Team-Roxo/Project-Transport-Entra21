@@ -7,6 +7,14 @@ public class Login extends PessoaDados {
   
 	static Scanner input = new Scanner(System.in);
 
+	private RunLogin log;
+	public static boolean logged = false;
+	public static boolean isEnterpriseAccount = false;
+	
+	public Login() {
+		
+	}
+	
 	//IDEIA PARA FAZER NA CLASSE LOGIN
 	
 	/*
