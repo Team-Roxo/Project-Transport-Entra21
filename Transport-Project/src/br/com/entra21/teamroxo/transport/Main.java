@@ -1,6 +1,12 @@
 package br.com.entra21.teamroxo.transport;
 
+
+import br.com.entra21.teamroxo.transport.classes.Login;
+
+public class Main {
+
 import br.com.entra21.teamroxo.transport.classes.*;
+
 
 public class Main {
 	
@@ -8,6 +14,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+
+		Login.cadastroLogin();
+
+
 		//IDEIA PARA O MAIN
 		/*
 		 * 
@@ -17,6 +27,7 @@ public class Main {
 		 * 
 		 */
 		
+
 	}
 
 }
