@@ -8,7 +8,6 @@ public class RunLogin extends PessoaDados {
 
 	static Scanner input = new Scanner(System.in);
 	
-	
 	//FUNÇÃO PARA FAZER LOGIN
 	public void loging() {
 		
@@ -44,6 +43,7 @@ public class RunLogin extends PessoaDados {
 			}else {
 				System.out.println("USUÁRIO NÃO ENCONTRADO!");
 			}
+			
 		}
 		
 	}

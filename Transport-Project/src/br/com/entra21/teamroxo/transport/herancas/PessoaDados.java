@@ -6,17 +6,17 @@ import java.util.HashSet;
 public class PessoaDados {
 
 	//"BANCO DE DADOS"
-	private ArrayList <String> nomeBD = new ArrayList<>();
-	private ArrayList <String> userBD = new ArrayList<>();
-	private ArrayList <String> emailBD = new ArrayList<>();
-	private ArrayList <String> cpfBD = new ArrayList<>();
-	private ArrayList <String> senhaBD = new ArrayList<>();
+	private ArrayList <String>  nomeBD         = new ArrayList<>();
+	private ArrayList <String>  userBD 		   = new ArrayList<>();
+	private ArrayList <String>  emailBD 	   = new ArrayList<>();
+	private ArrayList <String>  cpfBD 		   = new ArrayList<>();
+	private ArrayList <String>  senhaBD 	   = new ArrayList<>();
 	private ArrayList <Boolean> isEnterpriseBD = new ArrayList<>();
 	
-	//GUARDA DADOS E VALIDA DUPLICIDADE
-	private HashSet <String> user = new HashSet<>();
+	//VALIDA DUPLICIDADE
+	private HashSet <String> user  = new HashSet<>();
 	private HashSet <String> email = new HashSet<>();
-	private HashSet <String> cpf = new HashSet<>();
+	private HashSet <String> cpf   = new HashSet<>();
 	
 	public PessoaDados() {
 		super();
@@ -29,6 +29,9 @@ public class PessoaDados {
 		this.emailBD.add(email);
 		this.cpfBD.add(cpf);
 		this.senhaBD.add(senha);
+		this.user.add(user);
+		this.email.add(email);
+		this.cpf.add(cpf);
 	}
 
 	public String getNome(byte index) {

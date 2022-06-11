@@ -1,12 +1,12 @@
 package br.com.entra21.teamroxo.transport.classes;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
 import br.com.entra21.teamroxo.transport.herancas.*;
+import br.com.entra21.teamroxo.transport.*;
 
 public class Login extends PessoaDados {
-  
-	static Scanner input = new Scanner(System.in);
-
+	  
 	private RunLogin log;
 	public static boolean logged = false;
 	public static boolean isEnterpriseAccount = false;
@@ -15,97 +15,48 @@ public class Login extends PessoaDados {
 		
 	}
 	
-	//IDEIA PARA FAZER NA CLASSE LOGIN
-	
-	/*
-	 * 
-	 * -> Construtor da classe para chamar (primeiro vazio e depois com os objetos)
-	 * 
-	 * -> Segundo construtor de validação (eu (kalil) irei fazer as validações) para se 
-	 * 	  ele já estiver Logado mostrar um Menu para ALTERAR, LISTAR SEUS PEDIDOS, etc 
-	 * 	  
-	 * -> Se não, mostrar OUTRO Menu com opções para fazer LOGIN e CADASTRAR-SE (se houver
-	 * 	  mais pontos, só adicionarem). 	 
-	 * 
-	 * -> Depois dos construtores de LOGADO ou NÃO LOGADO, chamar função pra alternativas acima
-	 * 	  como: listar pedidos, alterar cadastro (oferecendo opção doq ele quer trocar). 
-	 * 
-	 * 
-	 */
-	
-	
-	
-	public static void aprender() {
-		byte option;
-
-		do {
-			System.out.println("0 - Voltar");
-			System.out.println("1 - Login");
-			System.out.println("2 - Cadastro");
-
-			option = input.nextByte();
-
-			switch (option) {
-
-			case 0:
-				System.out.println("Voltando ao menu anterior..");
-				//função do menu anterior
-				break;
-
-			case 1:
-				login();
-				break;
-
-			case 2:
-				cadastroLogin();
-				break;
-
-			default:
-				System.out.println("Digite o número do menu");
-				break;
+	public void menuLogin() {
+		System.out.println("Menu login");
+		if(logged = false) {
+			Cadastro();
+		}else {
+			if(isEnterpriseAccount = false) {
+				Logged();
+			}else {
+				LoggedEnterprise();
 			}
-
-		} while (option != 0);
-
-	}
-
-	private static void cadastroLogin() {
-		String nome, user, email, cpf, senha1, senha2;
-		
-		System.out.println("Digite seu nome completo: ");
-		nome = input.next();
-		
-		System.out.println("Digite um login: ");
-		user = input.next();
-		
-		System.out.println("Digite seu e-mail: ");
-		email = input.next();
-		
-		System.out.println("Digite seu CPF: ");
-		cpf = input.next();
-		
-		System.out.println("Digite sua senha: ");
-		senha1 = input.next();
-		
-		System.out.println("Repita sua senha: ");
-		senha2 = input.next();
-		
-		//Teste de validade da senha
-		if(senha1==senha2) {
-			System.out.println("Sucesso, seu cadastro foi realizado.");
-			
-		} 
-		else {
-			
 		}
 	}
-
-	private static void login() {
+	
+	public Login(String nome, String user, String email, String cpf, String senha) {
+		super(nome, user, email, cpf, senha);
+	}
+	
+	private void Cadastro() {
+		Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("LOGIN", "CLIENTE PF (Clientes)", "CLIENTE PJ (Empresas)")));
 		
-		
+		switch(Menu.option) {
+		case 1:
+			log.loging();
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		}
 		
 	}
-
 	
+	private void Logged() {
+		Menu.executarMenu("PAINEL DO USUÁRIO", new ArrayList<String>(Arrays.asList("MEUS PEDIDOS", "ALTERAR CADASTRO", "LOGOFF")));
+	}
+	
+	private void LoggedEnterprise() {
+		Menu.executarMenu("PAINEL DA EMPRESA", new ArrayList<String>(Arrays.asList("REMESSAS", "ALTERAR VEÍCULOS", "ALTERAR CADASTRO", "LOGOFF")));
+	}
+	
+	private void createLogin() {
+		
+	}
 	
 }

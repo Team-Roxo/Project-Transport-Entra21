@@ -34,15 +34,6 @@ public class Login extends PessoaDados {
 		super(nome, user, email, cpf, senha);
 	}
 	
-	/*
-	 * public Login() {
-	 * 
-	 * if(logged = false) { Cadastro(); }else { if(isEnterpriseAccount = false) {
-	 * Logged(); }else { LoggedEnterprise(); } }
-	 * 
-	 * }
-	 */
-	
 	private void Cadastro() {
 		Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("LOGIN", "CLIENTE PF (Clientes)", "CLIENTE PJ (Empresas)")));
 		
