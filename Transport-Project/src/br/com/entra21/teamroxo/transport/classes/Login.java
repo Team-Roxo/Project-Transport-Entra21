@@ -2,12 +2,16 @@ package br.com.entra21.teamroxo.transport.classes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+
 import br.com.entra21.teamroxo.transport.herancas.*;
 import br.com.entra21.teamroxo.transport.*;
 
 public class Login extends PessoaDados {
 	  
-	private RunLogin log;
+	static Scanner input = new Scanner(System.in);
+	private static RunLogin log = new RunLogin();
+	private static Menu menu = new Menu();
 	public static boolean logged = false;
 	public static boolean isEnterpriseAccount = false;
 	
@@ -16,14 +20,13 @@ public class Login extends PessoaDados {
 	}
 	
 	public void menuLogin() {
-		System.out.println("Menu login");
-		if(logged = false) {
+		if(logged == false) {
 			Cadastro();
 		}else {
-			if(isEnterpriseAccount = false) {
-				Logged();
+			if(isEnterpriseAccount == false) {
+				this.Logged();
 			}else {
-				LoggedEnterprise();
+				this.LoggedEnterprise();
 			}
 		}
 	}
@@ -32,16 +35,19 @@ public class Login extends PessoaDados {
 		super(nome, user, email, cpf, senha);
 	}
 	
-	private void Cadastro() {
-		Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("LOGIN", "CLIENTE PF (Clientes)", "CLIENTE PJ (Empresas)")));
-		
-		switch(Menu.option) {
-		case 1:
+	private static void Cadastro() {
+		System.out.println(menu.executarMenu("LOGIN/CADASTRO", 
+				new ArrayList<String>(Arrays.asList("LOGIN", "CADASTRO: CLIENTE - (PF)", "CADASTRO: TRANSPORTADORA (PJ)"))));
+		Menu.option = input.nextLine();
+		switch(Menu.option.toLowerCase()) {
+		case "1", "login":
 			log.loging();
 			break;
-		case 2:
+		case "2", "pf", "cliente", "cliente pf":
+			log.registerPF();
 			break;
-		case 3:
+		case "3", "pj", "transportadora":
+			log.registerPJ();
 			break;
 		}
 		
@@ -53,10 +59,6 @@ public class Login extends PessoaDados {
 	
 	private void LoggedEnterprise() {
 		Menu.executarMenu("PAINEL DA EMPRESA", new ArrayList<String>(Arrays.asList("REMESSAS", "ALTERAR VEÍCULOS", "ALTERAR CADASTRO", "LOGOFF")));
-	}
-	
-	private void createLogin() {
-		
 	}
 	
 }
