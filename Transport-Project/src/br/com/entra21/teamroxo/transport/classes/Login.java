@@ -19,6 +19,7 @@ public class Login extends PessoaDados {
 		
 	}
 	
+	//VALIDAÇÃO DE LOGIN E TIPO DE LOGIN
 	public void menuLogin() {
 		if(logged == false) {
 			Cadastro();
@@ -44,10 +45,10 @@ public class Login extends PessoaDados {
 			log.loging();
 			break;
 		case "2", "pf", "cliente", "cliente pf":
-			log.registerPF();
+			log.registerPF(); // A FAZER
 			break;
 		case "3", "pj", "transportadora":
-			log.registerPJ();
+			log.registerPJ(); // A FAZER
 			break;
 		}
 		
@@ -55,10 +56,18 @@ public class Login extends PessoaDados {
 	
 	private void Logged() {
 		Menu.executarMenu("PAINEL DO USUÁRIO", new ArrayList<String>(Arrays.asList("MEUS PEDIDOS", "ALTERAR CADASTRO", "LOGOFF")));
+		Menu.option = input.nextLine();
+		switch(Menu.option.toLowerCase()) {
+		//A FAZER
+		}
 	}
 	
 	private void LoggedEnterprise() {
 		Menu.executarMenu("PAINEL DA EMPRESA", new ArrayList<String>(Arrays.asList("REMESSAS", "ALTERAR VEÍCULOS", "ALTERAR CADASTRO", "LOGOFF")));
+		Menu.option = input.nextLine();
+		switch(Menu.option.toLowerCase()) {
+		//A FAZER
+		}
 	}
 	
 }

@@ -9,8 +9,8 @@ import br.com.entra21.teamroxo.transport.scripts.LoginScript;
 public class Main {
 
 	public static Login loginData = new Login();
-	public static Pedidos pedidoData = new Pedidos();
-	public static Transporte transporteData = new Transporte();
+	public static Pedidos pedidoData = new Pedidos(); // A FAZER
+	public static Transporte transporteData = new Transporte(); // A FAZER
 	
 	static Scanner input = new Scanner(System.in);
 	

@@ -52,13 +52,16 @@ public class RunLogin {
 
 	}
 
+	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
 	public void registerPF() {
 		
-		
+		// A FAZER
 		
 	}
 	
 	public void registerPJ() {
+		
+		// A FAZER
 		
 	}
 	

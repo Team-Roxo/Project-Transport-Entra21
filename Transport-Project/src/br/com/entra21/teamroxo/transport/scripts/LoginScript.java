@@ -4,7 +4,7 @@ import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.anotacoes.*;
 import br.com.entra21.teamroxo.transport.classes.Login;
 
-@Initialize
+@Initialize @Startup
 public class LoginScript {
 
 	public static void main(String[] args) {
