@@ -1,9 +1,10 @@
+
 package br.com.entra21.teamroxo.transport.anotacoes;
 
 /**
  * 
- * Script para inicializaÃ§Ã£o do Projeto criando um usuÃ¡rio "Admin",
- * uma Transportadora "SaÃ­da21", e um Pacote a caminho de SC -> BSB.
+ * Script para inicialização do Projeto criando um usuário "Admin",
+ * uma Transportadora "Saída21", e um Pacote a caminho de SC -> BSB.
  * 
  * @author Team Roxo
  *

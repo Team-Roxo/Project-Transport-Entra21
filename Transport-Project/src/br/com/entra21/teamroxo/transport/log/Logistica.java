@@ -40,7 +40,7 @@ public class Logistica {
 		
 		pesoCubico = volume(comprimento, largura, altura)/6000;
 		distancia = haversine(lat1, long1, lat2, long2);
-		precoFinal = (float) ((distancia*distIndex)+(pesoCubico*pesoIndex)+(volume(comprimento, largura, altura)*volIndex));
+		precoFinal = (float) ((distancia*distIndex)+(pesoCubico*pesoIndex)+(volume(comprimento, largura, altura)*volIndex)); //padrão (respectivamente): 0.01, 0.02, 0.003
 		
 		return precoFinal;
 		
