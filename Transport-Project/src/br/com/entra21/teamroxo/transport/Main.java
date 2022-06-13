@@ -3,36 +3,39 @@ package br.com.entra21.teamroxo.transport;
 import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.anotacoes.Startup;
+import br.com.entra21.teamroxo.transport.anotacoes.WhyHere;
 import br.com.entra21.teamroxo.transport.classes.*;
-import br.com.entra21.teamroxo.transport.scripts.LoginScript;
+import br.com.entra21.teamroxo.transport.scripts.StartupScript;
 
 public class Main {
 
+	@WhyHere
 	public static Login loginData = new Login();
-	public static Pedidos pedidoData = new Pedidos(); // A FAZER
+	@WhyHere
+	public static Pedidos pedidoData = new Pedidos();
+	@WhyHere
 	public static Transporte transporteData = new Transporte(); // A FAZER
-	
+	static String option;
 	static Scanner input = new Scanner(System.in);
 	
 	@Startup
 	public static void main(String[] args) {
 
-		LoginScript.main(null); 
+		StartupScript.main(null); 
 		
-		if (Login.logged == false) {
-			startupMenu();
-		} else if (Login.logged == true && Login.isEnterpriseAccount == false) {
-			menuPF();
-		} else {
-			menuPJ();
-		}
+		do {
+			if (Login.logged == false) {
+				startupMenu();
+			} else if (Login.logged == true && Login.isEnterpriseAccount == false) {
+				menuPF();
+			} else {
+				menuPJ();
+			} 
+		} while (!option.equals("0"));
 
 	}
 
 	private static void startupMenu() {
-
-		Login mainLogin = new Login();
-		String option;
 
 		do {
 			System.out.println(constructorMenu());
@@ -44,20 +47,26 @@ public class Main {
 				System.out.println("Encerrando o programa...");
 				break;				
 			case "1", "login":
-				mainLogin.menuLogin();
+				
+				loginData.Cadastro();
+			
 				break;
-			case "2", "cp", "cadastrar pedido":
-
+			case "2", "cp", "cadastrar pacote":
+				
+				pedidoData.cadastrarPacote();
+				
 				break;
-			case "3", "rp", "rastrear pedidos":
+			case "3", "rp", "rastrear pacote":
 
+				pedidoData.rastrearPacote();
+				
 				break;
 			default:
 				System.out.println("Por favor, escolha uma opção válida!!");
 				break;
 			}
 
-		} while (option != "0");
+		} while (loginData.logged == false);
 
 	}
 
@@ -65,8 +74,8 @@ public class Main {
 		String menu = "!=================> Saida21 <=================!\n";
 
 		menu += "\n1 - Login/Cadastrar";
-		menu += "\n2 - Cadastrar Pedidos (CP)";
-		menu += "\n3 - Rastrear Pedidos (RP)";
+		menu += "\n2 - Cadastrar Pacote (CP)";
+		menu += "\n3 - Rastrear Pacote (RP)";
 		menu += "\n0 - Sair\n";
 		menu += "!=================> Saida21 <=================!";
 
@@ -77,8 +86,10 @@ public class Main {
 		byte option;
 		do {
 			System.out.println("!=================> Saida21 <=================!\n");
-			System.out.println("\n1 - Meus Pedidos");
-			System.out.println("\n2 - Alterar Cadastro");
+			System.out.println("\n1 - Meus Pedidos/Envios");
+			System.out.println("\n2 - Cadastrar Pacote");
+			System.out.println("\n3 - Alterar Cadastro");
+			System.out.println("\n4 - Logoff");
 			System.out.println("\n0 - Sair");
 			System.out.println("\n!=================> Saida21 <=================!");
 			option = input.nextByte();
@@ -90,19 +101,27 @@ public class Main {
 				break;
 
 			case 1:
-				// Meus pedidos
+				
+				pedidoData.listarPacotes();
+				
 				break;
 
 			case 2:
-				// Alterar
+				// CP
 				break;
-
+			case 3:
+				//Alterar
+				break;
+			case 4:
+				//logoff
+				break;
 			default:
 				System.out.println("Por favor, escolha uma opção valida!");
 				break;
 
 			}
-		} while (option != 0);
+			
+		} while (loginData.logged == true && loginData.isEnterpriseAccount == false);
 
 	}
 
@@ -140,7 +159,8 @@ public class Main {
 				break;
 
 			}
-		} while (option != 0);
+		} while (loginData.logged == true && loginData.isEnterpriseAccount == true);
+		
 	}
 
 }

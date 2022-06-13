@@ -8,61 +8,88 @@ import br.com.entra21.teamroxo.transport.herancas.*;
 import br.com.entra21.teamroxo.transport.*;
 
 public class Login extends PessoaDados {
-	  
+	
 	static Scanner input = new Scanner(System.in);
+	
 	private static RunLogin log = new RunLogin();
-	private static Menu menu = new Menu();
 	public static boolean logged = false;
 	public static boolean isEnterpriseAccount = false;
+	public static byte account;
 	
 	public Login() {
 		
 	}
 	
-	//VALIDAÇÃO DE LOGIN E TIPO DE LOGIN
-	public void menuLogin() {
-		if(logged == false) {
-			Cadastro();
-		}else {
-			if(isEnterpriseAccount == false) {
-				this.Logged();
-			}else {
-				this.LoggedEnterprise();
+	public static void Cadastro() {
+		System.out.println(Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("LOGIN", "CADASTRO: CLIENTE - (PF)", "CADASTRO: TRANSPORTADORA (PJ)"))));
+		do {
+			Menu.option = input.nextLine();
+			switch (Menu.option.toLowerCase()) {
+			case "1", "login":
+				
+				log.loging();
+			
+				break;
+			case "2", "pf", "cliente", "cliente pf":
+				
+				log.registerPF();
+			
+				break;
+			case "3", "pj", "transportadora":
+				
+				log.registerPJ();
+			
+				break;
+			case "0", "voltar":
+				
+				break;
+			case "-1", "sair":
+				
+				System.out.println("!=======================> ENCERRANDO PROGRAMA <=======================!");
+				System.exit(1);
+				break;
 			}
-		}
-	}
-	
-	public Login(String nome, String user, String email, String cpf, String senha) {
-		super(nome, user, email, cpf, senha);
-	}
-	
-	private static void Cadastro() {
-		System.out.println(menu.executarMenu("LOGIN/CADASTRO", 
-				new ArrayList<String>(Arrays.asList("LOGIN", "CADASTRO: CLIENTE - (PF)", "CADASTRO: TRANSPORTADORA (PJ)"))));
-		Menu.option = input.nextLine();
-		switch(Menu.option.toLowerCase()) {
-		case "1", "login":
-			log.loging();
-			break;
-		case "2", "pf", "cliente", "cliente pf":
-			log.registerPF(); // A FAZER
-			break;
-		case "3", "pj", "transportadora":
-			log.registerPJ(); // A FAZER
-			break;
-		}
+		} while (!Menu.option.equals("0"));
 		
 	}
 	
-	private void Logged() {
-		Menu.executarMenu("PAINEL DO USUÁRIO", new ArrayList<String>(Arrays.asList("MEUS PEDIDOS", "ALTERAR CADASTRO", "LOGOFF")));
-		Menu.option = input.nextLine();
-		switch(Menu.option.toLowerCase()) {
-		//A FAZER
-		}
+	public void Logged() {
+		System.out.println(Menu.executarMenu("PAINEL DO USUÁRIO", new ArrayList<String>(Arrays.asList("MEUS PEDIDOS (MP)", "ALTERAR CADASTRO (AC)", "LOGOFF (LO)"))));
+		do {
+			Menu.option = input.nextLine().toLowerCase();
+			switch (Menu.option.toLowerCase()) {
+			case "1", "pedidos", "meus pedidos", "mp":
+				
+				
+				
+				break;
+			case "2", "alterar", "alterar cadastro", "ac":
+				
+				
+				
+				break;
+			case "3", "logoff", "lo":
+				
+				
+				
+				break;
+			case "0", "voltar":
+				
+				
+				
+				break;
+			case "-1", "sair":
+				System.out.println("!=======================> ENCERRANDO PROGRAMA <=======================!");
+				System.exit(1);
+				break;
+			default:
+				System.out.println("OPÇÃO INVÁLIDA!");
+				break;
+			}
+		} while (!Menu.option.equals("0") || !Menu.option.equals("voltar") || !Menu.option.equals("sair"));
 	}
 	
-	private void LoggedEnterprise() {
+	public void LoggedEnterprise() {
 		Menu.executarMenu("PAINEL DA EMPRESA", new ArrayList<String>(Arrays.asList("REMESSAS", "ALTERAR VEÍCULOS", "ALTERAR CADASTRO", "LOGOFF")));
 		Menu.option = input.nextLine();
 		switch(Menu.option.toLowerCase()) {

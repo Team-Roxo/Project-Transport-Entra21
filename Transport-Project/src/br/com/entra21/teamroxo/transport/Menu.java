@@ -18,6 +18,7 @@ static Scanner input = new Scanner(System.in);
 		}
 		
 		menu += "\n0 - VOLTAR";
+		menu += "\n-1 - SAIR";
 	
 		return menu;
 		
