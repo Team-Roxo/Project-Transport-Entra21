@@ -30,6 +30,7 @@ public class LoginRegistro {
 
 			case 2:
 				// Cadastrar
+				
 				break;
 
 			case 3:
@@ -121,5 +122,66 @@ public class LoginRegistro {
 
 			}
 		} while (option != 0);
+	}
+
+
+	/*Registro,: Pf, Pj
+	new Menu(" Qual vai ser o tipo da conta \n",
+			new ArrayList<>(
+					Arrays.asList("Pessoa Fisica", "Pessoa Juridica")))
+			.Menu();
+	*/
+	
+	
+	
+	//cadastrar pedidos: Remetente,Destinatario,Empresa que ira enviar,Pedir largura,altura e comprimento(tem que ser em Cm)
+	private static void cadastrarPedidos() {
+		
+		String paoDeQueijo;
+		
+		
+	System.out.println("---Empresa-Titulo---");
+	System.out.println("Por favor, Coloque o CPF do Remetente: ");
+	
+	
+	System.out.println("Agora digite o nome do mesmo: ");
+	
+	
+	System.out.println("Digite o Estado que o Remetente reside: ");
+	
+	
+	System.out.println("---Destinatario---");
+	System.out.println("Digite o Cpf do destinatario: ");
+	
+	
+	System.out.println("Digite o nome do destinatario: ");
+	
+	
+	System.out.println("Digite o Estado em que o destinatario reside: ");
+	
+	
+	System.out.println("---Pacote---");
+	System.out.println("Agora por favor digite o tamanho do pacote: ");
+	System.out.println("Largura: ");
+	
+	
+	System.out.println("Altura: ");
+	
+	
+	System.out.println("Comprimento: ");
+	
+	
+	System.out.println("--------------------");
+	paoDeQueijo = input.nextLine();
+	
+	;
+	
+	
+	
+	
+	//Alterar cadastro: 
+	
+	
+	
 	}
 }
