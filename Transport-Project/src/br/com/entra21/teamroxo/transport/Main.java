@@ -161,4 +161,7 @@ public class Main {
 
 			}
 		} while (loginData.logged == true && loginData.isEnterpriseAccount == true);
+		
+	}
+	
 }
