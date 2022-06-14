@@ -66,7 +66,7 @@ public byte capturarOpcao() {
 		if (cadastroAtual == null) {
 			System.out.println("Não existe um registro com CHAVE:" + chave.getUser());
 		} else {
-		//	lista.put(chave.getUser(), capturarValores());
+			lista.put(chave.getUser(), capturarValores());
 			System.out.println("Dados atualizados");
 		}
 	}

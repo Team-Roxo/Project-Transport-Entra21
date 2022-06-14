@@ -14,6 +14,7 @@ public class Login extends PessoaDados {
 	private static Menu menu = new Menu();
 	public static boolean logged = false;
 	public static boolean isEnterpriseAccount = false;
+	public static byte account;
 
 	public Login() {
 

@@ -11,6 +11,7 @@ public class Main {
 	public static Login loginData = new Login();
 	public static Pedidos pedidoData = new Pedidos(); // A FAZER
 	public static Transporte transporteData = new Transporte(); // A FAZER
+	static String option;
 	
 	static Scanner input = new Scanner(System.in);
 	
