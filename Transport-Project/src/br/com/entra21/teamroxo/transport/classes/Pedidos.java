@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.herancas.PedidoDados;
+import br.com.entra21.teamroxo.transport.log.Brasil;
 
 public class Pedidos extends PedidoDados {
 
@@ -102,7 +103,41 @@ public class Pedidos extends PedidoDados {
 	//CADASTRA PACOTE TANTO DE USUÁRIO LOGADO COMO NÃO-LOGADO
 	public void cadastrarPacote() {
 		
+		//variaveis de kd tipo de pergunta
+		//adubada no menu
 		
+		System.out.println("---Empresa-Titulo---");
+        System.out.println("Por favor, Coloque o CPF do Remetente: ");
+
+
+        System.out.println("Agora digite o nome do mesmo: ");
+
+
+        System.out.println("Digite o Estado que o Remetente reside: ");
+
+
+        System.out.println("---Destinatario---");
+        System.out.println("Digite o Cpf do destinatario: ");
+
+
+        System.out.println("Digite o nome do destinatario: ");
+
+
+        System.out.println("Digite o Estado em que o destinatario reside: ");
+
+
+        System.out.println("---Pacote---");
+        System.out.println("Agora por favor digite o tamanho do pacote: ");
+        System.out.println("Largura: ");
+
+
+        System.out.println("Altura: ");
+
+
+        System.out.println("Comprimento: ");
+
+
+        System.out.println("--------------------");
 		
 	}
 

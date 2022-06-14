@@ -20,7 +20,7 @@ public class Main {
 	
 	@Startup
 	public static void main(String[] args) {
-
+		
 		StartupScript.main(null); 
 		
 		do {
@@ -45,6 +45,7 @@ public class Main {
 			switch (option.toLowerCase()) {
 			case "0", "sair":
 				System.out.println("Encerrando o programa...");
+				System.exit(1);
 				break;				
 			case "1", "login":
 				
@@ -83,7 +84,6 @@ public class Main {
 	}
 
 	private static void menuPF() {
-		byte option;
 		do {
 			System.out.println("!=================> Saida21 <=================!\n");
 			System.out.println("\n1 - Meus Pedidos/Envios");
@@ -92,27 +92,29 @@ public class Main {
 			System.out.println("\n4 - Logoff");
 			System.out.println("\n0 - Sair");
 			System.out.println("\n!=================> Saida21 <=================!");
-			option = input.nextByte();
+			option = input.nextLine();
 
 			switch (option) {
 
-			case 0:
+			case "0":
 				System.out.println("Encerrando o programa...");
+				System.exit(1);
 				break;
 
-			case 1:
+			case "1":
 				
 				pedidoData.listarPacotes();
 				
 				break;
 
-			case 2:
+			case "2":
 				// CP
+				
 				break;
-			case 3:
+			case "3":
 				//Alterar
 				break;
-			case 4:
+			case "4":
 				//logoff
 				break;
 			default:
@@ -126,7 +128,6 @@ public class Main {
 	}
 
 	private static void menuPJ() {
-		byte option;
 		do {
 			System.out.println("!=================> Saida21 <=================!\n");
 			System.out.println("\n 1 - Remessas");
@@ -134,23 +135,23 @@ public class Main {
 			System.out.println("\n 3 - Alterar Cadastro");
 			System.out.println("\n 0 - Sair");
 			System.out.println("\n!=================> Saida21 <=================!");
-			option = input.nextByte();
+			option = input.nextLine();
 
 			switch (option) {
 
-			case 0:
+			case "0":
 				System.out.println("Encerrando o programa...");
 				break;
 
-			case 1:
+			case "1":
 				// Remessas
 				break;
 
-			case 2:
+			case "2":
 				// Alterar V
 				break;
 
-			case 3:
+			case "3":
 				// Alterar C
 				break;
 

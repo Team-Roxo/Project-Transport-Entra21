@@ -23,13 +23,14 @@ public class PessoaDados {
 		super();
 	}
 
-	public PessoaDados(String nome, String user, String email, String cpf, String senha, String estadoOrigemBD) {
+	public PessoaDados(String nome, String user, String email, String cpf, String senha, String estadoOrigemBD, boolean isEnterprise) {
 		super();
 		this.nomeBD.add(nome);
 		this.userBD.add(user);
 		this.emailBD.add(email);
 		this.cpfBD.add(cpf);
 		this.senhaBD.add(senha);
+		this.isEnterpriseBD.add(isEnterprise);
 		this.estadoOrigemBD.add(estadoOrigemBD);
 		this.user.add(user);
 		this.email.add(email);

@@ -53,48 +53,4 @@ public class Login extends PessoaDados {
 		
 	}
 	
-	public void Logged() {
-		System.out.println(Menu.executarMenu("PAINEL DO USUÁRIO", new ArrayList<String>(Arrays.asList("MEUS PEDIDOS (MP)", "ALTERAR CADASTRO (AC)", "LOGOFF (LO)"))));
-		do {
-			Menu.option = input.nextLine().toLowerCase();
-			switch (Menu.option.toLowerCase()) {
-			case "1", "pedidos", "meus pedidos", "mp":
-				
-				
-				
-				break;
-			case "2", "alterar", "alterar cadastro", "ac":
-				
-				
-				
-				break;
-			case "3", "logoff", "lo":
-				
-				
-				
-				break;
-			case "0", "voltar":
-				
-				
-				
-				break;
-			case "-1", "sair":
-				System.out.println("!=======================> ENCERRANDO PROGRAMA <=======================!");
-				System.exit(1);
-				break;
-			default:
-				System.out.println("OPÇÃO INVÁLIDA!");
-				break;
-			}
-		} while (!Menu.option.equals("0") || !Menu.option.equals("voltar") || !Menu.option.equals("sair"));
-	}
-	
-	public void LoggedEnterprise() {
-		Menu.executarMenu("PAINEL DA EMPRESA", new ArrayList<String>(Arrays.asList("REMESSAS", "ALTERAR VEÍCULOS", "ALTERAR CADASTRO", "LOGOFF")));
-		Menu.option = input.nextLine();
-		switch(Menu.option.toLowerCase()) {
-		//A FAZER
-		}
-	}
-	
 }

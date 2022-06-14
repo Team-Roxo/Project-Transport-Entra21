@@ -55,7 +55,9 @@ public class RunLogin {
 
 				}
 
-			} 
+			}
+			
+			Menu.option = "0";
 			
 		} while (!Menu.option.equals("0"));
 		
@@ -68,13 +70,95 @@ public class RunLogin {
 	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
 	public void registerPF() {
 		
-		// A FAZER
+		byte tamanho = (byte) Main.loginData.getUser().size();
+
+        String cpf, nome, email, user, origemEstado, senha1, senha2;
+
+        System.out.println("Insira os dados para se cadastrar.");
+        System.out.println("Digite seu CPF/CNPJ: ");
+        cpf = input.next();
+
+        System.out.println("Digite seu nome completo: ");
+        nome = input.next();
+
+        System.out.println("Digite seu e-mail: ");
+        email = input.next();
+
+        System.out.println("Digite seu usuario: ");
+        user = input.next();
+
+        System.out.println("Digite seu estado: ");
+        origemEstado = input.next();
+
+        do {
+            System.out.println("Digite sua senha: ");
+            senha1 = input.next();
+
+            System.out.println("Digite sua senha novamente: ");
+            senha2 = input.next();
+
+            if (!senha1.equals(senha2)) {
+                System.out.println("As senhas não conferem.");
+            }
+
+        } while (!senha1.equals(senha2));
+        System.out.println("Usuário cadastrado com sucesso!");
+
+        Main.loginData.setCpf(cpf, tamanho);
+        Main.loginData.setNome(nome, tamanho);
+        Main.loginData.setEmail(email, tamanho);
+        Main.loginData.setUser(user, tamanho);
+        Main.loginData.setEstadoOrigem(origemEstado, tamanho);
+        Main.loginData.setSenha(senha1, tamanho);
+        Main.loginData.setIsEnterpriseBD(false, tamanho);
+        Menu.option = "0";
 		
 	}
 	
 	public void registerPJ() {
 		
-		// A FAZER
+		byte tamanho = (byte) Main.loginData.getUser().size();
+
+        String cpf, nome, email, user, origemEstado, senha1, senha2;
+
+        System.out.println("Insira os dados para se cadastrar.");
+        System.out.println("Digite seu CNPJ: ");
+        cpf = input.next();
+
+        System.out.println("Digite o nome da empresa: ");
+        nome = input.next();
+
+        System.out.println("Digite seu e-mail: ");
+        email = input.next();
+
+        System.out.println("Digite seu usuario: ");
+        user = input.next();
+
+        System.out.println("Digite seu estado: ");
+        origemEstado = input.next();
+
+        do {
+            System.out.println("Digite sua senha: ");
+            senha1 = input.next();
+
+            System.out.println("Digite sua senha novamente: ");
+            senha2 = input.next();
+
+            if (!senha1.equals(senha2)) {
+                System.out.println("As senhas não conferem.");
+            }
+
+        } while (!senha1.equals(senha2));
+        System.out.println("Empresa cadastrada com sucesso!");
+
+        Main.loginData.setCpf(cpf, tamanho);
+        Main.loginData.setNome(nome, tamanho);
+        Main.loginData.setEmail(email, tamanho);
+        Main.loginData.setUser(user, tamanho);
+        Main.loginData.setEstadoOrigem(origemEstado, tamanho);
+        Main.loginData.setSenha(senha1, tamanho);
+        Main.loginData.setIsEnterpriseBD(true, tamanho);
+        Menu.option = "0";
 		
 	}
 	
