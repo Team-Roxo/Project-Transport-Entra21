@@ -63,7 +63,7 @@ public class Main {
 				
 				break;
 			default:
-				System.out.println("Por favor, escolha uma opção válida!!");
+				System.out.println("Por favor, escolha uma opçãoo válida!!");
 				break;
 			}
 
@@ -118,7 +118,7 @@ public class Main {
 				//logoff
 				break;
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
 				break;
 
 			}
@@ -156,12 +156,9 @@ public class Main {
 				break;
 
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
 				break;
 
 			}
 		} while (loginData.logged == true && loginData.isEnterpriseAccount == true);
-		
-	}
-
 }
