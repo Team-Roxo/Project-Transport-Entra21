@@ -14,7 +14,7 @@ public class RunLogin {
 
 	static Scanner input = new Scanner(System.in);
 
-	// FUNÇÃO PARA FAZER LOGIN
+	// FUNÃ‡ÃƒO PARA FAZER LOGIN
 	public void loging() {
 
 		String user;
@@ -67,29 +67,44 @@ public class RunLogin {
 		} while (!Menu.option.equals("0"));
 		
 		if(find == false) {
-			System.out.println("USUARIO NÃO ENCONTRADO!");
+			System.out.println("USUARIO Nï¿½O ENCONTRADO!");
 		}
 
 	}
 
-	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
+	// FUNÃ‡ÃƒO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
 	public void registerCliente() {
 
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
         String cpf, nome, email, user, origemEstado, senha1, senha2;
+        boolean isEnterprise, pass = false;
 
         System.out.println("Insira os dados para se cadastrar.");
-        System.out.println("Digite seu CPF/CNPJ: ");
-        cpf = input.nextLine();
-
-        //cpf.toCharArray();
-        //cpf.replaceAll(".", ""); 123.123.123-12 -> 12312312312
-        //Pesquisar como verificar uma string se ela contém um tipo de variavel
+        
+        do {
+        	System.out.println("Digite seu CPF/CNPJ: ");
+        	
+            cpf = tratamentoCpf(input.nextLine());
+            
+            if(cpf.length() == 11){
+            	isEnterprise = false;
+            	pass = true;
+            	System.out.println("CADASTRANDO PESSOA FÍSICA (CPF)");
+            }else if(cpf.length() == 14) {
+            	isEnterprise = true;
+            	pass = true;
+            	System.out.println("CADASTRANDO TRANSPORTADORA (CNPJ)");
+            }else {
+            	System.out.println("CPF/CNPJ INVÁLIDO!");
+            }
+            
+        }while(pass != true);
         
         System.out.println("Digite seu nome completo: ");
-        nome = input.nextLine();
+        nome = tratamentoNome(input.nextLine());
 
+        //PAREI AQUI... <--------------------------------------------
         System.out.println("Digite seu e-mail: ");
         email = input.next();
         
@@ -99,7 +114,6 @@ public class RunLogin {
         System.out.println("Digite seu usuario: ");
         user = input.next();
         
-        user.toLowerCase();
         email = input.nextLine();
 
         System.out.println("Digite seu usuario: ");
@@ -126,7 +140,7 @@ public class RunLogin {
         } while (!senha1.equals(senha2));
         System.out.println("Usuário cadastrado com sucesso!");
 
-        //confirmação dos dados
+        //confirmaÃ§Ã£o dos dados
         
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
@@ -149,7 +163,7 @@ public class RunLogin {
         System.out.println("Digite seu CNPJ: ");
         cpf = input.nextLine();
 
-        System.out.println("Digite o nome da empresa: ");
+        System.out.println("Digite o nome da transportadora: ");
         nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
@@ -187,21 +201,56 @@ public class RunLogin {
 	}
 	
 	private String tratamentoCpf(String cpf) {
-		
-		return null;
-		
-	}
 	
-	private String tratamentoUser(String user) {
-		
-		return null;
+		try {
+			final long CPF;
+			cpf = cpf.replace(".", "");
+			cpf = cpf.replace("-", "");
+			cpf = cpf.replace("/", "");
+			CPF = Long.parseLong(cpf);
+			return cpf;
+		}catch(Exception e) {
+			return "ERROR!";
+		}
 		
 	}
 	
 	private String tratamentoNome(String nome) {
 		
-		return null;
+		nome = nome.toLowerCase();
+		
+		char[] name = nome.toCharArray();
+		nome = nome.valueOf(name[0]).toUpperCase();
+		
+		for(byte i=1; i<name.length;i++) {
+			if(" ".equals(String.valueOf(name[i]))) {
+				nome += nome.valueOf(name[i]);
+				nome += nome.valueOf(name[i+1]).toUpperCase();
+				i++;
+			}else {
+				nome += nome.valueOf(name[i]);
+			}
+		}
+		
+		return nome;
 		
 	}
+	
+	// A FAZER
+	private String mostrarCpf(String cpf) {
+		return null;
+	}
+	
+	//A FAZER
+	private String tratamentoEmail(String email) {
+		return null;
+	}
+	
+	//A FAZER
+	private String tratamentoUser(String user) {
+		return null;
+	}
+	
+	
 	
 }
