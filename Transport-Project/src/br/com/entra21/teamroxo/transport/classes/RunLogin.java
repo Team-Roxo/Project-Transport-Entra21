@@ -17,7 +17,7 @@ public class RunLogin {
 		boolean find = false;
 		byte userIndex;
 
-		System.out.println("!> DIGITE O NOME, USUÁRIO OU EMAIL");
+		System.out.println("!> DIGITE O NOME, USUARIO OU EMAIL");
 		user = input.nextLine();
 
 		do {
@@ -26,7 +26,7 @@ public class RunLogin {
 						|| user.toLowerCase().equals(Main.loginData.getNome((byte) i).toLowerCase())
 						|| user.toLowerCase().equals(Main.loginData.getEmail((byte) i).toLowerCase())) {
 
-					System.out.println("!=======================> USUÁRIO ENCONTRADO! <=======================!");
+					System.out.println("!=======================> USUARIO ENCONTRADO! <=======================!");
 					userIndex = (byte) i;
 					find = true;
 					System.out.println("!> DIGITE SUA SENHA:");
@@ -62,12 +62,12 @@ public class RunLogin {
 		} while (!Menu.option.equals("0"));
 		
 		if(find == false) {
-			System.out.println("USUÁRIO NÃO ENCONTRADO!");
+			System.out.println("USU�ARIO NÃO ENCONTRADO!");
 		}
 
 	}
 
-	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
+	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FISICA
 	public void registerPF() {
 		
 		byte tamanho = (byte) Main.loginData.getUser().size();
@@ -76,26 +76,26 @@ public class RunLogin {
 
         System.out.println("Insira os dados para se cadastrar.");
         System.out.println("Digite seu CPF/CNPJ: ");
-        cpf = input.next();
+        cpf = input.nextLine();
 
         System.out.println("Digite seu nome completo: ");
-        nome = input.next();
+        nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
-        email = input.next();
+        email = input.nextLine();
 
         System.out.println("Digite seu usuario: ");
-        user = input.next();
+        user = input.nextLine();
 
         System.out.println("Digite seu estado: ");
-        origemEstado = input.next();
+        origemEstado = input.nextLine();
 
         do {
             System.out.println("Digite sua senha: ");
-            senha1 = input.next();
+            senha1 = input.nextLine();
 
             System.out.println("Digite sua senha novamente: ");
-            senha2 = input.next();
+            senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
                 System.out.println("As senhas não conferem.");
@@ -123,26 +123,26 @@ public class RunLogin {
 
         System.out.println("Insira os dados para se cadastrar.");
         System.out.println("Digite seu CNPJ: ");
-        cpf = input.next();
+        cpf = input.nextLine();
 
         System.out.println("Digite o nome da empresa: ");
-        nome = input.next();
+        nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
-        email = input.next();
+        email = input.nextLine();
 
         System.out.println("Digite seu usuario: ");
-        user = input.next();
+        user = input.nextLine();
 
         System.out.println("Digite seu estado: ");
         origemEstado = input.next();
 
         do {
             System.out.println("Digite sua senha: ");
-            senha1 = input.next();
+            senha1 = input.nextLine();
 
             System.out.println("Digite sua senha novamente: ");
-            senha2 = input.next();
+            senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
                 System.out.println("As senhas não conferem.");
