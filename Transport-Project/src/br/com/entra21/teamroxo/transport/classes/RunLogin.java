@@ -3,6 +3,8 @@ package br.com.entra21.teamroxo.transport.classes;
 import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.Main;
+import br.com.entra21.teamroxo.transport.Repositorio;
+import br.com.entra21.teamroxo.transport.herancas.PessoaDados;
 
 public class RunLogin {
 
@@ -55,7 +57,7 @@ public class RunLogin {
 	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
 	public void registerPF() {
 		
-		// A FAZER
+		
 		
 	}
 	
@@ -64,9 +66,26 @@ public class RunLogin {
 		// A FAZER
 		
 	}
-	
-	public void alterarCadastro() {
-	
-	}
-	
+	/*
+	 * public void alterarCadastro() { if (buscar(chave) != null) {
+	 * 
+	 * PessoaDados editado = registerPF(); Repositorio.pessoas.put(chave.getUser(),
+	 * editado);
+	 * 
+	 * } else {
+	 * 
+	 * System.out.println("Não existe alguem com a chave: " + chave.getNome());
+	 * 
+	 * }
+	 * 
+	 * 
+	 * } public void deletar(PessoaDados chave) { if (buscar(chave) != null) {
+	 * Repositorio.remove(chave.getUser()); } else {
+	 * System.out.println("Não existe ninguem com a chave: " + chave.getUser());} }
+	 * 
+	 * private void capturarOpcao() {
+	 * 
+	 * 
+	 * }
+	 */
 }

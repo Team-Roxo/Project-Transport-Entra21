@@ -19,6 +19,8 @@ public interface ICrud<G> {
 	public G capturarChave();
 
 	public G capturarValores();
+	
+	public G buscar(G chave);
 
 	public void exibirDetalhes();
 

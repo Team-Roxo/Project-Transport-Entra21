@@ -11,6 +11,7 @@ public class PessoaDados {
 	private ArrayList <String>  emailBD 	   = new ArrayList<>();
 	private ArrayList <String>  cpfBD 		   = new ArrayList<>();
 	private ArrayList <String>  senhaBD 	   = new ArrayList<>();
+	private ArrayList <String>  estadoOrigemBD = new ArrayList<>();
 	private ArrayList <Boolean> isEnterpriseBD = new ArrayList<>();
 	
 	//VALIDA DUPLICIDADE
@@ -22,13 +23,15 @@ public class PessoaDados {
 		super();
 	}
 
-	public PessoaDados(String nome, String user, String email, String cpf, String senha) {
+	public PessoaDados(String nome, String user, String email, String cpf, String senha, String estadoOrigemBD, boolean isEnterprise) {
 		super();
 		this.nomeBD.add(nome);
 		this.userBD.add(user);
 		this.emailBD.add(email);
 		this.cpfBD.add(cpf);
 		this.senhaBD.add(senha);
+		this.isEnterpriseBD.add(isEnterprise);
+		this.estadoOrigemBD.add(estadoOrigemBD);
 		this.user.add(user);
 		this.email.add(email);
 		this.cpf.add(cpf);
@@ -42,12 +45,18 @@ public class PessoaDados {
 		this.nomeBD.add(index, nome);
 	}
 
+	//Retorna o valor pronta em String dentro do ArrayList
 	public String getUser(byte index) {
 		return userBD.get(index);
 	}
 	
+	//Retorno a ArrayList inteira, possibilitando usar os Wrappers
 	public ArrayList<String> getUser(){
 		return userBD;
+	}
+	
+	public ArrayList<String> getEmail(){
+		return emailBD;
 	}
 
 	public void setUser(String user, byte index) {
@@ -80,7 +89,15 @@ public class PessoaDados {
 	public void setSenha(String senha, byte index) {
 		this.senhaBD.add(index, senha);
 	}
+	
+	public String getEstadoOrigem(byte index) {
+		return estadoOrigemBD.get(index);
+	}
 
+	public void setEstadoOrigem(String estado, byte index) {
+		this.estadoOrigemBD.add(index, estado);
+	}
+	
 	public boolean getIsEnterpriseBD(byte index) {
 		return isEnterpriseBD.get(index);
 	}

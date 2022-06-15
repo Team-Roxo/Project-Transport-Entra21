@@ -6,16 +6,16 @@ import java.util.HashSet;
 public class TransporteDados {
 
 	// BANCO DE DADOS
-	private ArrayList<String> empresaBD = new ArrayList<>();
-	private ArrayList<String> emailBD = new ArrayList<>();
-	private ArrayList<String> senhaBD = new ArrayList<>();
-	private ArrayList<Float> distanciaIndexBD = new ArrayList<>();
-	private ArrayList<Float> pesoIndexBD = new ArrayList<>();
-	private ArrayList<Float> volumeIndexBD = new ArrayList<>();
+	private ArrayList<String> empresaBD 	   = new ArrayList<>();
+	private ArrayList<String> emailBD 		   = new ArrayList<>();
+	private ArrayList<String> senhaBD 		   = new ArrayList<>();
+	private ArrayList<Float>  distanciaIndexBD = new ArrayList<>();
+	private ArrayList<Float>  pesoIndexBD 	   = new ArrayList<>();
+	private ArrayList<Float>  volumeIndexBD    = new ArrayList<>();
 
 	//VALIDA DUPLICIDADE
 	private HashSet <String> empresa = new HashSet<>();
-	private HashSet <String> email = new HashSet<>();
+	private HashSet <String> email 	 = new HashSet<>();
 	
 	public TransporteDados() {
 		super();

@@ -24,10 +24,6 @@ public class PedidoDados{
 	
 	//VARIAVEIS QUE DEFINEM VALOR - BANCO DE DADOS
 	private ArrayList <Float>  precoFreteBD      	= new ArrayList<>();
-	private ArrayList <Float>  estadoEnvioLatBD  	= new ArrayList<>();
-	private ArrayList <Float>  estadoEnvioLongBD    = new ArrayList<>();
-	private ArrayList <Float>  estadoEntregaLatBD   = new ArrayList<>();
-	private ArrayList <Float>  estadoEntregaLongBD  = new ArrayList<>();
 	private ArrayList <Byte>   transportadoraBD  	= new ArrayList<>(); //index da transportadora
 	private ArrayList <Byte>   remetenteBD       	= new ArrayList<>(); //index do cliente que enviou
 	private ArrayList <Byte>   destinatarioBD	 	= new ArrayList<>(); //index do cliente que irá receber
@@ -41,7 +37,7 @@ public class PedidoDados{
 
 	public PedidoDados(String enderecoRemetenteBD, String enderecoDestinoBD, String codigoRastreioBD, LocalDate dataEnvioBD, LocalDate dataChegadaBD,
 			LocalDate previsaoChegadaBD, LocalTime horaEnvioBD,	LocalTime horaChegadaBD, float alturaBD, float larguraBD, float comprimentoBD, 
-			float precoFreteBD, float estadoEnvioLatBD, float estadoEnvioLongBD, float estadoEntregaLatBD, float estadoEntregaLongBD, byte transportadoraBD, byte remetenteBD, byte destinatarioBD, String codigoRastreio) {
+			float precoFreteBD, byte transportadoraBD, byte remetenteBD, byte destinatarioBD, String codigoRastreio) {
 		super();
 		this.enderecoRemetenteBD.add(enderecoRemetenteBD);
 		this.enderecoDestinoBD.add(enderecoDestinoBD);
@@ -56,10 +52,6 @@ public class PedidoDados{
 		this.larguraBD.add(larguraBD);
 		this.comprimentoBD.add(comprimentoBD);
 		this.precoFreteBD.add(precoFreteBD);
-		this.estadoEnvioLatBD.add(estadoEnvioLatBD);
-		this.estadoEnvioLongBD.add(estadoEnvioLongBD);
-		this.estadoEntregaLatBD.add(estadoEntregaLatBD);
-		this.estadoEntregaLongBD.add(estadoEntregaLongBD);
 		this.transportadoraBD.add(transportadoraBD);
 		this.remetenteBD.add(remetenteBD);
 		this.destinatarioBD.add(destinatarioBD);
@@ -82,8 +74,14 @@ public class PedidoDados{
 		this.enderecoDestinoBD.add(enderecoDestinoBD);
 	}
 
+	//Retorna o valor pronta em String dentro do ArrayList
 	public String getCodigoRastreioBD(byte index) {
 		return codigoRastreioBD.get(index);
+	}
+	
+	//Retorno a ArrayList inteira, possibilitando usar os Wrappers
+	public ArrayList<String> getCodigoRastreioBD() {
+		return codigoRastreioBD;
 	}
 
 	public void setCodigoRastreioBD(String codigoRastreioBD) {
@@ -160,38 +158,6 @@ public class PedidoDados{
 
 	public void setPrecoFreteBD(float precoFreteBD) {
 		this.precoFreteBD.add(precoFreteBD);
-	}
-
-	public float getEstadoEnvioLatBD(byte index) {
-		return estadoEnvioLatBD.get(index);
-	}
-
-	public void setEstadoEnvioLatBD(float estadoEnvioLatBD) {
-		this.estadoEnvioLatBD.add(estadoEnvioLatBD);
-	}
-
-	public float getEstadoEnvioLongBD(byte index) {
-		return estadoEnvioLongBD.get(index);
-	}
-
-	public void setEstadoEnvioLongBD(float estadoEnvioLongBD) {
-		this.estadoEnvioLongBD.add(estadoEnvioLongBD);
-	}
-
-	public float getEstadoEntregaLatBD(byte index) {
-		return estadoEntregaLatBD.get(index);
-	}
-
-	public void setEstadoEntregaLatBD(float estadoEntregaLatBD) {
-		this.estadoEntregaLatBD.add(estadoEntregaLatBD);
-	}
-
-	public float getEstadoEntregaLongBD(byte index) {
-		return estadoEntregaLongBD.get(index);
-	}
-
-	public void setEstadoEntregaLongBD(float estadoEntregaLongBD) {
-		this.estadoEntregaLongBD.add(estadoEntregaLongBD);
 	}
 
 	public byte getTransportadoraBD(byte index) {

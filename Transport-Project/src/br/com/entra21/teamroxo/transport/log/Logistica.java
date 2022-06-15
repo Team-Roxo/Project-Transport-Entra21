@@ -15,7 +15,9 @@ public class Logistica {
 		lat1 = (float) Math.toRadians(lat1);
 		lat2 = (float) Math.toRadians(lat2);
 		
-		float formula = (float) Math.pow(Math.sin(distanciaLat/2), 2) + (float) Math.pow(Math.sin(distanciaLong/2), 2) * (float) Math.cos(lat1) * (float) Math.cos(lat2);
+		float formula = (float) Math.pow(Math.sin(distanciaLat/2), 2) + (float) Math.pow(Math.sin(distanciaLong/2), 2) * 
+					    (float) Math.cos(lat1) * (float) Math.cos(lat2);
+		
 		float calculo = 2 * (float)Math.asin(Math.sqrt(formula));
 		
 		earthRad *= calculo;
@@ -32,7 +34,8 @@ public class Logistica {
 	}
 	
 	@PesoCubico
-	public float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, float largura, float altura, float distIndex, float pesoIndex, float volIndex) {
+	public float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, 
+				 float largura, float altura, float distIndex, float pesoIndex, float volIndex) {
 		
 		float precoFinal;
 		float pesoCubico;

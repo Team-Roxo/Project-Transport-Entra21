@@ -1,39 +1,46 @@
 package br.com.entra21.teamroxo.transport;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
+import br.com.entra21.teamroxo.transport.Crud.ClienteCrud;
 import br.com.entra21.teamroxo.transport.anotacoes.Startup;
+import br.com.entra21.teamroxo.transport.anotacoes.WhyHere;
 import br.com.entra21.teamroxo.transport.classes.*;
 import br.com.entra21.teamroxo.transport.scripts.StartupScript;
 
 public class Main {
 
+	@WhyHere
 	public static Login loginData = new Login();
-	public static Pedidos pedidoData = new Pedidos(); // A FAZER
+	@WhyHere
+	public static Pedidos pedidoData = new Pedidos();
+	@WhyHere
 	public static Transporte transporteData = new Transporte(); // A FAZER
 	static String option;
-	
 	static Scanner input = new Scanner(System.in);
 	
+
 	@Startup
 	public static void main(String[] args) {
 
-		StartupScript.main(null); 
-		
-		if (Login.logged == false) {
-			startupMenu();
-		} else if (Login.logged == true && Login.isEnterpriseAccount == false) {
-			menuPF();
-		} else {
-			menuPJ();
-		}
+		Repositorio.inicializarPessoas();
+		StartupScript.main(null);
+
+		do {
+			if (Login.logged == false) {
+				startupMenu();
+			} else if (Login.logged == true && Login.isEnterpriseAccount == false) {
+				menuPF();
+			} else {
+				menuPJ();
+			}
+		} while (!option.equals("0"));
 
 	}
 
 	private static void startupMenu() {
-
-		Login mainLogin = new Login();
-		String option;
 
 		do {
 			System.out.println(constructorMenu());
@@ -43,22 +50,31 @@ public class Main {
 			switch (option.toLowerCase()) {
 			case "0", "sair":
 				System.out.println("Encerrando o programa...");
-				break;				
-			case "1", "login":
-				mainLogin.menuLogin();
+				System.exit(1);
 				break;
-			case "2", "cp", "cadastrar pedido":
+			case "1", "login":
+
+				loginData.Cadastro();
 
 				break;
-			case "3", "rp", "rastrear pedidos":
+			case "2", "cp", "cadastrar pacote":
+
+				pedidoData.cadastrarPacote();
+
+				break;
+			case "3", "rp", "rastrear pacote":
+
+				pedidoData.rastrearPacote();
+			case "4", "Listar", "listar pessoas":
+				new ClienteCrud("Cliente", new ArrayList<>(Arrays.asList("Listar Pessoas", "Adicionar Pessoas", "Ver Pessoas", "Editar Pessoas", "Excluir Pessoas")));
 
 				break;
 			default:
-				System.out.println("Por favor, escolha uma opção válida!!");
+				System.out.println("Por favor, escolha uma opçãoo válida!!");
 				break;
 			}
 
-		} while (option != "0");
+		} while (loginData.logged == false);
 
 	}
 
@@ -66,8 +82,8 @@ public class Main {
 		String menu = "!=================> Saida21 <=================!\n";
 
 		menu += "\n1 - Login/Cadastrar";
-		menu += "\n2 - Cadastrar Pedidos (CP)";
-		menu += "\n3 - Rastrear Pedidos (RP)";
+		menu += "\n2 - Cadastrar Pacote (CP)";
+		menu += "\n3 - Rastrear Pacote (RP)";
 		menu += "\n0 - Sair\n";
 		menu += "!=================> Saida21 <=================!";
 
@@ -75,41 +91,50 @@ public class Main {
 	}
 
 	private static void menuPF() {
-		byte option;
 		do {
 			System.out.println("!=================> Saida21 <=================!\n");
-			System.out.println("\n1 - Meus Pedidos");
-			System.out.println("\n2 - Alterar Cadastro");
+			System.out.println("\n1 - Meus Pedidos/Envios");
+			System.out.println("\n2 - Cadastrar Pacote");
+			System.out.println("\n3 - Alterar Cadastro");
+			System.out.println("\n4 - Logoff");
 			System.out.println("\n0 - Sair");
 			System.out.println("\n!=================> Saida21 <=================!");
-			option = input.nextByte();
+			option = input.nextLine();
 
 			switch (option) {
 
-			case 0:
+			case "0":
 				System.out.println("Encerrando o programa...");
+				System.exit(1);
 				break;
 
-			case 1:
-				// Meus pedidos
+			case "1":
+
+				pedidoData.listarPacotes();
+
 				break;
 
-			case 2:
-				//capturarOpcao();
-				
-				break;
+			case "2":
+				// CP
 
+				break;
+			case "3":
+				// Alterar
+				break;
+			case "4":
+				// logoff
+				break;
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
 				break;
 
 			}
-		} while (option != 0);
+
+		} while (loginData.logged == true && loginData.isEnterpriseAccount == false);
 
 	}
 
 	private static void menuPJ() {
-		byte option;
 		do {
 			System.out.println("!=================> Saida21 <=================!\n");
 			System.out.println("\n 1 - Remessas");
@@ -117,32 +142,30 @@ public class Main {
 			System.out.println("\n 3 - Alterar Cadastro");
 			System.out.println("\n 0 - Sair");
 			System.out.println("\n!=================> Saida21 <=================!");
-			option = input.nextByte();
+			option = input.nextLine();
 
 			switch (option) {
 
-			case 0:
+			case "0":
 				System.out.println("Encerrando o programa...");
 				break;
 
-			case 1:
+			case "1":
 				// Remessas
 				break;
 
-			case 2:
+			case "2":
 				// Alterar V
 				break;
 
-			case 3:
+			case "3":
 				// Alterar C
 				break;
 
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
 				break;
 
 			}
-		} while (option != 0);
-	}
-
-}
+		} while (loginData.logged == true && loginData.isEnterpriseAccount == true);
+}}
