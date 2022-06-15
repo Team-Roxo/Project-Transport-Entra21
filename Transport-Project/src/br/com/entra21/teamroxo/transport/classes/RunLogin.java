@@ -5,11 +5,16 @@ import java.util.Scanner;
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.Menu;
 
+import java.util.Scanner;
+
+import br.com.entra21.teamroxo.transport.Main;
+import br.com.entra21.teamroxo.transport.Menu;
+
 public class RunLogin {
 
 	static Scanner input = new Scanner(System.in);
 
-	// FUNÃ‡ÃƒO PARA FAZER LOGIN
+	// FUNÇÃO PARA FAZER LOGIN
 	public void loging() {
 
 		String user;
@@ -62,14 +67,14 @@ public class RunLogin {
 		} while (!Menu.option.equals("0"));
 		
 		if(find == false) {
-			System.out.println("USUÃARIO NÃƒO ENCONTRADO!");
+			System.out.println("USUARIO NÃO ENCONTRADO!");
 		}
 
 	}
 
-	// FUNÃ‡ÃƒO PARA FAZER CADASTRO DE CLIENTE - PESSOA FISICA
-	public void registerPF() {
-		
+	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÍSICA
+	public void registerCliente() {
+
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
         String cpf, nome, email, user, origemEstado, senha1, senha2;
@@ -78,10 +83,23 @@ public class RunLogin {
         System.out.println("Digite seu CPF/CNPJ: ");
         cpf = input.nextLine();
 
+        //cpf.toCharArray();
+        //cpf.replaceAll(".", ""); 123.123.123-12 -> 12312312312
+        //Pesquisar como verificar uma string se ela contém um tipo de variavel
+        
         System.out.println("Digite seu nome completo: ");
         nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
+        email = input.next();
+        
+        //email.contains("@");
+        //email.contains(".com");
+
+        System.out.println("Digite seu usuario: ");
+        user = input.next();
+        
+        user.toLowerCase();
         email = input.nextLine();
 
         System.out.println("Digite seu usuario: ");
@@ -92,18 +110,24 @@ public class RunLogin {
 
         do {
             System.out.println("Digite sua senha: ");
-            senha1 = input.nextLine();
+
+            senha1 = input.next();
+            
+            //senha1.length() < 8;
+
 
             System.out.println("Digite sua senha novamente: ");
             senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas nÃ£o conferem.");
+                System.out.println("As senhas não conferem.");
             }
 
         } while (!senha1.equals(senha2));
-        System.out.println("UsuÃ¡rio cadastrado com sucesso!");
+        System.out.println("Usuário cadastrado com sucesso!");
 
+        //confirmação dos dados
+        
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
         Main.loginData.setEmail(email, tamanho);
@@ -115,7 +139,7 @@ public class RunLogin {
 		
 	}
 	
-	public void registerPJ() {
+	public void registerTransportadora() {
 		
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
@@ -145,7 +169,7 @@ public class RunLogin {
             senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas nÃ£o conferem.");
+                System.out.println("As senhas não conferem.");
             }
 
         } while (!senha1.equals(senha2));

@@ -32,12 +32,12 @@ public class Login extends PessoaDados {
 				break;
 			case "2", "pf", "cliente", "cliente pf":
 				
-				log.registerPF();
+				log.registerCliente();
 			
 				break;
 			case "3", "pj", "transportadora":
 				
-				log.registerPJ();
+				log.registerTransportadora();
 			
 				break;
 			case "0", "voltar":

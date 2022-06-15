@@ -46,7 +46,7 @@ public class Pedidos extends PedidoDados {
 		
 	}
 	
-	//LISTAR PACOTES DE USUÁRIO LOGADO
+	//LISTAR PACOTES DE USU�RIO LOGADO
 	public void listarPacotes() {
 
 		System.out.println("!=========================> PACOTES A CAMINHO <=========================!");
@@ -100,15 +100,20 @@ public class Pedidos extends PedidoDados {
 
 	}
 	
-	//CADASTRA PACOTE TANTO DE USUÁRIO LOGADO COMO NÃO-LOGADO
+	//CADASTRA PACOTE TANTO DE USU�RIO LOGADO COMO NÃO-LOGADO
 	public void cadastrarPacote() {
 		
 		//variaveis de kd tipo de pergunta
 		//adubada no menu
 		
+		String origem, destino;
+		float altura, comprimento, largura;
+		
+		byte tamanho = (byte) Main.pedidoData.getCodigoRastreioBD().size();
+		
 		System.out.println("---Empresa-Titulo---");
         System.out.println("Por favor, Coloque o CPF do Remetente: ");
-
+        
 
         System.out.println("Agora digite o nome do mesmo: ");
 

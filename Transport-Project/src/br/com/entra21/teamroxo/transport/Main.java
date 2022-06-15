@@ -63,7 +63,7 @@ public class Main {
 				
 				break;
 			default:
-				System.out.println("Por favor, escolha uma op√ß√£oo v√°lida!!");
+				System.out.println("Por favor, escolha uma opÁ„o v·lida!");
 				break;
 			}
 
