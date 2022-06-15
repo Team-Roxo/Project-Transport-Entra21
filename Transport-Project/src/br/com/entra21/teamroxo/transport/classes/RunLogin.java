@@ -5,11 +5,16 @@ import java.util.Scanner;
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.Menu;
 
+import java.util.Scanner;
+
+import br.com.entra21.teamroxo.transport.Main;
+import br.com.entra21.teamroxo.transport.Menu;
+
 public class RunLogin {
 
 	static Scanner input = new Scanner(System.in);
 
-	// FUN√á√ÉO PARA FAZER LOGIN
+	// FUN«√O PARA FAZER LOGIN
 	public void loging() {
 
 		String user;
@@ -17,7 +22,7 @@ public class RunLogin {
 		boolean find = false;
 		byte userIndex;
 
-		System.out.println("!> DIGITE O NOME, USU√ÅRIO OU EMAIL");
+		System.out.println("!> DIGITE O NOME, USUARIO OU EMAIL");
 		user = input.nextLine();
 
 		do {
@@ -26,7 +31,7 @@ public class RunLogin {
 						|| user.toLowerCase().equals(Main.loginData.getNome((byte) i).toLowerCase())
 						|| user.toLowerCase().equals(Main.loginData.getEmail((byte) i).toLowerCase())) {
 
-					System.out.println("!=======================> USU√ÅRIO ENCONTRADO! <=======================!");
+					System.out.println("!=======================> USUARIO ENCONTRADO! <=======================!");
 					userIndex = (byte) i;
 					find = true;
 					System.out.println("!> DIGITE SUA SENHA:");
@@ -62,48 +67,67 @@ public class RunLogin {
 		} while (!Menu.option.equals("0"));
 		
 		if(find == false) {
-			System.out.println("USU√ÅRIO N√ÉO ENCONTRADO!");
+			System.out.println("USUARIO N√O ENCONTRADO!");
 		}
 
 	}
 
-	// FUN√á√ÉO PARA FAZER CADASTRO DE CLIENTE - PESSOA F√çSICA
-	public void registerPF() {
-		
+	// FUN«√O PARA FAZER CADASTRO DE CLIENTE - PESSOA FÕSICA
+	public void registerCliente() {
+
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
         String cpf, nome, email, user, origemEstado, senha1, senha2;
 
         System.out.println("Insira os dados para se cadastrar.");
         System.out.println("Digite seu CPF/CNPJ: ");
-        cpf = input.next();
+        cpf = input.nextLine();
 
+        //cpf.toCharArray();
+        //cpf.replaceAll(".", ""); 123.123.123-12 -> 12312312312
+        //Pesquisar como verificar uma string se ela contÈm um tipo de variavel
+        
         System.out.println("Digite seu nome completo: ");
-        nome = input.next();
+        nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
         email = input.next();
+        
+        //email.contains("@");
+        //email.contains(".com");
 
         System.out.println("Digite seu usuario: ");
         user = input.next();
+        
+        user.toLowerCase();
+        email = input.nextLine();
+
+        System.out.println("Digite seu usuario: ");
+        user = input.nextLine();
 
         System.out.println("Digite seu estado: ");
-        origemEstado = input.next();
+        origemEstado = input.nextLine();
 
         do {
             System.out.println("Digite sua senha: ");
+
             senha1 = input.next();
+            
+            //senha1.length() < 8;
+
 
             System.out.println("Digite sua senha novamente: ");
-            senha2 = input.next();
+            senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas n√£o conferem.");
+                System.out.println("As senhas n„o conferem.");
             }
 
         } while (!senha1.equals(senha2));
-        System.out.println("Usu√°rio cadastrado com sucesso!");
+        System.out.println("Usu·rio cadastrado com sucesso!");
 
+        //confirmaÁ„o dos dados
+        
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
         Main.loginData.setEmail(email, tamanho);
@@ -115,7 +139,7 @@ public class RunLogin {
 		
 	}
 	
-	public void registerPJ() {
+	public void registerTransportadora() {
 		
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
@@ -123,29 +147,29 @@ public class RunLogin {
 
         System.out.println("Insira os dados para se cadastrar.");
         System.out.println("Digite seu CNPJ: ");
-        cpf = input.next();
+        cpf = input.nextLine();
 
         System.out.println("Digite o nome da empresa: ");
-        nome = input.next();
+        nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
-        email = input.next();
+        email = input.nextLine();
 
         System.out.println("Digite seu usuario: ");
-        user = input.next();
+        user = input.nextLine();
 
         System.out.println("Digite seu estado: ");
         origemEstado = input.next();
 
         do {
             System.out.println("Digite sua senha: ");
-            senha1 = input.next();
+            senha1 = input.nextLine();
 
             System.out.println("Digite sua senha novamente: ");
-            senha2 = input.next();
+            senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas n√£o conferem.");
+                System.out.println("As senhas n„o conferem.");
             }
 
         } while (!senha1.equals(senha2));

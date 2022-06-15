@@ -36,6 +36,10 @@ public class TransporteDados {
 	public String getEmpresaBD(byte index) {
 		return empresaBD.get(index);
 	}
+	
+	public ArrayList<String> getEmpresaBD() {
+		return empresaBD;
+	}
 
 	public void setEmpresaBD(String empresaBD, byte index) {
 		this.empresaBD.add(index, empresaBD);
