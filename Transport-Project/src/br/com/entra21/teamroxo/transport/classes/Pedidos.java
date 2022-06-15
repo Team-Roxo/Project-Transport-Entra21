@@ -139,7 +139,7 @@ public class Pedidos extends PedidoDados {
 		
 		System.out.println("-----------------------------------------------");
 		System.out.println("---------------------Pacote--------------------");
-		System.out.println("Agora, por favor, digite as dimensões do pacote: ");
+		System.out.println("Agora, por favor, digite as dimensões do pacote em cm: ");
 		System.out.println("Largura: ");
 		largura=input.nextFloat();
 

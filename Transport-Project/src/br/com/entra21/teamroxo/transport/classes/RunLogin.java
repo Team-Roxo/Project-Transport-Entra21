@@ -72,7 +72,7 @@ public class RunLogin {
 
 	}
 
-	// FUN√á√ÉO PARA FAZER CADASTRO DE CLIENTE - PESSOA F√çSICA
+	// FUN√á√ÉO PARA FAZER CADASTRO DE CLIENTE - PESSOA FÕSICA
 	public void registerCliente() {
 
 		byte tamanho = (byte) Main.loginData.getUser().size();
@@ -90,13 +90,13 @@ public class RunLogin {
             if(cpf.length() == 11){
             	isEnterprise = false;
             	pass = true;
-            	System.out.println("CADASTRANDO PESSOA F√çSICA (CPF)");
+            	System.out.println("CADASTRANDO PESSOA FÕSICA (CPF)");
             }else if(cpf.length() == 14) {
             	isEnterprise = true;
             	pass = true;
-            	System.out.println("CADASTRANDO PESSOA JUR√çDICA (CNPJ)");
+            	System.out.println("CADASTRANDO TRANSPORTADORA (CNPJ)");
             }else {
-            	System.out.println("CPF/CNPJ INV√ÅLIDO!");
+            	System.out.println("CPF/CNPJ INV¡LIDO!");
             }
             
         }while(pass != true);
@@ -134,11 +134,11 @@ public class RunLogin {
             senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas nÔøΩo conferem.");
+                System.out.println("As senhas n„o conferem.");
             }
 
         } while (!senha1.equals(senha2));
-        System.out.println("Usu√°rio cadastrado com sucesso!");
+        System.out.println("Usu·rio cadastrado com sucesso!");
 
         //confirma√ß√£o dos dados
         
@@ -163,7 +163,7 @@ public class RunLogin {
         System.out.println("Digite seu CNPJ: ");
         cpf = input.nextLine();
 
-        System.out.println("Digite o nome da empresa: ");
+        System.out.println("Digite o nome da transportadora: ");
         nome = input.nextLine();
 
         System.out.println("Digite seu e-mail: ");
@@ -183,7 +183,7 @@ public class RunLogin {
             senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas nÔøΩo conferem.");
+                System.out.println("As senhas n„o conferem.");
             }
 
         } while (!senha1.equals(senha2));
