@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.Menu;
+import br.com.entra21.teamroxo.transport.log.Brasil;
 
 import java.util.Scanner;
 
@@ -13,6 +14,8 @@ import br.com.entra21.teamroxo.transport.Menu;
 public class RunLogin {
 
 	static Scanner input = new Scanner(System.in);
+	
+	boolean isEnterprise, pass = false;
 
 	// FUNÇÃO PARA FAZER LOGIN
 	public void loging() {
@@ -27,9 +30,9 @@ public class RunLogin {
 
 		do {
 			for (int i = 0; i < Main.loginData.getUser().size(); i++) {
-				if (user.toLowerCase().equals(Main.loginData.getUser((byte) i).toLowerCase())
-						|| user.toLowerCase().equals(Main.loginData.getNome((byte) i).toLowerCase())
-						|| user.toLowerCase().equals(Main.loginData.getEmail((byte) i).toLowerCase())) {
+				if (user.toLowerCase().equals(Main.loginData.getNome((byte) i).toLowerCase())
+						|| user.toLowerCase().equals(Main.loginData.getEmail((byte) i).toLowerCase())
+						|| user.toLowerCase().equals(Main.loginData.getCpf((byte) i))) {
 
 					System.out.println("!=======================> USUARIO ENCONTRADO! <=======================!");
 					userIndex = (byte) i;
@@ -72,14 +75,13 @@ public class RunLogin {
 
 	}
 
-	// FUNÇÃO PARA FAZER CADASTRO DE CLIENTE - PESSOA F�SICA
+	// FUNÇÃO PARA CADASTRAR CLIENTE - PF/PJ
 	public void registerCliente() {
 
 		byte tamanho = (byte) Main.loginData.getUser().size();
 
         String cpf, nome, email, user, origemEstado, senha1, senha2;
-        boolean isEnterprise, pass = false;
-
+        
         System.out.println("Insira os dados para se cadastrar.");
         
         do {
@@ -90,57 +92,128 @@ public class RunLogin {
             if(cpf.length() == 11){
             	isEnterprise = false;
             	pass = true;
-            	System.out.println("CADASTRANDO PESSOA F�SICA (CPF)");
+            	System.out.println("\n====================================\n CADASTRANDO PESSOA FISICA (CPF) \n==========================================\n");
             }else if(cpf.length() == 14) {
             	isEnterprise = true;
             	pass = true;
-            	System.out.println("CADASTRANDO TRANSPORTADORA (CNPJ)");
+            	System.out.println("\n========================================\n CADASTRANDO EMPRESA (CNPJ) \n===========================================\n");
             }else {
-            	System.out.println("CPF/CNPJ INV�LIDO!");
+            	System.out.println("\n=================================\n ERRO AO CADASTRAR CPF/CNPJ: "+cpf+" \n=========================================\n");
             }
             
         }while(pass != true);
         
-        System.out.println("Digite seu nome completo: ");
-        nome = tratamentoNome(input.nextLine());
-
-        //PAREI AQUI... <--------------------------------------------
-        System.out.println("Digite seu e-mail: ");
-        email = input.next();
+        pass = false;
         
-        //email.contains("@");
-        //email.contains(".com");
-
-        System.out.println("Digite seu usuario: ");
-        user = input.next();
+        if(cpf.length() == 11) {
+        	System.out.println("Digite seu nome completo: ");
+            nome = tratamentoNome(input.nextLine());
+        }else {
+        	System.out.println("Digite o nome da Empresa: ");
+            nome = tratamentoNome(input.nextLine());
+        }
         
-        email = input.nextLine();
+        
+        		System.out.println("\n=================================\n NOME INSERIDO COM SUCESSO! ("+nome+") \n=======================================\n");
+        
+        do {
+        	
+        	System.out.println("Digite seu e-mail: ");
+            email = input.nextLine();
+            
+            if(email.contains("@") && email.contains(".com") && !Main.loginData.getEmail().contains(email)) {
+    			pass = true;
+    		}else if(Main.loginData.getEmail().contains(email)){
+    			System.out.println("\n============================================\n EMAIL JÁ CADASTRADO! \n=============================================\n");
+    		}else {
+    			System.out.println("\n===============================================\n EMAIL INVÁLIDO! \n===============================================\n");
+    		}
+            
+        }while(pass != true);
 
-        System.out.println("Digite seu usuario: ");
-        user = input.nextLine();
+        pass = false;
+        
+        do {
+        	
+        	System.out.println("Digite seu usuario: ");
+            user = tratamentoUser(input.nextLine());
+            
+            if(Main.loginData.getValidUser().contains(user)) {
+            	System.out.println("\n===============================================\n USUÁRIO JÁ EXISTE! \n===============================================\n");
+            }else {
+            	pass = true;
+            	System.out.println("\n=====================================\n USUÁRIO "+user+" CADASTRADO COM SUCESSO! \n===================================\n");
+            }
+            
+        }while(pass != true);
+        
+        pass = false;
 
-        System.out.println("Digite seu estado: ");
-        origemEstado = input.nextLine();
+        do {
+        	
+        	System.out.println("Digite seu estado: ");
+            if(tratamentoEstado(origemEstado = input.nextLine().toUpperCase())) {
+            	System.out.println("\n=====================================\n ESTADO "+origemEstado+" CADASTRADO! \n=====================================\n");
+            	pass = true;
+            }else {
+            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+            }
+            
+        }while(pass != true);
+        
+        pass = false;
 
         do {
             System.out.println("Digite sua senha: ");
 
             senha1 = input.next();
             
-            //senha1.length() < 8;
-
+            if(senha1.length()<5) {
+            	System.out.println("\n=====================================\n ERRO: A SENHA DEVE CONTER NO MÍNIMO 5 CARACTERES \n=====================================\n");
+            }
 
             System.out.println("Digite sua senha novamente: ");
             senha2 = input.nextLine();
 
-            if (!senha1.equals(senha2)) {
-                System.out.println("As senhas n�o conferem.");
+            if (senha1.equals(senha2)) {
+                System.out.println("As senhas não conferem.");
+            }else {
+            	String pwd = "";
+            	System.out.println("\n=====================================\n CONFIRMACAO DOS DADOS \n=====================================\n");
+            	System.out.println("Nome: "+nome);
+            	System.out.println("Email: "+email);
+            	System.out.println("CPF/CNPJ: "+cpf);
+            	System.out.println("Estado: "+origemEstado);
+            	for (byte i=0;i<=senha1.length();i++) {
+					pwd += "*";
+				}
+            	System.out.println(pwd);
+            	System.out.println("\n=====================================\n CONFIRMAR DADOS? (Sim/Não) \n=====================================\n");
+            	pwd = input.nextLine();
+            	switch(pwd.toLowerCase()) {
+            	case "sim", "s", "1":
+            		pass = true;
+            		break;
+            	case "não", "n", "2":
+            		System.out.println("\n=====================================\n ENCERRANDO CADASTRO... \n=====================================\n");
+            		senha1 = "sair";
+            		break;
+            	default:
+            		System.out.println("Sim ou não??");
+            		break;
+            	}
+            	
             }
 
-        } while (!senha1.equals(senha2));
-        System.out.println("Usu�rio cadastrado com sucesso!");
-
-        //confirmação dos dados
+            if(senha1.equals("sair")) {
+            	break;
+            }
+            
+        } while (pass != true);
+        
+        
+        
+        System.out.println("Usuário cadastrado com sucesso!");
         
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
@@ -153,6 +226,7 @@ public class RunLogin {
 		
 	}
 	
+	// FUNÇÃO PARA CADASTRAR TRANSPORTADORA
 	public void registerTransportadora() {
 		
 		byte tamanho = (byte) Main.loginData.getUser().size();
@@ -173,7 +247,9 @@ public class RunLogin {
         user = input.nextLine();
 
         System.out.println("Digite seu estado: ");
-        origemEstado = input.next();
+        if(tratamentoEstado(origemEstado = input.nextLine().toUpperCase())) {
+        	
+        }
 
         do {
             System.out.println("Digite sua senha: ");
@@ -183,7 +259,7 @@ public class RunLogin {
             senha2 = input.nextLine();
 
             if (!senha1.equals(senha2)) {
-                System.out.println("As senhas n�o conferem.");
+                System.out.println("As senhas n�o conferem.");
             }
 
         } while (!senha1.equals(senha2));
@@ -203,18 +279,23 @@ public class RunLogin {
 	private String tratamentoCpf(String cpf) {
 	
 		try {
-			final long CPF;
 			cpf = cpf.replace(".", "");
 			cpf = cpf.replace("-", "");
 			cpf = cpf.replace("/", "");
-			CPF = Long.parseLong(cpf);
-			return cpf;
+			final long CPF = Long.parseLong(cpf);
+			;
+			if(Main.loginData.getCpf().contains(String.valueOf(CPF)) == true) {
+				return "CPF JÁ EXISTE";
+			}else {
+				return cpf;
+			}
 		}catch(Exception e) {
-			return "ERROR!";
+			return "DOCUMENTO INVÁLIDO!";
 		}
 		
 	}
 	
+	// FALTA VALIDAR NOME REPETIDO
 	private String tratamentoNome(String nome) {
 		
 		nome = nome.toLowerCase();
@@ -235,22 +316,30 @@ public class RunLogin {
 		return nome;
 		
 	}
-	
-	// A FAZER
-	private String mostrarCpf(String cpf) {
-		return null;
-	}
-	
-	//A FAZER
-	private String tratamentoEmail(String email) {
-		return null;
-	}
-	
-	//A FAZER
+
 	private String tratamentoUser(String user) {
-		return null;
+		
+		user = user.replace(" ", "_");
+		
+		return user;
 	}
 	
-	
+	private boolean tratamentoEstado(String estado) {
+		
+		for(byte i=0;i<Brasil.values().length;i++) {
+			if(Brasil.values()[i].getEstadoFull().equals(estado)){
+				return true;
+			}
+			if(Brasil.values()[i].getEstadoNome().equals(estado)){
+				return true;
+			}
+			if(Brasil.values()[i].getEstadoSigla().equals(estado)){
+				return true;
+			}
+		}
+		
+		return false;
+				
+	}
 	
 }

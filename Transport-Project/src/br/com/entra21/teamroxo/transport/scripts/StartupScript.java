@@ -17,7 +17,7 @@ public class StartupScript {
 		initialize.loginData.setUser("kalil.jaques", (byte) 0);
 		initialize.loginData.setSenha("123123", (byte) 0);
 		initialize.loginData.setEstadoOrigem("AP", (byte) 0);
-		initialize.loginData.setCpf("123.456.789-01", (byte) 0);
+		initialize.loginData.setCpf("12345678901", (byte) 0);
 		initialize.loginData.setIsEnterpriseBD(false, (byte) 0);
 		
 		initialize.loginData.setNome("Mateus", (byte) 1);
@@ -25,7 +25,7 @@ public class StartupScript {
 		initialize.loginData.setUser("mat.felipe", (byte) 1);
 		initialize.loginData.setSenha("123123", (byte) 1);
 		initialize.loginData.setEstadoOrigem("RS", (byte) 1);
-		initialize.loginData.setCpf("234.567.890-12", (byte) 1);
+		initialize.loginData.setCpf("23456789012", (byte) 1);
 		initialize.loginData.setIsEnterpriseBD(false, (byte) 1);
 		
 		initialize.loginData.setNome("Cristian", (byte) 2);
@@ -33,16 +33,16 @@ public class StartupScript {
 		initialize.loginData.setUser("cristian.baade", (byte) 2);
 		initialize.loginData.setSenha("123123", (byte) 2);
 		initialize.loginData.setEstadoOrigem("SC", (byte) 2);
-		initialize.loginData.setCpf("345.678.901-23", (byte) 2);
-		initialize.loginData.setIsEnterpriseBD(true, (byte) 2);
+		initialize.loginData.setCpf("34567890123", (byte) 2);
+		initialize.loginData.setIsEnterpriseBD(false, (byte) 2);
 		
 		initialize.loginData.setNome("Bruno", (byte) 3);
 		initialize.loginData.setEmail("bruno@gmail.com", (byte) 3);
 		initialize.loginData.setUser("bruno.roberto", (byte) 3);
 		initialize.loginData.setSenha("123123", (byte) 3);
 		initialize.loginData.setEstadoOrigem("PR", (byte) 3);
-		initialize.loginData.setCpf("456.789.012-34", (byte) 3);
-		initialize.loginData.setIsEnterpriseBD(true, (byte) 3);
+		initialize.loginData.setCpf("45678901234", (byte) 3);
+		initialize.loginData.setIsEnterpriseBD(false, (byte) 3);
 		
 		//TRANSPORTADORAS
 		initialize.transporteData.setEmpresaBD("SAIDA-21", (byte) 0);

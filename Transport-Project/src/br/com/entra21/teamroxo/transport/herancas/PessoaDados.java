@@ -54,6 +54,10 @@ public class PessoaDados {
 	public ArrayList<String> getUser(){
 		return userBD;
 	}
+	
+	public HashSet <String> getValidUser(){
+		return user;
+	}
 
 	public void setUser(String user, byte index) {
 		this.userBD.add(index, user);
@@ -63,10 +67,18 @@ public class PessoaDados {
 	public String getEmail(byte index) {
 		return emailBD.get(index);
 	}
+	
+	public HashSet <String> getEmail(){
+		return email;
+	}
 
 	public void setEmail(String email, byte index) {
 		this.emailBD.add(index, email);
 		this.email.add(this.emailBD.get(index));
+	}
+	
+	public HashSet <String> getCpf(){
+		return cpf;
 	}
 
 	public String getCpf(byte index) {
