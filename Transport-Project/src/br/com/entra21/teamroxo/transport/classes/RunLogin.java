@@ -15,7 +15,7 @@ public class RunLogin {
 
 	static Scanner input = new Scanner(System.in);
 	
-	boolean isEnterprise, pass = false;
+	boolean pass = false;
 
 	// FUNÇÃO PARA FAZER LOGIN
 	public void loging() {
@@ -25,28 +25,27 @@ public class RunLogin {
 		boolean find = false;
 		byte userIndex;
 
-		System.out.println("!> DIGITE O NOME, USUARIO OU EMAIL");
-		user = input.nextLine();
+		System.out.println("!> DIGITE O USUARIO, EMAIL OU CPF");
+		user = input.next();
 
 		do {
 			for (int i = 0; i < Main.loginData.getUser().size(); i++) {
-				if (user.toLowerCase().equals(Main.loginData.getNome((byte) i).toLowerCase())
+				if (user.toLowerCase().equals(Main.loginData.getUser((byte) i).toLowerCase())
 						|| user.toLowerCase().equals(Main.loginData.getEmail((byte) i).toLowerCase())
 						|| user.toLowerCase().equals(Main.loginData.getCpf((byte) i))) {
 
-					System.out.println("!=======================> USUARIO ENCONTRADO! <=======================!");
-					userIndex = (byte) i;
+					System.out.println("\n====================================\n USUARIO ENCONTRADO! \n====================================\n");
 					find = true;
 					System.out.println("!> DIGITE SUA SENHA:");
-					senha = input.nextLine();
+					senha = input.next();
 
-					if (senha.equals(Main.loginData.getSenha(userIndex))) {
+					if (senha.equals(Main.loginData.getSenha((byte) i))) {
 						System.out.println(
-								"!=======================> LOGIN REALIZADO COM SUCESSO! <=======================!");
+								"\n====================================\n LOGIN REALIZADO COM SUCESSO! \n====================================\n");
 						Login.logged = true;
-						Login.account = userIndex;
+						Login.account = (byte) i;
 
-						if (Main.loginData.getIsEnterpriseBD(userIndex) == true) {
+						if (Main.loginData.getIsEnterpriseBD((byte) i) == true) {
 							Login.isEnterpriseAccount = true;
 						} else {
 							Login.isEnterpriseAccount = false;
@@ -56,9 +55,7 @@ public class RunLogin {
 						break;
 
 					} else {
-						System.out.println("!=======================> SENHA INCORRETA! <=======================!");
-						System.out.println("!> DIGITE A SENHA NOVAMENTE:");
-						System.out.println("!> DIGITE 0 SE QUISER SAIR:");
+						System.out.println("\n====================================\n SENHA INCORRETA! \n====================================\n");
 					}
 
 				}
@@ -70,11 +67,11 @@ public class RunLogin {
 		} while (!Menu.option.equals("0"));
 		
 		if(find == false) {
-			System.out.println("USUARIO N�O ENCONTRADO!");
+			System.out.println("\n====================================\n USUARIO NAO ENCONTRADO! \n====================================\n");
 		}
 
 	}
-
+	
 	// FUNÇÃO PARA CADASTRAR CLIENTE - PF/PJ
 	public void registerCliente() {
 
@@ -82,19 +79,17 @@ public class RunLogin {
 
         String cpf, nome, email, user, origemEstado, senha1, senha2;
         
-        System.out.println("Insira os dados para se cadastrar.");
+        System.out.println("\n====================================\n CADASTRO NA PLATAFORMA \n====================================\n");
         
         do {
-        	System.out.println("Digite seu CPF/CNPJ: ");
+        	System.out.println("!> DIGITE SEU CPF/CNPJ: ");
         	
             cpf = tratamentoCpf(input.nextLine());
             
             if(cpf.length() == 11){
-            	isEnterprise = false;
             	pass = true;
             	System.out.println("\n====================================\n CADASTRANDO PESSOA FISICA (CPF) \n==========================================\n");
             }else if(cpf.length() == 14) {
-            	isEnterprise = true;
             	pass = true;
             	System.out.println("\n========================================\n CADASTRANDO EMPRESA (CNPJ) \n===========================================\n");
             }else {
@@ -106,10 +101,10 @@ public class RunLogin {
         pass = false;
         
         if(cpf.length() == 11) {
-        	System.out.println("Digite seu nome completo: ");
+        	System.out.println("!> DIGITE SEU NOME COMPLETO: ");
             nome = tratamentoNome(input.nextLine());
         }else {
-        	System.out.println("Digite o nome da Empresa: ");
+        	System.out.println("!> DIGITE O NOME DA SUA EMPRESA:  ");
             nome = tratamentoNome(input.nextLine());
         }
         
@@ -118,7 +113,7 @@ public class RunLogin {
         
         do {
         	
-        	System.out.println("Digite seu e-mail: ");
+        	System.out.println("!> DIGITE SEU EMAIL: ");
             email = input.nextLine();
             
             if(email.contains("@") && email.contains(".com") && !Main.loginData.getEmail().contains(email)) {
@@ -135,7 +130,7 @@ public class RunLogin {
         
         do {
         	
-        	System.out.println("Digite seu usuario: ");
+        	System.out.println("!> DIGITE O NOME DE USUÁRIO: ");
             user = tratamentoUser(input.nextLine());
             
             if(Main.loginData.getValidUser().contains(user)) {
@@ -164,45 +159,50 @@ public class RunLogin {
         pass = false;
 
         do {
-            System.out.println("Digite sua senha: ");
+            System.out.println("!> DIGITE SUA SENHA: ");
 
             senha1 = input.next();
             
             if(senha1.length()<5) {
             	System.out.println("\n=====================================\n ERRO: A SENHA DEVE CONTER NO MÍNIMO 5 CARACTERES \n=====================================\n");
-            }
-
-            System.out.println("Digite sua senha novamente: ");
-            senha2 = input.nextLine();
-
-            if (senha1.equals(senha2)) {
-                System.out.println("As senhas não conferem.");
             }else {
-            	String pwd = "";
-            	System.out.println("\n=====================================\n CONFIRMACAO DOS DADOS \n=====================================\n");
-            	System.out.println("Nome: "+nome);
-            	System.out.println("Email: "+email);
-            	System.out.println("CPF/CNPJ: "+cpf);
-            	System.out.println("Estado: "+origemEstado);
-            	for (byte i=0;i<=senha1.length();i++) {
-					pwd += "*";
-				}
-            	System.out.println(pwd);
-            	System.out.println("\n=====================================\n CONFIRMAR DADOS? (Sim/Não) \n=====================================\n");
-            	pwd = input.nextLine();
-            	switch(pwd.toLowerCase()) {
-            	case "sim", "s", "1":
-            		pass = true;
-            		break;
-            	case "não", "n", "2":
-            		System.out.println("\n=====================================\n ENCERRANDO CADASTRO... \n=====================================\n");
-            		senha1 = "sair";
-            		break;
-            	default:
-            		System.out.println("Sim ou não??");
-            		break;
-            	}
             	
+            	System.out.println("!> DIGITE SUA SENHA NOVAMENTE: ");
+                senha2 = input.next();
+
+                if (senha1.equals(senha2)) {
+                
+                    String pwd = "";
+                	System.out.println("\n=====================================\n CONFIRMACAO DOS DADOS \n=====================================\n");
+                	System.out.println("Nome: "+nome);
+                	System.out.println("Email: "+email);
+                	System.out.println("CPF/CNPJ: "+cpf);
+                	System.out.println("Estado: "+origemEstado);
+                	for (byte i=0;i<=senha1.length();i++) {
+    					pwd += "*";
+    				}
+                	System.out.println(pwd);
+                	System.out.println("\n=====================================\n CONFIRMAR DADOS? (Sim/Não) \n=====================================\n");
+                	pwd = input.next();
+                	switch(pwd.toLowerCase()) {
+                	case "sim", "s", "1":
+                		pass = true;
+                		break;
+                	case "não", "n", "2":
+                		System.out.println("\n=====================================\n ENCERRANDO CADASTRO... \n=====================================\n");
+                		senha1 = "sair";
+                		break;
+                	default:
+                		System.out.println("Sim ou não?? >:[ ");
+                		break;
+                	}
+                	
+                }else {
+                	
+                	System.out.println("\n=====================================\n AS SENHAS NÃO CONFEREM! \n=====================================\n");
+                	
+                }
+                
             }
 
             if(senha1.equals("sair")) {
@@ -211,9 +211,7 @@ public class RunLogin {
             
         } while (pass != true);
         
-        
-        
-        System.out.println("Usuário cadastrado com sucesso!");
+        System.out.println("\n====================================\n USUÁRIO CADASTRADO COM SUCESSO! \n====================================\n");
         
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
@@ -276,6 +274,102 @@ public class RunLogin {
 		
 	}
 	
+	// FUNÇÃO PARA ALTERAR CADASTROS EXISTENTES
+	public void alterarCadastro() {
+		
+		String senha;
+		
+		System.out.println("\n=====================================\n ALTERACAO DE CADASTRO \n=====================================\n");
+		System.out.println("!> DIGITE SUA SENHA PARA CONTINUAR: ");
+		senha = input.next();
+		
+		if(senha.equals(Main.loginData.getSenha(Login.account))) {
+			System.out.println("QUAL DADO VOCE QUER ALTERAR?");
+			System.out.println("1 - NOME");
+			System.out.println("2 - EMAIL");
+			System.out.println("3 - SENHA");
+			System.out.println("4 - ESTADO");
+			System.out.println("5 - CPF/CNPJ");
+			
+			switch(input.next().toLowerCase()) {
+			case "1", "nome":
+				
+				System.out.println("!> DIGITE SEU NOME:");
+				Main.loginData.getNomeBD().remove(Login.account);
+				Main.loginData.setNome(tratamentoNome(input.nextLine()), Login.account);
+				
+				break;
+			case "2", "email":
+				
+				String email = input.next();
+				System.out.println("!> DIGITE SEU NOVO EMAIL:");
+				if(email.contains("@") && email.contains(".com") && !Main.loginData.getEmail().contains(email)) {
+					Main.loginData.getEmail().remove(email);
+					Main.loginData.getEmailBD().remove(Login.account);
+					Main.loginData.setEmail(email, Login.account);
+				}else if(Main.loginData.getEmail().contains(email)){
+					System.out.println("\n============================================\n EMAIL JA CADASTRADO! \n=============================================\n");
+				}else {
+					System.out.println("\n===============================================\n EMAIL INVALIDO! \n===============================================\n");
+				}
+			
+				break;
+			case "3", "senha":
+				
+				System.out.println("!> DIGITE SUA NOVA SENHA:");
+				Main.loginData.getSenhaBD().remove(Login.account);
+				Main.loginData.setSenha(input.next(), Login.account);
+			
+				break;
+			case "4", "estado":
+				
+				System.out.println("!> DIGITE SEU NOVO ESTADO");
+				String origemEstado = input.nextLine();
+			
+				if(tratamentoEstado(origemEstado = input.nextLine().toUpperCase())) {
+	            	System.out.println("\n=====================================\n ESTADO "+origemEstado+" ATUALIZADO! \n=====================================\n");
+	            	Main.loginData.getEstadoOrigemBD().remove(Login.account);
+	            	Main.loginData.setEstadoOrigem(origemEstado, Login.account);
+	            }else {
+	            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+	            }
+				
+				break;
+			case "5", "cpf", "cnpj", "cpf/cnpj":
+				
+				System.out.println("!> DIGITE SEU CPF/CNPJ");
+				String cpf = tratamentoCpf(input.next());
+			
+				if(cpf.length() == 11){
+					System.out.println("\n====================================\n CPF ATUALIZADO! \n==========================================\n");
+					Main.loginData.getCpf().remove(Main.loginData.getCpf(Login.account));
+					Main.loginData.getCpfBD().remove(Login.account);
+					Main.loginData.setCpf(cpf, Login.account);
+				}else if(cpf.length() == 14) {
+					System.out.println("\n========================================\n CNPJ ATUALIZADO! \n===========================================\n");
+					Main.loginData.getCpf().remove(Main.loginData.getCpf(Login.account));
+					Main.loginData.getCpfBD().remove(Login.account);
+					Main.loginData.setCpf(cpf, Login.account);
+				}else {
+					System.out.println("\n=================================\n ERRO AO ATUALIZAR CPF/CNPJ: "+cpf+" \n=========================================\n");
+				}
+				
+				break;
+			case "0", "sair":
+				break;
+			default:
+				
+				System.out.println("OPCAO NAO EXISTE! SAINDO...");
+				
+				break;
+			}
+			
+		}
+		
+	}
+	
+	// TRATAMENTOS DE DADOS PARA CADASTRO
+	
 	private String tratamentoCpf(String cpf) {
 	
 		try {
@@ -295,7 +389,6 @@ public class RunLogin {
 		
 	}
 	
-	// FALTA VALIDAR NOME REPETIDO
 	private String tratamentoNome(String nome) {
 		
 		nome = nome.toLowerCase();
@@ -336,6 +429,7 @@ public class RunLogin {
 			if(Brasil.values()[i].getEstadoSigla().equals(estado)){
 				return true;
 			}
+			
 		}
 		
 		return false;

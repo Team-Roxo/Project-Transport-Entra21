@@ -86,19 +86,19 @@ public class Main {
 
 	private static void menuPF() {
 		do {
-			System.out.println("!=================> Saida21 <=================!");
-			System.out.println("\n1 - Meus Pedidos/Envios\n");
-			System.out.println("\n2 - Cadastrar Pacote\n");
-			System.out.println("\n3 - Alterar Cadastro\n");
-			System.out.println("\n4 - Logoff\n");
-			System.out.println("\n0 - Sair\n");
-			System.out.println("!=================> Saida21 <=================!");
+			System.out.println("\n=====================================\n Saida21 \n=====================================\n");
+			System.out.println("\n1 - Meus Pedidos/Envios");
+			System.out.println("\n2 - Cadastrar Pacote");
+			System.out.println("\n3 - Alterar Cadastro");
+			System.out.println("\n4 - Logoff");
+			System.out.println("\n0 - Sair");
+			System.out.println("\n=====================================\n Saida21 \n=====================================\n");
 			option = input.nextLine();
 
 			switch (option) {
 
 			case "0":
-				System.out.println("Encerrando o programa...");
+				System.out.println("\n=====================================\n ENCERRANDO O PROGRAMA... \n=====================================\n");
 				System.exit(1);
 				break;
 
@@ -109,17 +109,22 @@ public class Main {
 				break;
 
 			case "2":
-				// CP
+				
+				pedidoData.cadastrarPacote();
 				
 				break;
 			case "3":
-				//Alterar
+				
+				loginData.alterarCadastro();
+				
 				break;
 			case "4":
-				//logoff
+				
+				loginData.logoff();
+				
 				break;
 			default:
-				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
+				System.out.println("Por favor, escolha uma opcao valida!");
 				break;
 
 			}
@@ -130,13 +135,13 @@ public class Main {
 
 	private static void menuPJ() {
 		do {
-			System.out.println("!=================> Saida21 <=================!");
-			System.out.println("\n 1 - Remessas\n");
-			System.out.println("\n 2 - Alterar Veiculos\n");
-			System.out.println("\n 3 - Alterar Cadastro\n");
-			System.out.println("\n 0 - Sair\n");
-			System.out.println("!=================> Saida21 <=================!");
-			option = input.nextLine();
+			System.out.println("\n=====================================\n Saida21 \n=====================================\n");
+			System.out.println("\n 1 - Remessas");
+			System.out.println("\n 2 - Alterar Veiculos");
+			System.out.println("\n 3 - Alterar Cadastro");
+			System.out.println("\n 0 - Sair");
+			System.out.println("\n=====================================\n Saida21 \n=====================================\n");
+			option = input.next();
 
 			switch (option) {
 
@@ -145,15 +150,21 @@ public class Main {
 				break;
 
 			case "1":
+				
 				// Remessas
+				
 				break;
 
 			case "2":
+				
 				// Alterar V
+				
 				break;
 
 			case "3":
+				
 				// Alterar C
+				
 				break;
 
 			default:

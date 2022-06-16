@@ -20,7 +20,7 @@ public class Pedidos extends PedidoDados {
 
 		String code;
 
-		System.out.println("!=========================> PACOTES A CAMINHO <=========================!");
+		System.out.println("\n=====================================\n PACOTES A CAMINHO \n=====================================\n");
 		System.out.println("!> DIGITE O CÓDIGO DO PACOTE:");
 		code = input.nextLine();
 
@@ -51,7 +51,7 @@ public class Pedidos extends PedidoDados {
 	// LISTAR PACOTES DE USUARIO LOGADO
 	public void listarPacotes() {
 
-		System.out.println("!=========================> PACOTES A CAMINHO <=========================!");
+		System.out.println("\n=====================================\n PACOTES A CAMINHO \n=====================================\n");
 
 		// Listar Pacotes a caminho pro usuário
 		try {
@@ -75,7 +75,7 @@ public class Pedidos extends PedidoDados {
 			System.out.println("!------------------- NENHUM PACOTE -------------------!");
 		}
 
-		System.out.println("!=========================> PACOTES ENVIADOS <=========================!");
+		System.out.println("\n=====================================\n PACOTES ENVIADOS \n=====================================\n");
 
 		// Listar Pacotes que ele encaminhou a outro
 		try {
@@ -92,7 +92,7 @@ public class Pedidos extends PedidoDados {
 				}
 
 			}
-		} catch (Exception e) {
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("!-------------- NENHUM PACOTE CADASTRADO AINDA --------------!");
 		}
 
@@ -116,7 +116,7 @@ public class Pedidos extends PedidoDados {
 
 		System.out.println("--------Bem vindo ao envio de pacotes----------");
 		System.out.println("-----------------------------------------------");
-		System.out.println("-------------------Remetente-------------------");
+		System.out.println("-------------------Remetente-------------------\n");
 		System.out.println("Insira o CPF do Remetente: ");
 		cpfRe=input.nextLine();
 		
@@ -139,7 +139,7 @@ public class Pedidos extends PedidoDados {
 		
 		System.out.println("-----------------------------------------------");
 		System.out.println("---------------------Pacote--------------------");
-		System.out.println("Agora, por favor, digite as dimens�es do pacote em cm: ");
+		System.out.println("Agora, por favor, digite as dimensoes do pacote em cm: ");
 		System.out.println("Largura: ");
 		largura=input.nextFloat();
 
