@@ -48,7 +48,7 @@ public class Pedidos extends PedidoDados {
 
 	}
 
-	// LISTAR PACOTES DE USUÃRIO LOGADO
+	// LISTAR PACOTES DE USUARIO LOGADO
 	public void listarPacotes() {
 
 		System.out.println("!=========================> PACOTES A CAMINHO <=========================!");
@@ -102,7 +102,7 @@ public class Pedidos extends PedidoDados {
 
 	}
 
-	// CADASTRA PACOTE TANTO DE USUÃRIO LOGADO COMO NÃƒO-LOGADO
+	// CADASTRA PACOTE TANTO DE USUARIO LOGADO COMO NÃƒO-LOGADO
 	public void cadastrarPacote() {
 
 		// variaveis de kd tipo de pergunta
@@ -139,7 +139,7 @@ public class Pedidos extends PedidoDados {
 		
 		System.out.println("-----------------------------------------------");
 		System.out.println("---------------------Pacote--------------------");
-		System.out.println("Agora, por favor, digite as dimensões do pacote em cm: ");
+		System.out.println("Agora, por favor, digite as dimensï¿½es do pacote em cm: ");
 		System.out.println("Largura: ");
 		largura=input.nextFloat();
 
@@ -148,6 +148,8 @@ public class Pedidos extends PedidoDados {
 
 		System.out.println("Comprimento: ");
 		comprimento=input.nextFloat();
+		
+		//Main.pedidoData.setDataEnvioBD();
 		
 		//Calculo da data atual para setar no cadastro do pacote
 		//Calculo do valor de frete

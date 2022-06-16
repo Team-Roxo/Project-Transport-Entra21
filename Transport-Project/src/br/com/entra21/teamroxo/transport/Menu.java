@@ -24,4 +24,9 @@ static Scanner input = new Scanner(System.in);
 		
 	}
 	
+	public byte capturarOpcao() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

@@ -9,9 +9,9 @@ public class TransporteDados {
 	private ArrayList<String> empresaBD 	   = new ArrayList<>();
 	private ArrayList<String> emailBD 		   = new ArrayList<>();
 	private ArrayList<String> senhaBD 		   = new ArrayList<>();
-	private ArrayList<Float>  distanciaIndexBD = new ArrayList<>();
-	private ArrayList<Float>  pesoIndexBD 	   = new ArrayList<>();
-	private ArrayList<Float>  volumeIndexBD    = new ArrayList<>();
+	private ArrayList<Float>  distanciaIndexBD = new ArrayList<>(); //0.01
+	private ArrayList<Float>  pesoIndexBD 	   = new ArrayList<>(); //0.02
+	private ArrayList<Float>  volumeIndexBD    = new ArrayList<>(); //0.003
 
 	//VALIDA DUPLICIDADE
 	private HashSet <String> empresa = new HashSet<>();
@@ -33,10 +33,12 @@ public class TransporteDados {
 		this.email.add(emailBD);
 	}
 
+	//Retorna o valor pronta em String dentro do ArrayList
 	public String getEmpresaBD(byte index) {
 		return empresaBD.get(index);
 	}
 	
+	//Retorno a ArrayList inteira, possibilitando usar os Wrappers
 	public ArrayList<String> getEmpresaBD() {
 		return empresaBD;
 	}

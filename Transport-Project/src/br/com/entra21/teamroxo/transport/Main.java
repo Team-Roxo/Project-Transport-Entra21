@@ -5,6 +5,7 @@ import java.util.Scanner;
 import br.com.entra21.teamroxo.transport.anotacoes.Startup;
 import br.com.entra21.teamroxo.transport.anotacoes.WhyHere;
 import br.com.entra21.teamroxo.transport.classes.*;
+import br.com.entra21.teamroxo.transport.log.Brasil;
 import br.com.entra21.teamroxo.transport.scripts.StartupScript;
 
 public class Main {
@@ -63,7 +64,7 @@ public class Main {
 				
 				break;
 			default:
-				System.out.println("Por favor, escolha uma op��o v�lida!");
+				System.out.println("Por favor, escolha uma opção valida!");
 				break;
 			}
 
@@ -72,11 +73,11 @@ public class Main {
 	}
 
 	private static String constructorMenu() {
-		String menu = "!=================> Saida21 <=================!\n";
+		String menu = "!=================> Saida21 <=================!";
 
-		menu += "\n1 - Login/Cadastrar";
-		menu += "\n2 - Cadastrar Pacote (CP)";
-		menu += "\n3 - Rastrear Pacote (RP)";
+		menu += "\n1 - Login/Cadastrar\n";
+		menu += "\n2 - Cadastrar Pacote (CP)\n";
+		menu += "\n3 - Rastrear Pacote (RP)\n";
 		menu += "\n0 - Sair\n";
 		menu += "!=================> Saida21 <=================!";
 
@@ -85,13 +86,13 @@ public class Main {
 
 	private static void menuPF() {
 		do {
-			System.out.println("!=================> Saida21 <=================!\n");
-			System.out.println("\n1 - Meus Pedidos/Envios");
-			System.out.println("\n2 - Cadastrar Pacote");
-			System.out.println("\n3 - Alterar Cadastro");
-			System.out.println("\n4 - Logoff");
-			System.out.println("\n0 - Sair");
-			System.out.println("\n!=================> Saida21 <=================!");
+			System.out.println("!=================> Saida21 <=================!");
+			System.out.println("\n1 - Meus Pedidos/Envios\n");
+			System.out.println("\n2 - Cadastrar Pacote\n");
+			System.out.println("\n3 - Alterar Cadastro\n");
+			System.out.println("\n4 - Logoff\n");
+			System.out.println("\n0 - Sair\n");
+			System.out.println("!=================> Saida21 <=================!");
 			option = input.nextLine();
 
 			switch (option) {
@@ -129,12 +130,12 @@ public class Main {
 
 	private static void menuPJ() {
 		do {
-			System.out.println("!=================> Saida21 <=================!\n");
-			System.out.println("\n 1 - Remessas");
-			System.out.println("\n 2 - Alterar Veiculos");
-			System.out.println("\n 3 - Alterar Cadastro");
-			System.out.println("\n 0 - Sair");
-			System.out.println("\n!=================> Saida21 <=================!");
+			System.out.println("!=================> Saida21 <=================!");
+			System.out.println("\n 1 - Remessas\n");
+			System.out.println("\n 2 - Alterar Veiculos\n");
+			System.out.println("\n 3 - Alterar Cadastro\n");
+			System.out.println("\n 0 - Sair\n");
+			System.out.println("!=================> Saida21 <=================!");
 			option = input.nextLine();
 
 			switch (option) {
@@ -156,7 +157,7 @@ public class Main {
 				break;
 
 			default:
-				System.out.println("Por favor, escolha uma opÃ§Ã£o valida!");
+				System.out.println("Por favor, escolha uma opção valida!");
 				break;
 
 			}
