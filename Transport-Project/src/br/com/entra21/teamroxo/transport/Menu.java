@@ -11,14 +11,14 @@ static Scanner input = new Scanner(System.in);
 	
 	public static String executarMenu(String titulo, ArrayList<String> conteudo) {
 		
-		String menu = "!================ "+titulo+" ================!\n";
+		String menu = "\n=====================================\n "+titulo+" \n=====================================\n";
 		
 		for (int i=0; i<conteudo.size(); i++) {
 			menu += "\n"+(i+1)+" - "+conteudo.get(i);
 		}
 		
-		menu += "\n0 - VOLTAR";
-		menu += "\n-1 - SAIR";
+		menu += "\n 0 - Voltar";
+		menu += "\n-1 - Sair";
 	
 		return menu;
 		

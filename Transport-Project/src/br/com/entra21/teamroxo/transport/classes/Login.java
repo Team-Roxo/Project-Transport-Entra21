@@ -21,9 +21,9 @@ public class Login extends PessoaDados {
 	}
 	
 	public static void Cadastro() {
-		System.out.println(Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("LOGIN", "CADASTRO: CLIENTE - (PF)", "CADASTRO: TRANSPORTADORA (PJ)"))));
+		System.out.println(Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("Login\n", "CADASTRO: CLIENTE - (PF)\n", "CADASTRO: TRANSPORTADORA (PJ)\n"))));
 		do {
-			Menu.option = input.nextLine();
+			Menu.option = input.next();
 			switch (Menu.option.toLowerCase()) {
 			case "1", "login":
 				
@@ -50,6 +50,18 @@ public class Login extends PessoaDados {
 				break;
 			}
 		} while (!Menu.option.equals("0"));
+		
+	}
+	
+	public void logoff() {
+		
+		Login.logged = false;
+		
+	}
+	
+	public void alterarCadastro() {
+		
+		log.alterarCadastro();
 		
 	}
 	

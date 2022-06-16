@@ -37,6 +37,36 @@ public class PessoaDados {
 		this.cpf.add(cpf);
 	}
 
+	
+	
+	public ArrayList<String> getNomeBD() {
+		return nomeBD;
+	}
+
+	public ArrayList<String> getUserBD() {
+		return userBD;
+	}
+
+	public ArrayList<String> getEmailBD() {
+		return emailBD;
+	}
+
+	public ArrayList<String> getCpfBD() {
+		return cpfBD;
+	}
+
+	public ArrayList<String> getSenhaBD() {
+		return senhaBD;
+	}
+
+	public ArrayList<String> getEstadoOrigemBD() {
+		return estadoOrigemBD;
+	}
+
+	public ArrayList<Boolean> getIsEnterpriseBD() {
+		return isEnterpriseBD;
+	}
+
 	public String getNome(byte index) {
 		return nomeBD.get(index);
 	}
