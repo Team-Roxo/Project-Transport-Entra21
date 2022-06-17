@@ -64,7 +64,7 @@ public class Main {
 				
 				break;
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opcao valida!");
 				break;
 			}
 
@@ -174,7 +174,7 @@ public class Main {
 				break;
 
 			default:
-				System.out.println("Por favor, escolha uma opção valida!");
+				System.out.println("Por favor, escolha uma opcao valida!");
 				break;
 
 			}

@@ -21,7 +21,7 @@ public class Login extends PessoaDados {
 	}
 	
 	public static void Cadastro() {
-		System.out.println(Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("Login\n", "Cadastro Cliente (Remetente/Destinatário)\n", "Cadastro: Transportadora\n"))));
+		System.out.println(Menu.executarMenu("LOGIN/CADASTRO", new ArrayList<String>(Arrays.asList("Login\n", "Cadastro Cliente (Remetente/Destinatario)\n", "Cadastro: Transportadora\n"))));
 		do {
 			Menu.option = input.next();
 			switch (Menu.option.toLowerCase()) {

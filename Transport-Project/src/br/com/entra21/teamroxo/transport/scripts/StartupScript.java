@@ -1,8 +1,12 @@
 package br.com.entra21.teamroxo.transport.scripts;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.anotacoes.*;
 import br.com.entra21.teamroxo.transport.classes.Login;
+import br.com.entra21.teamroxo.transport.log.Brasil;
 
 @Initialize @Startup
 public class StartupScript {
@@ -65,6 +69,27 @@ public class StartupScript {
 		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 2);
 		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 2);
 		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 2);
+		
+		//PEDIDOS
+		//initialize.pedidoData.setEnderecoRemetenteBD(Brasil.RS.getEstadoFull(), (byte) 0);
+		//initialize.pedidoData.setEnderecoDestinoBD(Brasil.AC.getEstadoFull(), (byte) 0);
+		initialize.pedidoData.setCodigoRastreioBD("BR123456789BR", (byte) 0);
+		initialize.pedidoData.setDataEnvioBD(LocalDate.of(2022, 6, 15), (byte) 0);
+		initialize.pedidoData.setDataChegadaBD(LocalDate.of(2022, 6, 20), (byte) 0);
+		initialize.pedidoData.setPrevisaoChegadaBD(LocalDate.of(2022, 6, 19), (byte) 0);
+		//initialize.pedidoData.setHoraEnvioBD(LocalDate.atTime(11, 05), (byte) 0);
+		//initialize.pedidoData.setHoraChegadaBD(LocalDate.atTime(17, 32), (byte) 0);
+		initialize.pedidoData.setAlturaBD(100, (byte) 0);
+		initialize.pedidoData.setLarguraBD(50, (byte) 0);
+		initialize.pedidoData.setComprimentoBD(27, (byte) 0);
+		initialize.pedidoData.setPrecoFreteBD(58.56f, (byte) 0);
+		initialize.pedidoData.setTransportadoraBD((byte) 0, (byte) 0);
+		initialize.pedidoData.setRemetenteBD((byte) 0, (byte) 0);
+		initialize.pedidoData.setDestinatarioBD((byte) 1, (byte) 0);
+		//initialize.pedidoData.setCodigoRastreioBD("BR123456789BR", (byte) 0); -> Está duplicado essa variável
+		
+		
+		
 		
 	}
 

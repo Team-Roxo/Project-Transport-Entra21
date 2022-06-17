@@ -41,7 +41,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 			deletar(capturarChave());
 			break;
 		default:
-			System.out.println("Opção inválida");
+			System.out.println("Opcao invalida");
 			break;
 		}
 		return opcao;
@@ -72,7 +72,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 			//lista
 
 		} else {
-			System.out.println("Já existe alguem com a chave " + novo.getUser());
+			System.out.println("Ja existe alguem com a chave " + novo.getUser());
 
 		}
 
@@ -92,7 +92,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 		
 		
 		//faltando scanner 
-		//.NEXT E .NEXTline não funcionam 
+		//.NEXT E .NEXTline nao funcionam 
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 	public void editar(PessoaDados chave) {
 		PessoaDados cadastroAtual = buscar(chave);
 		if (cadastroAtual == null) {
-			System.out.println("Não existe um registro com CHAVE:" + chave.getUser());
+			System.out.println("Nao existe um registro com CHAVE:" + chave.getUser());
 		} else {
 			//lista.put(chave.getUser(), capturarValores()); put também não funciona 
 			System.out.println("Dados atualizados");
@@ -119,7 +119,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 
 		PessoaDados cadastroAtual = buscar(chave);
 		if (cadastroAtual == null) {
-			System.out.println("Não existe um registro com CHAVE:" + chave.getUser());
+			System.out.println("Nao existe um registro com CHAVE:" + chave.getUser());
 		} else {
 			lista.remove(chave.getUser());
 			System.out.println("Item excluido");

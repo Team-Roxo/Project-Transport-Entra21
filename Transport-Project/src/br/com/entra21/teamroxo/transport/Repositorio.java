@@ -21,7 +21,7 @@ public static void inicializarPessoas() {
 	pessoas.put("Mateus", new PessoaDados("Mateus" , "mat.felipe" , "mat@gmail.com" , "234.567.890-12" , "123123" , "RS" , (false) ));
 	pessoas.put("Cristian", new PessoaDados("Cristian" , "cristian.baade" , "cristian@gmail.com" , "345.678.901-23" , "123123" , "SC" , (true) ));
 	
-	// perguntar se já deixo inicializada 
+	// perguntar se ja deixo inicializada 
 	
 }
 

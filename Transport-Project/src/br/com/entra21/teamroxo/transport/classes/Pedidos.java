@@ -26,7 +26,7 @@ public class Pedidos extends PedidoDados {
 		String code;
 
 		System.out.println("\n=====================================\n PACOTES A CAMINHO \n=====================================\n");
-		System.out.println("!> DIGITE O CÓDIGO DO PACOTE:");
+		System.out.println("!> DIGITE O CODIGO DO PACOTE:");
 		code = input.nextLine();
 
 		try {
@@ -34,10 +34,10 @@ public class Pedidos extends PedidoDados {
 				if (code.equals(Main.pedidoData.getCodigoRastreioBD((byte) i)))
 					;
 				{
-					System.out.println("Pacote N. " + (i + 1) + ": CÓDIGO - ("
-							+ Main.pedidoData.getCodigoRastreioBD((byte) i) + ") - PREÇO DO FRETE: R$"
+					System.out.println("Pacote N. " + (i + 1) + ": CODIGO - ("
+							+ Main.pedidoData.getCodigoRastreioBD((byte) i) + ") - PRECO DO FRETE: R$"
 							+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
-							+ Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " às "
+							+ Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " As "
 							+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time) + "TRANSPORTADORA: "
 							+ Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i)));
 					find = true;
@@ -58,15 +58,15 @@ public class Pedidos extends PedidoDados {
 
 		System.out.println("\n=====================================\n PACOTES A CAMINHO \n=====================================\n");
 
-		// Listar Pacotes a caminho pro usuário
+		// Listar Pacotes a caminho pro usuario
 		try {
 			for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
 
 				if (Main.loginData.account == Main.pedidoData.getDestinatarioBD((byte) i)) {
 					System.out.println(
-							"Pacote N. " + (i + 1) + ": CÓDIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
-									+ ") - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
-									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " às "
+							"Pacote N. " + (i + 1) + ": CODIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
+									+ ") - PRECO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
+									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " As "
 									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time));
 					find = true;
 				}
@@ -88,9 +88,9 @@ public class Pedidos extends PedidoDados {
 
 				if (Main.loginData.account == Main.pedidoData.getRemetenteBD((byte) i)) {
 					System.out.println(
-							"Pacote N. " + (i + 1) + ": CÓDIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
+							"Pacote N. " + (i + 1) + ": CODIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
 									+ ") - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
-									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " às "
+									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " As "
 									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time));
 					find = true;
 
@@ -133,7 +133,7 @@ public class Pedidos extends PedidoDados {
 	            	pass = true;
 	            	System.out.println("\n========================================\n ENVIO DE EMPRESA (CNPJ) \n===========================================\n");
 	            }else {
-	            	System.out.println("\n=================================\n ERRO NO CPF/CNPJ - CODE: "+cpfRe.length()+" \n=========================================\n");
+	            	System.out.println("\n=================================\n ERRO NO CPF/CNPJ - VOCE INSERIU: "+cpfRe.length()+" CARACTERES \n=========================================\n");
 	            }
 				
 			}while(pass != true);
@@ -168,7 +168,7 @@ public class Pedidos extends PedidoDados {
 		            	System.out.println("\n=====================================\n ESTADO "+Brasil.values()[estadoRe].getEstadoFull()+" ENCONTRADO! \n=====================================\n");
 		            	pass = true;
 		            }else {
-		            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+		            	System.out.println("\n=====================================\n ESTADO NAO EXISTE \n=====================================\n");
 		            }
 				}while(pass != true);
 				
@@ -181,7 +181,7 @@ public class Pedidos extends PedidoDados {
 				System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
 				Main.loginData.setSenha(input.next(), (byte) Main.loginData.getUser().size());
 				
-				System.out.println("NÃO ESQUEÇA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
+				System.out.println("NAO ESQUECA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
 				
 			}
 			
@@ -211,7 +211,7 @@ public class Pedidos extends PedidoDados {
 	        	pass = true;
 	        	System.out.println("\n========================================\n PARA EMPRESA (CNPJ) \n===========================================\n");
 	        }else {
-	        	System.out.println("\n=================================\n ERRO NO CPF/CNPJ - CODE: "+cpfDe.length()+" \n=========================================\n");
+	        	System.out.println("\n=================================\n ERRO NO CPF/CNPJ - VOCE INSERIU: "+cpfDe.length()+" CARACTERES \n=========================================\n");
 	        }
 			
 		}while(pass != true);
@@ -245,7 +245,7 @@ public class Pedidos extends PedidoDados {
 	            	System.out.println("\n=====================================\n ESTADO "+Brasil.values()[estadoRe].getEstadoFull()+" ENCONTRADO! \n=====================================\n");
 	            	pass = true;
 	            }else {
-	            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+	            	System.out.println("\n=====================================\n ESTADO NAO EXISTE \n=====================================\n");
 	            }
 			}while(pass != true);
 			
@@ -258,7 +258,7 @@ public class Pedidos extends PedidoDados {
 			System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
 			Main.loginData.setSenha(input.next(), (byte) Main.loginData.getUser().size());
 			
-			System.out.println("NÃO ESQUEÇA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
+			System.out.println("NOO ESQUECA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
 			
 		}
 		
@@ -277,8 +277,8 @@ public class Pedidos extends PedidoDados {
 		
 		
 		
-		// LISTA AS TRANSPORTADORAS E O PREÇO DE CADA UMA DELAS
-		System.out.println("\n============================================\n SELECIONE A EMPRESA QUE IRÁ TRANSPORTAR \n============================================\n");
+		// LISTA AS TRANSPORTADORAS E O PRECO DE CADA UMA DELAS
+		System.out.println("\n============================================\n SELECIONE A EMPRESA QUE IRA TRANSPORTAR \n============================================\n");
 		for(byte i=0;i<Main.transporteData.getEmpresaBD().size();i++) {
 			System.out.println((i+1)+" - "+Main.transporteData.getEmpresaBD(i)+" - PRECO: R$"+Logistica.Logistica(Brasil.values()[estadoRe].getLatitude(), 
 					Brasil.values()[estadoRe].getLongitude(), Brasil.values()[estadoDe].getLatitude(), Brasil.values()[estadoDe].getLongitude(), 
@@ -288,7 +288,7 @@ public class Pedidos extends PedidoDados {
 		
 		byte empresaEscolhida = input.nextByte();
 		
-		// SETA O PREÇO DO PACOTE
+		// SETA O PRECO DO PACOTE
 		Main.pedidoData.setPrecoFreteBD(Logistica.Logistica(Brasil.values()[estadoRe].getLatitude(), 
 					Brasil.values()[estadoRe].getLongitude(), Brasil.values()[estadoDe].getLatitude(), Brasil.values()[estadoDe].getLongitude(), 
 					comprimento, largura, altura, Main.transporteData.getDistanciaIndexBD(empresaEscolhida), Main.transporteData.getPesoIndexBD(empresaEscolhida), 
@@ -297,10 +297,10 @@ public class Pedidos extends PedidoDados {
 		Main.pedidoData.setDataEnvioBD(LocalDate.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); // SETA DATA DE ENVIO
 		Main.pedidoData.setHoraEnvioBD(LocalTime.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); // SETA HORA DE ENVIO
 
-		// SETA REMETENTE JÁ LOGADO
+		// SETA REMETENTE JA LOGADO
 		Main.pedidoData.setRemetenteBD(Login.account, (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		
-		// SETA DESTINATÁRIO POR CPF
+		// SETA DESTINATARIO POR CPF
 		for(byte i=0; i<Main.loginData.getUser().size();i++) {
 			if(cpfDe.equals(Main.loginData.getCpf(i))) {
 				Main.pedidoData.setDestinatarioBD(i, (byte) Main.pedidoData.getCodigoRastreioBD().size());
@@ -316,7 +316,7 @@ public class Pedidos extends PedidoDados {
 			cpf = cpf.replace(".", "");
 			cpf = cpf.replace("-", "");
 			cpf = cpf.replace("/", "");
-			final long CPF = Long.parseLong(cpf); // VALIDAR SE O CPF TEM CARACTERES VÁLIDOS
+			final long CPF = Long.parseLong(cpf); // VALIDAR SE O CPF TEM CARACTERES VALIDOS
 			
 			if(Main.loginData.getCpf().contains(String.valueOf(CPF)) == true) {
 				return cpf;
@@ -324,7 +324,7 @@ public class Pedidos extends PedidoDados {
 				return cpf;
 			}
 		}catch(Exception e) {
-			return "DOCUMENTO INVÁLIDO!";
+			return "DOCUMENTO INVALIDO!";
 		}
 		
 	}

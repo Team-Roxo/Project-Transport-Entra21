@@ -37,7 +37,7 @@ public class TransporteCrud extends Menu implements ICrud<TransporteDados> {
 			deletar(capturarChave());
 			break;
 		default:
-			System.out.println("Opção inválida");
+			System.out.println("Opcao invalida");
 			break;
 		}
 		return opcao;

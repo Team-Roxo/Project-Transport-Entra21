@@ -17,7 +17,7 @@ public class RunLogin {
 	
 	boolean pass = false;
 
-	// FUNÇÃO PARA FAZER LOGIN
+	// FUNCAO PARA FAZER LOGIN
 	public void loging() {
 
 		String user;
@@ -72,7 +72,7 @@ public class RunLogin {
 
 	}
 	
-	// FUNÇÃO PARA CADASTRAR CLIENTE - PF/PJ
+	// FUNCAO PARA CADASTRAR CLIENTE - PF/PJ
 	public void registerCliente() {
 
 		byte tamanho = (byte) Main.loginData.getUser().size();
@@ -93,7 +93,7 @@ public class RunLogin {
             	pass = true;
             	System.out.println("\n========================================\n CADASTRANDO EMPRESA (CNPJ) \n===========================================\n");
             }else {
-            	System.out.println("\n=================================\n ERRO AO CADASTRAR CPF/CNPJ - CODE: "+cpf.length()+" \n=========================================\n");
+            	System.out.println("\n=================================\n ERRO AO CADASTRAR CPF/CNPJ - VOCE INSERIU: "+cpf.length()+" CARACTERES \n=========================================\n");
             }
             
         }while(pass != true);
@@ -119,9 +119,9 @@ public class RunLogin {
             if(email.contains("@") && email.contains(".com") && !Main.loginData.getEmail().contains(email)) {
     			pass = true;
     		}else if(Main.loginData.getEmail().contains(email)){
-    			System.out.println("\n============================================\n EMAIL JÁ CADASTRADO! \n=============================================\n");
+    			System.out.println("\n============================================\n EMAIL JA CADASTRADO! \n=============================================\n");
     		}else {
-    			System.out.println("\n===============================================\n EMAIL INVÁLIDO! \n===============================================\n");
+    			System.out.println("\n===============================================\n EMAIL INVALIDO! \n===============================================\n");
     		}
             
         }while(pass != true);
@@ -130,14 +130,14 @@ public class RunLogin {
         
         do {
         	
-        	System.out.println("!> DIGITE O NOME DE USUÁRIO: ");
+        	System.out.println("!> DIGITE O NOME DE USUARIO: ");
             user = tratamentoUser(input.nextLine());
             
             if(Main.loginData.getValidUser().contains(user)) {
-            	System.out.println("\n===============================================\n USUÁRIO JÁ EXISTE! \n===============================================\n");
+            	System.out.println("\n===============================================\n USUARIO JA EXISTE! \n===============================================\n");
             }else {
             	pass = true;
-            	System.out.println("\n=====================================\n USUÁRIO "+user+" CADASTRADO COM SUCESSO! \n===================================\n");
+            	System.out.println("\n=====================================\n USUARIO "+user+" CADASTRADO COM SUCESSO! \n===================================\n");
             }
             
         }while(pass != true);
@@ -151,7 +151,7 @@ public class RunLogin {
             	System.out.println("\n=====================================\n ESTADO "+origemEstado+" CADASTRADO! \n=====================================\n");
             	pass = true;
             }else {
-            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+            	System.out.println("\n=====================================\n ESTADO NAO EXISTE \n=====================================\n");
             }
             
         }while(pass != true);
@@ -164,7 +164,7 @@ public class RunLogin {
             senha1 = input.next();
             
             if(senha1.length()<5) {
-            	System.out.println("\n=====================================\n ERRO: A SENHA DEVE CONTER NO MÍNIMO 5 CARACTERES \n=====================================\n");
+            	System.out.println("\n=====================================\n ERRO: A SENHA DEVE CONTER NO MINIMO 5 CARACTERES \n=====================================\n");
             }else {
             	
             	System.out.println("!> DIGITE SUA SENHA NOVAMENTE: ");
@@ -183,24 +183,24 @@ public class RunLogin {
     					pwd += "*";
     				}
                 	System.out.println(pwd);
-                	System.out.println("\n=====================================\n CONFIRMAR DADOS? (Sim/Não) \n=====================================\n");
+                	System.out.println("\n=====================================\n CONFIRMAR DADOS? (Sim/Nao) \n=====================================\n");
                 	pwd = input.next();
                 	switch(pwd.toLowerCase()) {
                 	case "sim", "s", "1":
                 		pass = true;
                 		break;
-                	case "não", "n", "2":
+                	case "nao", "n", "2":
                 		System.out.println("\n=====================================\n ENCERRANDO CADASTRO... \n=====================================\n");
                 		senha1 = "sair";
                 		break;
                 	default:
-                		System.out.println("Sim ou não?? >:[ ");
+                		System.out.println("Sim ou nao?? >:[ ");
                 		break;
                 	}
                 	
                 }else {
                 	
-                	System.out.println("\n=====================================\n AS SENHAS NÃO CONFEREM! \n=====================================\n");
+                	System.out.println("\n=====================================\n AS SENHAS NAO CONFEREM! \n=====================================\n");
                 	
                 }
                 
@@ -212,7 +212,7 @@ public class RunLogin {
             
         } while (pass != true);
         
-        System.out.println("\n====================================\n USUÁRIO CADASTRADO COM SUCESSO! \n====================================\n");
+        System.out.println("\n====================================\n USUARIO CADASTRADO COM SUCESSO! \n====================================\n");
         
         Main.loginData.setCpf(cpf, tamanho);
         Main.loginData.setNome(nome, tamanho);
@@ -275,7 +275,7 @@ public class RunLogin {
 		
 	}
 	
-	// FUNÇÃO PARA ALTERAR CADASTROS EXISTENTES
+	// FUNCAO PARA ALTERAR CADASTROS EXISTENTES
 	public void alterarCadastro() {
 		
 		String senha;
@@ -381,15 +381,15 @@ public class RunLogin {
 			cpf = cpf.replace(".", "");
 			cpf = cpf.replace("-", "");
 			cpf = cpf.replace("/", "");
-			final long CPF = Long.parseLong(cpf); // VALIDAR SE O CPF TEM CARACTERES VÁLIDOS
+			final long CPF = Long.parseLong(cpf); // VALIDAR SE O CPF TEM CARACTERES VALIDOS
 			;
 			if(Main.loginData.getCpf().contains(String.valueOf(CPF)) == true) {
-				return "CPF JÁ EXISTE";
+				return "CPF JA EXISTE";
 			}else {
 				return cpf;
 			}
 		}catch(Exception e) {
-			return "DOCUMENTO INVÁLIDO!";
+			return "DOCUMENTO INVALIDO!";
 		}
 		
 	}

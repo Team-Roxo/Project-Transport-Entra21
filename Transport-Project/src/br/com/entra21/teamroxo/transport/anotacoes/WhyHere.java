@@ -3,7 +3,7 @@ package br.com.entra21.teamroxo.transport.anotacoes;
 /**
  * 
  * Construtores do "Banco de Dados" dos Clientes, Transportadoras e Pedidos
- * chamados em "primeira instância" no código Main por quê foi identificado
+ * chamados em "primeira instancia" no codigo Main por que foi identificado
  * que se criado em outra classe e ela for chamada futuramente (o que aconteceria),
  * mas assim que retornasse para Main com as ações ou retorno de valor, os valores 
  * declarados no Banco de Dados é perdido (excluído da RAM), então chamamos ela na Main
