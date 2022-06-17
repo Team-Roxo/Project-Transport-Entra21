@@ -93,7 +93,7 @@ public class RunLogin {
             	pass = true;
             	System.out.println("\n========================================\n CADASTRANDO EMPRESA (CNPJ) \n===========================================\n");
             }else {
-            	System.out.println("\n=================================\n ERRO AO CADASTRAR CPF/CNPJ: "+cpf+" \n=========================================\n");
+            	System.out.println("\n=================================\n ERRO AO CADASTRAR CPF/CNPJ - CODE: "+cpf.length()+" \n=========================================\n");
             }
             
         }while(pass != true);
@@ -175,6 +175,7 @@ public class RunLogin {
                     String pwd = "";
                 	System.out.println("\n=====================================\n CONFIRMACAO DOS DADOS \n=====================================\n");
                 	System.out.println("Nome: "+nome);
+                	System.out.println("Usurio: "+user);
                 	System.out.println("Email: "+email);
                 	System.out.println("CPF/CNPJ: "+cpf);
                 	System.out.println("Estado: "+origemEstado);
@@ -301,16 +302,18 @@ public class RunLogin {
 				break;
 			case "2", "email":
 				
-				String email = input.next();
 				System.out.println("!> DIGITE SEU NOVO EMAIL:");
+				String email = input.next();
+				
 				if(email.contains("@") && email.contains(".com") && !Main.loginData.getEmail().contains(email)) {
+					System.out.println("\n============================================\n EMAIL ATUALIZADO! \n============================================\n");
 					Main.loginData.getEmail().remove(email);
 					Main.loginData.getEmailBD().remove(Login.account);
 					Main.loginData.setEmail(email, Login.account);
 				}else if(Main.loginData.getEmail().contains(email)){
-					System.out.println("\n============================================\n EMAIL JA CADASTRADO! \n=============================================\n");
+					System.out.println("\n============================================\n ERRO! EMAIL JA CADASTRADO! \n=============================================\n");
 				}else {
-					System.out.println("\n===============================================\n EMAIL INVALIDO! \n===============================================\n");
+					System.out.println("\n===============================================\n ERRO! EMAIL INVALIDO! \n===============================================\n");
 				}
 			
 				break;
@@ -331,7 +334,7 @@ public class RunLogin {
 	            	Main.loginData.getEstadoOrigemBD().remove(Login.account);
 	            	Main.loginData.setEstadoOrigem(origemEstado, Login.account);
 	            }else {
-	            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+	            	System.out.println("\n=====================================\n ESTADO NAO EXISTE \n=====================================\n");
 	            }
 				
 				break;
@@ -368,6 +371,8 @@ public class RunLogin {
 		
 	}
 	
+	
+	
 	// TRATAMENTOS DE DADOS PARA CADASTRO
 	
 	private String tratamentoCpf(String cpf) {
@@ -376,7 +381,7 @@ public class RunLogin {
 			cpf = cpf.replace(".", "");
 			cpf = cpf.replace("-", "");
 			cpf = cpf.replace("/", "");
-			final long CPF = Long.parseLong(cpf);
+			final long CPF = Long.parseLong(cpf); // VALIDAR SE O CPF TEM CARACTERES VÁLIDOS
 			;
 			if(Main.loginData.getCpf().contains(String.valueOf(CPF)) == true) {
 				return "CPF JÁ EXISTE";

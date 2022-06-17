@@ -5,7 +5,7 @@ import br.com.entra21.teamroxo.transport.anotacoes.*;
 public class Logistica {
 
 	@Haversine
-	private static float haversine(float lat1, float long1, float lat2, float long2) {
+	public static float haversine(float lat1, float long1, float lat2, float long2) {
 		
 		float earthRad = 6371;
 		
@@ -26,7 +26,7 @@ public class Logistica {
 		
 	}
 	
-	private static float volume(float comprimento, float largura, float altura) {
+	public static float volume(float comprimento, float largura, float altura) {
 		
 		float volumeTotal = comprimento*largura*altura;
 		return volumeTotal;
@@ -34,7 +34,7 @@ public class Logistica {
 	}
 	
 	@PesoCubico
-	public float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, 
+	public static float Logistica(float lat1, float long1, float lat2, float long2, float comprimento, 
 				 float largura, float altura, float distIndex, float pesoIndex, float volIndex) {
 		
 		float precoFinal;
