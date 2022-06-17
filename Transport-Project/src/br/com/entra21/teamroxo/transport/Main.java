@@ -73,13 +73,13 @@ public class Main {
 	}
 
 	private static String constructorMenu() {
-		String menu = "!=================> Saida21 <=================!";
+		String menu = "\n============================================\n Saida21 \n============================================\n";
 
-		menu += "\n1 - Login/Cadastrar\n";
-		menu += "\n2 - Cadastrar Pacote (CP)\n";
-		menu += "\n3 - Rastrear Pacote (RP)\n";
-		menu += "\n0 - Sair\n";
-		menu += "!=================> Saida21 <=================!";
+		menu += "\n1 - Login/Cadastrar";
+		menu += "\n2 - Cadastrar Pacote (CP)";
+		menu += "\n3 - Rastrear Pacote (RP)";
+		menu += "\n0 - Sair";
+		menu += "\n============================================\n Saida21 \n============================================\n";
 
 		return menu;
 	}
@@ -90,7 +90,8 @@ public class Main {
 			System.out.println("\n1 - Meus Pedidos/Envios");
 			System.out.println("\n2 - Cadastrar Pacote");
 			System.out.println("\n3 - Alterar Cadastro");
-			System.out.println("\n4 - Logoff");
+			System.out.println("\n4 - Mostrar Meus Dados");
+			System.out.println("\n5 - Logoff");
 			System.out.println("\n0 - Sair");
 			System.out.println("\n=====================================\n Saida21 \n=====================================\n");
 			option = input.nextLine();
@@ -120,7 +121,12 @@ public class Main {
 				break;
 			case "4":
 				
-				loginData.logoff();
+				loginData.mostrarLogin();
+				
+				break;
+			case "5":
+				
+				Login.logged = false;
 				
 				break;
 			default:

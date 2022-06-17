@@ -8,8 +8,8 @@ import java.util.HashSet;
 public class PedidoDados{
 	
 	//QUANTO AO ENVIO GERAL - BANCO DE DADOS
-	private ArrayList <String>    enderecoRemetenteBD  = new ArrayList<>();
-	private ArrayList <String>    enderecoDestinoBD    = new ArrayList<>();
+	private ArrayList <Float>     enderecoRemetenteBD  = new ArrayList<>();
+	private ArrayList <Float>     enderecoDestinoBD    = new ArrayList<>();
 	private ArrayList <String>    codigoRastreioBD     = new ArrayList<>();
 	private ArrayList <LocalDate> dataEnvioBD 		   = new ArrayList<>();
 	private ArrayList <LocalDate> dataChegadaBD 	   = new ArrayList<>();
@@ -35,7 +35,7 @@ public class PedidoDados{
 		super();
 	}
 
-	public PedidoDados(String enderecoRemetenteBD, String enderecoDestinoBD, String codigoRastreioBD, LocalDate dataEnvioBD, LocalDate dataChegadaBD,
+	public PedidoDados(float enderecoRemetenteBD, float enderecoDestinoBD, String codigoRastreioBD, LocalDate dataEnvioBD, LocalDate dataChegadaBD,
 			LocalDate previsaoChegadaBD, LocalTime horaEnvioBD,	LocalTime horaChegadaBD, float alturaBD, float larguraBD, float comprimentoBD, 
 			float precoFreteBD, byte transportadoraBD, byte remetenteBD, byte destinatarioBD, String codigoRastreio) {
 		super();
@@ -58,20 +58,20 @@ public class PedidoDados{
 		this.codigoRastreio.add(codigoRastreioBD);
 	}
 
-	public String getEnderecoRemetenteBD(byte index) {
+	public float getEnderecoRemetenteBD(byte index) {
 		return enderecoRemetenteBD.get(index);
 	}
 
-	public void setEnderecoRemetenteBD(String enderecoRemetenteBD) {
-		this.enderecoRemetenteBD.add(enderecoRemetenteBD);
+	public void setEnderecoRemetenteBD(float enderecoRemetenteBD, byte index) {
+		this.enderecoRemetenteBD.add(index, enderecoRemetenteBD);
 	}
 
-	public String getEnderecoDestinoBD(byte index) {
+	public float getEnderecoDestinoBD(byte index) {
 		return enderecoDestinoBD.get(index);
 	}
 
-	public void setEnderecoDestinoBD(String enderecoDestinoBD) {
-		this.enderecoDestinoBD.add(enderecoDestinoBD);
+	public void setEnderecoDestinoBD(float enderecoDestinoBD, byte index) {
+		this.enderecoDestinoBD.add(index, enderecoDestinoBD);
 	}
 
 	//Retorna o valor pronta em String dentro do ArrayList
@@ -84,104 +84,104 @@ public class PedidoDados{
 		return codigoRastreioBD;
 	}
 
-	public void setCodigoRastreioBD(String codigoRastreioBD) {
-		this.codigoRastreioBD.add(codigoRastreioBD);
+	public void setCodigoRastreioBD(String codigoRastreioBD, byte index) {
+		this.codigoRastreioBD.add(index, codigoRastreioBD);
 	}
 
 	public LocalDate getDataEnvioBD(byte index) {
 		return dataEnvioBD.get(index);
 	}
 
-	public void setDataEnvioBD(LocalDate dataEnvioBD) {
-		this.dataEnvioBD.add(dataEnvioBD);
+	public void setDataEnvioBD(LocalDate dataEnvioBD, byte index) {
+		this.dataEnvioBD.add(index, dataEnvioBD);
 	}
 
 	public LocalDate getDataChegadaBD(byte index) {
 		return dataChegadaBD.get(index);
 	}
 
-	public void setDataChegadaBD(LocalDate dataChegadaBD) {
-		this.dataChegadaBD.add(dataChegadaBD);
+	public void setDataChegadaBD(LocalDate dataChegadaBD, byte index) {
+		this.dataChegadaBD.add(index, dataChegadaBD);
 	}
 
 	public LocalDate getPrevisaoChegadaBD(byte index) {
 		return previsaoChegadaBD.get(index);
 	}
 
-	public void setPrevisaoChegadaBD(LocalDate previsaoChegadaBD) {
-		this.previsaoChegadaBD.add(previsaoChegadaBD);
+	public void setPrevisaoChegadaBD(LocalDate previsaoChegadaBD, byte index) {
+		this.previsaoChegadaBD.add(index, previsaoChegadaBD);
 	}
 
 	public LocalTime getHoraEnvioBD(byte index) {
 		return horaEnvioBD.get(index);
 	}
 
-	public void setHoraEnvioBD(LocalTime horaEnvioBD) {
-		this.horaEnvioBD.add(horaEnvioBD);
+	public void setHoraEnvioBD(LocalTime horaEnvioBD, byte index) {
+		this.horaEnvioBD.add(index, horaEnvioBD);
 	}
 
 	public LocalTime getHoraChegadaBD(byte index) {
 		return horaChegadaBD.get(index);
 	}
 
-	public void setHoraChegadaBD(LocalTime horaChegadaBD) {
-		this.horaChegadaBD.add(horaChegadaBD);
+	public void setHoraChegadaBD(LocalTime horaChegadaBD, byte index) {
+		this.horaChegadaBD.add(index, horaChegadaBD);
 	}
 
 	public float getAlturaBD(byte index) {
 		return alturaBD.get(index);
 	}
 
-	public void setAlturaBD(float alturaBD) {
-		this.alturaBD.add(alturaBD);
+	public void setAlturaBD(float alturaBD, byte index) {
+		this.alturaBD.add(index, alturaBD);
 	}
 
 	public float getLarguraBD(byte index) {
 		return larguraBD.get(index);
 	}
 
-	public void setLarguraBD(float larguraBD) {
-		this.larguraBD.add(larguraBD);
+	public void setLarguraBD(float larguraBD, byte index) {
+		this.larguraBD.add(index, larguraBD);
 	}
 
 	public float getComprimentoBD(byte index) {
 		return comprimentoBD.get(index);
 	}
 
-	public void setComprimentoBD(float comprimentoBD) {
-		this.comprimentoBD.add(comprimentoBD);
+	public void setComprimentoBD(float comprimentoBD, byte index) {
+		this.comprimentoBD.add(index, comprimentoBD);
 	}
 
 	public float getPrecoFreteBD(byte index) {
 		return precoFreteBD.get(index);
 	}
 
-	public void setPrecoFreteBD(float precoFreteBD) {
-		this.precoFreteBD.add(precoFreteBD);
+	public void setPrecoFreteBD(float precoFreteBD, byte index) {
+		this.precoFreteBD.add(index, precoFreteBD);
 	}
 
 	public byte getTransportadoraBD(byte index) {
 		return transportadoraBD.get(index);
 	}
 
-	public void setTransportadoraBD(byte transportadoraBD) {
-		this.transportadoraBD.add(transportadoraBD);
+	public void setTransportadoraBD(byte transportadoraBD, byte index) {
+		this.transportadoraBD.add(index, transportadoraBD);
 	}
 
 	public byte getRemetenteBD(byte index) {
 		return remetenteBD.get(index);
 	}
 
-	public void setRemetenteBD(byte remetenteBD) {
-		this.remetenteBD.add(remetenteBD);
+	public void setRemetenteBD(byte remetenteBD, byte index) {
+		this.remetenteBD.add(index, remetenteBD);
 	}
 
 	public byte getDestinatarioBD(byte index) {
 		return destinatarioBD.get(index);
 	}
 
-	public void setDestinatarioBD(byte destinatarioBD) {
-		this.destinatarioBD.add(destinatarioBD);
+	public void setDestinatarioBD(byte destinatarioBD, byte index) {
+		this.destinatarioBD.add(index, destinatarioBD);
 	}
 	
 }

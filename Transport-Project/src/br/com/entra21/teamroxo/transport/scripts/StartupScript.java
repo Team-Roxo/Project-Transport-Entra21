@@ -55,7 +55,7 @@ public class StartupScript {
 		initialize.transporteData.setEmpresaBD("CORREIOS", (byte) 1);
 		initialize.transporteData.setEmailBD("contato@correios.gov.br", (byte) 1);
 		initialize.transporteData.setSenhaBD("123456", (byte) 1);
-		initialize.transporteData.setDistanciaIndexBD(0.03f, (byte) 1);
+		initialize.transporteData.setDistanciaIndexBD(0.025f, (byte) 1);
 		initialize.transporteData.setPesoIndexBD(0.02f, (byte) 1);
 		initialize.transporteData.setVolumeIndexBD(0.002f, (byte) 1);
 		
@@ -64,7 +64,7 @@ public class StartupScript {
 		initialize.transporteData.setSenhaBD("123456", (byte) 2);
 		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 2);
 		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 2);
-		initialize.transporteData.setVolumeIndexBD(0.005f, (byte) 2);
+		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 2);
 		
 	}
 
