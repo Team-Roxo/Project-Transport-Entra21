@@ -1,9 +1,11 @@
 package br.com.entra21.teamroxo.transport.classes;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.Main;
@@ -64,10 +66,12 @@ public class Pedidos extends PedidoDados {
 
 				if (Main.loginData.account == Main.pedidoData.getDestinatarioBD((byte) i)) {
 					System.out.println(
-							"Pacote N. " + (i + 1) + ": CÓDIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
-									+ ") - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
+							"Pacote N. " + (i + 1) + " -  CÓDIGO: " + Main.pedidoData.getCodigoRastreioBD((byte) i)
+									+ " - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
 									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " às "
-									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time));
+									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time)+ " TRANSPORTADORA: " + 
+											Main.transporteData.getEmpresaBD((byte) i) + " ESTADO DE ORIGEM: " + 
+											Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoFull());
 					find = true;
 				}
 
@@ -80,6 +84,8 @@ public class Pedidos extends PedidoDados {
 			System.out.println("!------------------- NENHUM PACOTE -------------------!");
 		}
 
+		find = false;
+		
 		System.out.println("\n=====================================\n PACOTES ENVIADOS \n=====================================\n");
 
 		// Listar Pacotes que ele encaminhou a outro
@@ -88,10 +94,12 @@ public class Pedidos extends PedidoDados {
 
 				if (Main.loginData.account == Main.pedidoData.getRemetenteBD((byte) i)) {
 					System.out.println(
-							"Pacote N. " + (i + 1) + ": CÓDIGO - (" + Main.pedidoData.getCodigoRastreioBD((byte) i)
-									+ ") - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
+							"Pacote N. " + (i + 1) + " - CÓDIGO: " + Main.pedidoData.getCodigoRastreioBD((byte) i)
+									+ " - PREÇO DO FRETE: R$" + Main.pedidoData.getPrecoFreteBD((byte) i)
 									+ " - ENVIADO: " + Main.pedidoData.getDataEnvioBD((byte) i).format(data) + " às "
-									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time));
+									+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time)+ " TRANSPORTADORA: " + 
+									Main.transporteData.getEmpresaBD((byte) i) + " ESTADO DE ORIGEM: " + 
+									Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoFull());
 					find = true;
 
 				}
@@ -112,7 +120,8 @@ public class Pedidos extends PedidoDados {
 
 		String cpfRe, nomeRe;
 		String cpfDe, nomeDe;
-		byte estadoDe = 0, estadoRe = 0;
+		byte estadoDe = 0, estadoRe = 0, empresaEscolhida = 0;
+		int cod = 0;
 		float altura, comprimento, largura;
 
 		// REMETENTE
@@ -145,7 +154,6 @@ public class Pedidos extends PedidoDados {
 				if(Main.loginData.getCpf(i).equals(cpfRe)) {
 					System.out.println("DADOS DO REMETENTE ENCONTRADOS");
 					System.out.println("Nome: "+Main.loginData.getNome(i)+" de "+Main.loginData.getEstadoOrigem(i));
-					nomeRe = Main.loginData.getNome(i);
 					estadoRe = tratamentoEstado(Main.loginData.getEstadoOrigem(i));
 					pass = true;
 					break;
@@ -155,16 +163,19 @@ public class Pedidos extends PedidoDados {
 			if(pass == false) {
 				
 				System.out.println("Insira o nome do Remetente: ");
-				nomeRe = tratamentoNome(input.next());
+				input.nextLine();
+				nomeRe = tratamentoNome(input.nextLine());
 				
 				do {
 		        	
 		        	System.out.println("Digite seu estado: ");
 		        	
-		        	String estado = input.next();
+		        	String estadoNome = input.nextLine();
 		        	
-		            if(tratamentoEstadoWord(estado.toUpperCase())) {
-		            	estadoRe = tratamentoEstado(estado.toUpperCase());
+		        	boolean estado = tratamentoEstadoWord(estadoNome.toUpperCase());
+		        	
+		            if(estado) {
+		            	estadoRe = tratamentoEstado(estadoNome.toUpperCase());
 		            	System.out.println("\n=====================================\n ESTADO "+Brasil.values()[estadoRe].getEstadoFull()+" ENCONTRADO! \n=====================================\n");
 		            	pass = true;
 		            }else {
@@ -172,14 +183,14 @@ public class Pedidos extends PedidoDados {
 		            }
 				}while(pass != true);
 				
+				System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
+				Main.loginData.setSenha(input.next(), (byte) Main.loginData.getUser().size());
+				
 				Main.loginData.setCpf(cpfRe, (byte) Main.loginData.getUser().size());
 				Main.loginData.setNome(nomeRe, (byte) Main.loginData.getUser().size());
 				Main.loginData.setEstadoOrigem(Brasil.values()[estadoRe].getEstadoNome(), (byte) Main.loginData.getUser().size());
 				Main.loginData.setEmail("<no email>", (byte) Main.loginData.getUser().size());
 				Main.loginData.setUser("user"+Main.loginData.getUser().size(), (byte) Main.loginData.getUser().size());
-				
-				System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
-				Main.loginData.setSenha(input.next(), (byte) Main.loginData.getUser().size());
 				
 				System.out.println("NÃO ESQUEÇA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
 				
@@ -222,8 +233,8 @@ public class Pedidos extends PedidoDados {
 			if(Main.loginData.getCpf(i).equals(cpfDe)) {
 				System.out.println("DADOS DO DESTINATARIO ENCONTRADOS");
 				System.out.println("Nome: "+Main.loginData.getNome(i)+" de "+Main.loginData.getEstadoOrigem(i));
-				nomeDe = Main.loginData.getNome(i);
-				estadoDe = tratamentoEstado(Main.loginData.getEstadoOrigem(i));
+				cpfDe = ""+i;
+				estadoDe = i;
 				pass = true;
 				break;
 			}
@@ -232,22 +243,31 @@ public class Pedidos extends PedidoDados {
 		if(pass == false) {
 			
 			System.out.println("Insira o nome do Destinatario: ");
-			nomeDe = tratamentoNome(input.next());
+			input.nextLine();
+			nomeDe = tratamentoNome(input.nextLine());
 			
 			do {
 	        	
 	        	System.out.println("Digite seu estado: ");
 	        	
-	        	String estado = input.next();
+	        	String estadoNome = input.nextLine();
 	        	
-	            if(tratamentoEstadoWord(estado.toUpperCase())) {
-	            	estadoDe = tratamentoEstado(estado.toUpperCase());
+	        	boolean estado = tratamentoEstadoWord(estadoNome.toUpperCase());
+	        	
+	            if(estado) {
+	            	estadoDe = tratamentoEstado(estadoNome.toUpperCase());	
 	            	System.out.println("\n=====================================\n ESTADO "+Brasil.values()[estadoRe].getEstadoFull()+" ENCONTRADO! \n=====================================\n");
 	            	pass = true;
 	            }else {
-	            	System.out.println("\n=====================================\n ESTADO NÃO EXISTE \n=====================================\n");
+	            	System.out.println("\n=====================================\n ESSE ESTADO NAO EXISTE! \n=====================================\n");
 	            }
+	            
 			}while(pass != true);
+			
+			
+			
+			System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
+			Main.loginData.setSenha(input.nextLine(), (byte) Main.loginData.getUser().size());
 			
 			Main.loginData.setCpf(cpfDe, (byte) Main.loginData.getUser().size());
 			Main.loginData.setNome(nomeDe, (byte) Main.loginData.getUser().size());
@@ -255,10 +275,12 @@ public class Pedidos extends PedidoDados {
 			Main.loginData.setEmail("<no email>", (byte) Main.loginData.getUser().size());
 			Main.loginData.setUser("user"+Main.loginData.getUser().size(), (byte) Main.loginData.getUser().size());
 			
-			System.out.println("AGORA CRIE UMA SENHA PARA ACESSAR SEU PEDIDO FUTURAMENTE: ");
-			Main.loginData.setSenha(input.next(), (byte) Main.loginData.getUser().size());
-			
 			System.out.println("NÃO ESQUEÇA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
+			
+		}else {
+			
+			Main.pedidoData.setDestinatarioBD(Byte.parseByte(cpfDe), estadoDe);
+			estadoDe = tratamentoEstado(Main.loginData.getEstadoOrigem(estadoDe));
 			
 		}
 		
@@ -274,8 +296,9 @@ public class Pedidos extends PedidoDados {
 		System.out.println("Comprimento: ");
 		comprimento=input.nextFloat();
 		
+		pass = false;
 		
-		
+		do {
 		
 		// LISTA AS TRANSPORTADORAS E O PREÇO DE CADA UMA DELAS
 		System.out.println("\n============================================\n SELECIONE A EMPRESA QUE IRÁ TRANSPORTAR \n============================================\n");
@@ -285,14 +308,21 @@ public class Pedidos extends PedidoDados {
 					comprimento, largura, altura, Main.transporteData.getDistanciaIndexBD(i), Main.transporteData.getPesoIndexBD(i), 
 					Main.transporteData.getVolumeIndexBD(i)));
 		}
+			try {
+				empresaEscolhida = input.nextByte();
+				pass = true;
+			}catch(Exception e){
+				System.out.println("OPÇÃO INVÁLIDA!");
+			}
+			
+		}while(pass != true);
 		
-		byte empresaEscolhida = input.nextByte();
 		
 		// SETA O PREÇO DO PACOTE
 		Main.pedidoData.setPrecoFreteBD(Logistica.Logistica(Brasil.values()[estadoRe].getLatitude(), 
 					Brasil.values()[estadoRe].getLongitude(), Brasil.values()[estadoDe].getLatitude(), Brasil.values()[estadoDe].getLongitude(), 
-					comprimento, largura, altura, Main.transporteData.getDistanciaIndexBD(empresaEscolhida), Main.transporteData.getPesoIndexBD(empresaEscolhida), 
-					Main.transporteData.getVolumeIndexBD(empresaEscolhida)), (byte) Main.pedidoData.getCodigoRastreioBD().size());
+					comprimento, largura, altura, Main.transporteData.getDistanciaIndexBD((byte) (empresaEscolhida-1)), Main.transporteData.getPesoIndexBD((byte) (empresaEscolhida-1)), 
+					Main.transporteData.getVolumeIndexBD((byte) (empresaEscolhida-1))), (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		
 		Main.pedidoData.setDataEnvioBD(LocalDate.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); // SETA DATA DE ENVIO
 		Main.pedidoData.setHoraEnvioBD(LocalTime.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); // SETA HORA DE ENVIO
@@ -300,13 +330,23 @@ public class Pedidos extends PedidoDados {
 		// SETA REMETENTE JÁ LOGADO
 		Main.pedidoData.setRemetenteBD(Login.account, (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		
-		// SETA DESTINATÁRIO POR CPF
-		for(byte i=0; i<Main.loginData.getUser().size();i++) {
-			if(cpfDe.equals(Main.loginData.getCpf(i))) {
-				Main.pedidoData.setDestinatarioBD(i, (byte) Main.pedidoData.getCodigoRastreioBD().size());
+		pass = false;
+		
+		do {
+			
+			Random random = new Random();
+			
+			cod = random.nextInt(111111111, 999999999);
+			
+			if(Main.pedidoData.getCodigoRastreio().contains(cod)) {
+				pass = false;
+			}else {
+				pass = true;
 			}
 			
-		}
+		}while(pass != true);
+		
+		Main.pedidoData.setCodigoRastreioBD("TR"+cod+"BR", (byte) Main.pedidoData.getCodigoRastreioBD().size());
 
 	}
 	
