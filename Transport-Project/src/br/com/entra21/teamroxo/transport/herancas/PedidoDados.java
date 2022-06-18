@@ -8,8 +8,8 @@ import java.util.HashSet;
 public class PedidoDados{
 	
 	//QUANTO AO ENVIO GERAL - BANCO DE DADOS
-	private ArrayList <Float>     enderecoRemetenteBD  = new ArrayList<>();
-	private ArrayList <Float>     enderecoDestinoBD    = new ArrayList<>();
+	private ArrayList <Byte>     enderecoRemetenteBD  = new ArrayList<>();
+	private ArrayList <Byte>     enderecoDestinoBD    = new ArrayList<>();
 	private ArrayList <String>    codigoRastreioBD     = new ArrayList<>();
 	private ArrayList <LocalDate> dataEnvioBD 		   = new ArrayList<>();
 	private ArrayList <LocalDate> dataChegadaBD 	   = new ArrayList<>();
@@ -35,7 +35,7 @@ public class PedidoDados{
 		super();
 	}
 
-	public PedidoDados(float enderecoRemetenteBD, float enderecoDestinoBD, String codigoRastreioBD, LocalDate dataEnvioBD, LocalDate dataChegadaBD,
+	public PedidoDados(byte enderecoRemetenteBD, byte enderecoDestinoBD, String codigoRastreioBD, LocalDate dataEnvioBD, LocalDate dataChegadaBD,
 			LocalDate previsaoChegadaBD, LocalTime horaEnvioBD,	LocalTime horaChegadaBD, float alturaBD, float larguraBD, float comprimentoBD, 
 			float precoFreteBD, byte transportadoraBD, byte remetenteBD, byte destinatarioBD, String codigoRastreio) {
 		super();
@@ -62,7 +62,7 @@ public class PedidoDados{
 		return enderecoRemetenteBD.get(index);
 	}
 
-	public void setEnderecoRemetenteBD(float enderecoRemetenteBD, byte index) {
+	public void setEnderecoRemetenteBD(byte enderecoRemetenteBD, byte index) {
 		this.enderecoRemetenteBD.add(index, enderecoRemetenteBD);
 	}
 
@@ -70,7 +70,7 @@ public class PedidoDados{
 		return enderecoDestinoBD.get(index);
 	}
 
-	public void setEnderecoDestinoBD(float enderecoDestinoBD, byte index) {
+	public void setEnderecoDestinoBD(byte enderecoDestinoBD, byte index) {
 		this.enderecoDestinoBD.add(index, enderecoDestinoBD);
 	}
 
@@ -82,6 +82,10 @@ public class PedidoDados{
 	//Retorno a ArrayList inteira, possibilitando usar os Wrappers
 	public ArrayList<String> getCodigoRastreioBD() {
 		return codigoRastreioBD;
+	}
+	
+	public HashSet<String> getCodigoRastreio(){
+		return codigoRastreio;
 	}
 
 	public void setCodigoRastreioBD(String codigoRastreioBD, byte index) {

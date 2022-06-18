@@ -75,10 +75,10 @@ public class Main {
 	private static String constructorMenu() {
 		String menu = "\n============================================\n Saida21 \n============================================\n";
 
-		menu += "\n1 - Login/Cadastrar";
-		menu += "\n2 - Cadastrar Pacote (CP)";
-		menu += "\n3 - Rastrear Pacote (RP)";
-		menu += "\n0 - Sair";
+		menu += "\n1 - Login/Cadastrar\n";
+		menu += "2 - Cadastrar Pacote (CP)\n";
+		menu += "3 - Rastrear Pacote (RP)\n";
+		menu += "0 - Sair\n";
 		menu += "\n============================================\n Saida21 \n============================================\n";
 
 		return menu;
