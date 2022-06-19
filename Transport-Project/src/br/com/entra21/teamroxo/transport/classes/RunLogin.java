@@ -297,6 +297,7 @@ public class RunLogin {
 				
 				System.out.println("!> DIGITE SEU NOME:");
 				Main.loginData.getNomeBD().remove(Login.account);
+				input.nextLine();
 				Main.loginData.setNome(tratamentoNome(input.nextLine()), Login.account);
 				
 				break;

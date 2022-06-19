@@ -8,8 +8,8 @@ import java.util.HashSet;
 public class PedidoDados{
 	
 	//QUANTO AO ENVIO GERAL - BANCO DE DADOS
-	private ArrayList <Byte>     enderecoRemetenteBD  = new ArrayList<>();
-	private ArrayList <Byte>     enderecoDestinoBD    = new ArrayList<>();
+	private ArrayList <Byte>      enderecoRemetenteBD  = new ArrayList<>();
+	private ArrayList <Byte>      enderecoDestinoBD    = new ArrayList<>();
 	private ArrayList <String>    codigoRastreioBD     = new ArrayList<>();
 	private ArrayList <LocalDate> dataEnvioBD 		   = new ArrayList<>();
 	private ArrayList <LocalDate> dataChegadaBD 	   = new ArrayList<>();
