@@ -1,5 +1,6 @@
 package br.com.entra21.teamroxo.transport.log;
 
+import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.anotacoes.*;
 
 public class Logistica {
@@ -48,5 +49,29 @@ public class Logistica {
 		return precoFinal;
 		
 	}
+
+	
+	public static void listarTransportadoras() {
+
+		System.out.println(
+				"\n=====================================\n  TRANSPORTADORAS DISPONIVEIS \n=====================================\n");
+
+		// Listar Pacotes a caminho pro usuario
+		
+			for (int i = 0; i < Main.transporteData.getEmpresaBD().size(); i++) {
+
+				
+					System.out.println("Transportadora N.: " + (i + 1) + "  RAZAO SOCIAL: "
+							+ Main.transporteData.getEmpresaBD((byte) i) );
+					
+			}
+			
+	}
 	
 }
+
+			
+
+	
+
+	
