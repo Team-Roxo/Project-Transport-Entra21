@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.Menu;
+import br.com.entra21.teamroxo.transport.anotacoes.CpfErrorCode;
 import br.com.entra21.teamroxo.transport.log.Brasil;
 
 import java.util.Scanner;
@@ -83,7 +84,7 @@ public class RunLogin {
         
         do {
         	System.out.println("!> DIGITE SEU CPF/CNPJ: ");
-        	
+        	input.nextLine();
             cpf = tratamentoCpf(input.nextLine());
             
             if(cpf.length() == 11){
@@ -376,6 +377,7 @@ public class RunLogin {
 	
 	// TRATAMENTOS DE DADOS PARA CADASTRO
 	
+	@CpfErrorCode
 	private String tratamentoCpf(String cpf) {
 	
 		try {
