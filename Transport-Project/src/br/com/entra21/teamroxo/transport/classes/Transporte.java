@@ -6,7 +6,7 @@ public class Transporte extends TransporteDados {
 
 	public Transporte() {
 		super();
-		//NÃO ALTERAR
+		//NAO ALTERAR
 	}
 	
 	

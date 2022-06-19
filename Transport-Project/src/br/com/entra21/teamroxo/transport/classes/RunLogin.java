@@ -275,7 +275,7 @@ public class RunLogin {
 		
 	}
 	
-	// FUNÇÃO PARA ALTERAR CADASTROS EXISTENTES
+	// FUNCAO PARA ALTERAR CADASTROS EXISTENTES
 	public void alterarCadastro() {
 		
 		String senha;
