@@ -60,37 +60,37 @@ public class StartupScript {
 		initialize.transporteData.setEmpresaBD("CORREIOS", (byte) 1);
 		initialize.transporteData.setEmailBD("contato@correios.gov.br", (byte) 1);
 		initialize.transporteData.setSenhaBD("123456", (byte) 1);
-		initialize.transporteData.setDistanciaIndexBD(0.025f, (byte) 1);
+		initialize.transporteData.setDistanciaIndexBD(0.019f, (byte) 1);
 		initialize.transporteData.setPesoIndexBD(0.02f, (byte) 1);
-		initialize.transporteData.setVolumeIndexBD(0.002f, (byte) 1);
+		initialize.transporteData.setVolumeIndexBD(0.0025f, (byte) 1);
 		
 		initialize.transporteData.setEmpresaBD("AZUL EXPRESS", (byte) 2);
 		initialize.transporteData.setEmailBD("contato@azul.com.br", (byte) 2);
 		initialize.transporteData.setSenhaBD("123456", (byte) 2);
 		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 2);
 		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 2);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 2);
+		initialize.transporteData.setVolumeIndexBD(0.005f, (byte) 2);
 		
 		initialize.transporteData.setEmpresaBD("JAMEF", (byte) 3);
 		initialize.transporteData.setEmailBD("contato@jamef.com.br", (byte) 3);
 		initialize.transporteData.setSenhaBD("123456", (byte) 3);
-		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 3);
-		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 3);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 3);
+		initialize.transporteData.setDistanciaIndexBD(0.009f, (byte) 3);
+		initialize.transporteData.setPesoIndexBD(0.015f, (byte) 3);
+		initialize.transporteData.setVolumeIndexBD(0.004f, (byte) 3);
 		
 		initialize.transporteData.setEmpresaBD("SEQUOIA", (byte) 4);
 		initialize.transporteData.setEmailBD("contato@sequoia.com.br", (byte) 4);
 		initialize.transporteData.setSenhaBD("123456", (byte) 4);
 		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 4);
 		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 4);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 4);
+		initialize.transporteData.setVolumeIndexBD(0.00587f, (byte) 4);
 		
 		initialize.transporteData.setEmpresaBD("TOTAL EXPRESS", (byte) 5);
 		initialize.transporteData.setEmailBD("contato@total.com.br", (byte) 5);
 		initialize.transporteData.setSenhaBD("123456", (byte) 5);
-		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 5);
-		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 5);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 5);
+		initialize.transporteData.setDistanciaIndexBD(0.014f, (byte) 5);
+		initialize.transporteData.setPesoIndexBD(0.027f, (byte) 5);
+		initialize.transporteData.setVolumeIndexBD(0.00389f, (byte) 5);
 		
 		initialize.transporteData.setEmpresaBD("MOVELOG", (byte) 6);
 		initialize.transporteData.setEmailBD("contato@movelog.com.br", (byte) 6);
@@ -102,16 +102,16 @@ public class StartupScript {
 		initialize.transporteData.setEmpresaBD("JADLOG", (byte) 7);
 		initialize.transporteData.setEmailBD("contato@jadlog.com.br", (byte) 7);
 		initialize.transporteData.setSenhaBD("123456", (byte) 7);
-		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 7);
-		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 7);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 7);
+		initialize.transporteData.setDistanciaIndexBD(0.013f, (byte) 7);
+		initialize.transporteData.setPesoIndexBD(0.029f, (byte) 7);
+		initialize.transporteData.setVolumeIndexBD(0.001f, (byte) 7);
 		
 		initialize.transporteData.setEmpresaBD("BRASPRESS", (byte) 8);
 		initialize.transporteData.setEmailBD("contato@braspress.com.br", (byte) 8);
 		initialize.transporteData.setSenhaBD("123456", (byte) 8);
 		initialize.transporteData.setDistanciaIndexBD(0.01f, (byte) 8);
-		initialize.transporteData.setPesoIndexBD(0.03f, (byte) 8);
-		initialize.transporteData.setVolumeIndexBD(0.008f, (byte) 8);
+		initialize.transporteData.setPesoIndexBD(0.02709f, (byte) 8);
+		initialize.transporteData.setVolumeIndexBD(0.0072f, (byte) 8);
 
 		// PEDIDOS
 		//01-user-kalil

@@ -1,5 +1,8 @@
 package br.com.entra21.teamroxo.transport.log;
 
+import java.time.LocalTime;
+import java.util.Random;
+
 import br.com.entra21.teamroxo.transport.Main;
 import br.com.entra21.teamroxo.transport.anotacoes.*;
 
@@ -45,6 +48,14 @@ public class Logistica {
 		pesoCubico = volume(comprimento, largura, altura)/6000;
 		distancia = haversine(lat1, long1, lat2, long2);
 		precoFinal = (float) ((distancia*distIndex)+(pesoCubico*pesoIndex)+(volume(comprimento, largura, altura)*volIndex)); //padrão (respectivamente): 0.01, 0.02, 0.003
+		
+		Random random = new Random();
+		
+		int hora = random.nextInt(8, 18);
+		int minuto = random.nextInt(0, 59);
+		
+		// SETA HORA DE CHEGADA
+		Main.pedidoData.setHoraChegadaBD(LocalTime.of(hora, minuto), (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		
 		return precoFinal;
 		
