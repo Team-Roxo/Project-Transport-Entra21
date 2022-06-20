@@ -368,4 +368,14 @@ public class StartupScript {
 		
 	}
 
+	public static void setEmpresaBD(String next) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void setEmailBD(String next) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

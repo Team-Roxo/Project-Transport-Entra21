@@ -3,9 +3,11 @@ package br.com.entra21.teamroxo.transport.crud;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
 import br.com.entra21.teamroxo.transport.Menu;
 import br.com.entra21.teamroxo.transport.Repositorio;
 import br.com.entra21.teamroxo.transport.herancas.PessoaDados;
+import br.com.entra21.teamroxo.transport.herancas.TransporteDados;
 
 public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 
@@ -41,7 +43,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 			deletar(capturarChave());
 			break;
 		default:
-			System.out.println("Op√ß√£o inv√°lida");
+			System.out.println("OpÁ„o inv·lida");
 			break;
 		}
 		return opcao;
@@ -68,11 +70,11 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 	public void adicionar() {
 		PessoaDados novo = capturarValores();
 		if (buscar(novo) == null) {
-			//Repositorio.pessoas.put(novo.getUser(), novo);  PUT N√ÉO ESTA FUNCIONANDO 
+			//Repositorio.pessoas.put(novo.getUser(), novo);  PUT N√O ESTA FUNCIONANDO 
 			//lista
 
 		} else {
-			System.out.println("J√° existe alguem com a chave " + novo.getUser());
+			System.out.println("J· existe alguem com a chave " + novo.getUser());
 
 		}
 
@@ -92,7 +94,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 		
 		
 		//faltando scanner 
-		//.NEXT E .NEXTline n√£o funcionam 
+		//.NEXT E .NEXTline n„o funcionam 
 	}
 
 	@Override
@@ -107,9 +109,9 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 	public void editar(PessoaDados chave) {
 		PessoaDados cadastroAtual = buscar(chave);
 		if (cadastroAtual == null) {
-			System.out.println("N√£o existe um registro com CHAVE:" + chave.getUser());
+			System.out.println("N„o existe um registro com CHAVE:" + chave.getUser());
 		} else {
-			//lista.put(chave.getUser(), capturarValores()); put tamb√©m n√£o funciona 
+			//lista.put(chave.getUser(), capturarValores()); put tambÈm n„o funciona 
 			System.out.println("Dados atualizados");
 		}
 	}
@@ -119,7 +121,7 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 
 		PessoaDados cadastroAtual = buscar(chave);
 		if (cadastroAtual == null) {
-			System.out.println("N√£o existe um registro com CHAVE:" + chave.getUser());
+			System.out.println("N„o existe um registro com CHAVE:" + chave.getUser());
 		} else {
 			lista.remove(chave.getUser());
 			System.out.println("Item excluido");
@@ -140,5 +142,12 @@ public class ClienteCrud extends Menu implements ICrud<PessoaDados> {
 	public void exibirDetalhes() {
 
 	}
-	
+
+	@Override
+	public void exibirDetalhes(TransporteDados completo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
+

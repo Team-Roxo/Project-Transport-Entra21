@@ -88,6 +88,11 @@ public class TransporteDados {
 	public void setVolumeIndexBD(float volumeIndexBD, byte index) {
 		this.volumeIndexBD.add(index, volumeIndexBD);
 	}
+
+	public void setEmpresaBD(String next) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

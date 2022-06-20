@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import br.com.entra21.teamroxo.transport.herancas.PessoaDados;
+import br.com.entra21.teamroxo.transport.herancas.TransporteDados;
 
 public interface ICrud<G> {
 
@@ -24,5 +25,7 @@ public void listar(HashMap<String,G> lista );
 	public void exibirDetalhes();
 
 	PessoaDados buscar(PessoaDados chave);
+
+	void exibirDetalhes(TransporteDados completo);
 	
 }

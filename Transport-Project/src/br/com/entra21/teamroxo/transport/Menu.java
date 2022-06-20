@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-static Scanner input = new Scanner(System.in);
+protected static Scanner input = new Scanner(System.in);
 	
 	public static String option;
 	
