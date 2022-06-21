@@ -1,7 +1,5 @@
 package br.com.entra21.teamroxo.transport.classes;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -34,7 +32,13 @@ public class Pedidos extends PedidoDados {
 
 		try {
 			for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
+				String status;
 				if (code.equals(Main.pedidoData.getCodigoRastreioBD((byte) i))) {
+					if(LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)) && (LocalDate.now().isAfter(Main.pedidoData.getDataChegadaBD((byte)i)) || LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)))) {
+						status = "ENTREGUE!\n";
+					} else {
+						status = "EM TRANSITO!\n";
+					}
 					System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: "
 							+ Main.pedidoData.getCodigoRastreioBD((byte) i) + " - PRECO DO FRETE R$"
 							+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
@@ -45,12 +49,14 @@ public class Pedidos extends PedidoDados {
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
 							+ " - DESTINO: "
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
-							+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte)i)));
+							+ " - TRANSPORTADORA: "
+							+ Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i))
+							+ "\n\t\t STATUS: " + status);
 					find = true;
 				}
-				
+
 			}
-			
+
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("!-------------- NENHUM PACOTE CADASTRADO AINDA --------------!");
 			find = true;
@@ -71,8 +77,14 @@ public class Pedidos extends PedidoDados {
 		// LISTAR PACOTES QUE IRAO CHEGAR AO USUARIO
 		try {
 			for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
-
+				String status;
 				if (Main.loginData.account == Main.pedidoData.getDestinatarioBD((byte) i)) {
+					
+					if(LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)) && (LocalDate.now().isAfter(Main.pedidoData.getDataChegadaBD((byte)i)) || LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)))) {
+						status = "ENTREGUE!\n";
+					} else {
+						status = "EM TRANSITO!\n";
+					}
 					System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: "
 							+ Main.pedidoData.getCodigoRastreioBD((byte) i) + " - PRECO DO FRETE R$"
 							+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
@@ -83,7 +95,9 @@ public class Pedidos extends PedidoDados {
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
 							+ " - DESTINO: "
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
-							+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i)));
+							+ " - TRANSPORTADORA: "
+							+ Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i))
+							+ "\n\t\t STATUS: " + status);
 					find = true;
 				}
 
@@ -106,7 +120,14 @@ public class Pedidos extends PedidoDados {
 		try {
 			for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
 
+				String status;
+				
 				if (Main.loginData.account == Main.pedidoData.getRemetenteBD((byte) i)) {
+					if(LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)) && (LocalDate.now().isAfter(Main.pedidoData.getDataChegadaBD((byte)i)) || LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)))) {
+						status = "ENTREGUE!\n";
+					} else {
+						status = "EM TRANSITO!\n";
+					}
 					System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: "
 							+ Main.pedidoData.getCodigoRastreioBD((byte) i) + " - PRECO DO FRETE R$"
 							+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
@@ -117,7 +138,9 @@ public class Pedidos extends PedidoDados {
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
 							+ " - DESTINO: "
 							+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
-							+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i)));
+							+ " - TRANSPORTADORA: "
+							+ Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i))
+							+"\n\t\t STATUS: "+status);
 					find = true;
 
 				}
@@ -134,6 +157,41 @@ public class Pedidos extends PedidoDados {
 
 	}
 
+	// LISTAR PACOTES DE USUARIO MASTER-SUPREMO
+	public static void listarPacotesFull() {
+
+		System.out
+				.println("\n=====================================\n PACOTES \n=====================================\n");
+
+		// LISTAR PACOTES TOTAIS
+
+		for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
+
+			String status;
+			
+			if(LocalTime.now().isAfter(Main.pedidoData.getHoraChegadaBD((byte)i)) && (LocalDate.now().isEqual(Main.pedidoData.getDataChegadaBD((byte)i)) || LocalDate.now().isAfter(Main.pedidoData.getDataChegadaBD((byte)i)))) {
+				status = "ENTREGUE!\n";
+			}else {
+				status = "EM TRANSITO!\n";
+			}
+			
+			System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: " + Main.pedidoData.getCodigoRastreioBD((byte) i)
+					+ " - PRECO DO FRETE R$" + Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
+					+ Main.pedidoData.getDataEnvioBD((byte) i).format(data) + "-"
+					+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time) + " - PREVISAO DE ENTREGA: "
+					+ Main.pedidoData.getPrevisaoChegadaBD((byte) i).format(data) + "-"
+					+ Main.pedidoData.getHoraChegadaBD((byte) i).format(time) + "\n\t\t  ORIGEM: "
+					+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
+					+ " - DESTINO: "
+					+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
+					+ " - TRANSPORTADORA: "
+					+ Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i))
+					+"\n\t\t STATUS: "+status);
+
+		}
+
+	}
+
 	// CADASTRA PACOTE TANTO DE USUARIO LOGADO COMO NAO-LOGADO
 	public void cadastrarPacote() {
 
@@ -146,7 +204,6 @@ public class Pedidos extends PedidoDados {
 		// REMETENTE
 		System.out.println("--------Bem vindo ao envio de pacotes----------");
 		System.out.println("-----------------------------------------------");
-		
 
 		if (Login.logged == false) {
 			do {
@@ -177,15 +234,14 @@ public class Pedidos extends PedidoDados {
 					System.out.println("DADOS DO REMETENTE ENCONTRADOS");
 					System.out
 							.println("Nome: " + Main.loginData.getNome(i) + " de " + Main.loginData.getEstadoOrigem(i));
-					cpfRe = ""+i;
+					cpfRe = "" + i;
 					nomeRe = Main.loginData.getNome(i);
 					estadoRe = tratamentoEstado(Main.loginData.getEstadoOrigem(i));
 					pass = true;
 					break;
 				}
 			}
-			
-			
+
 			// BREVE CADASTRO DE NOVO USUARIO
 			if (pass == false) {
 
@@ -226,17 +282,17 @@ public class Pedidos extends PedidoDados {
 						(byte) Main.loginData.getUser().size());
 
 				System.out.println("NAO ESQUECA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
-				
-				cpfRe = ""+(Main.loginData.getUser().size()-1);
+
+				cpfRe = "" + (Main.loginData.getUser().size() - 1);
 
 			}
 
 			pass = false;
 
-		// CAPTURANDO DADOS DE USUARIO JA LOGADO
+			// CAPTURANDO DADOS DE USUARIO JA LOGADO
 		} else {
 
-			cpfRe = ""+Login.account;
+			cpfRe = "" + Login.account;
 			nomeRe = Main.loginData.getNome(Login.account);
 			estadoRe = tratamentoEstado(Main.loginData.getEstadoOrigem(Login.account));
 
@@ -274,7 +330,7 @@ public class Pedidos extends PedidoDados {
 			if (Main.loginData.getCpf(i).equals(cpfDe)) {
 				System.out.println("DADOS DO DESTINATARIO ENCONTRADOS");
 				System.out.println("Nome: " + Main.loginData.getNome(i) + " de " + Main.loginData.getEstadoOrigem(i));
-				cpfDe = ""+i;
+				cpfDe = "" + i;
 				nomeDe = Main.loginData.getNome(i);
 				estadoDe = tratamentoEstado(Main.loginData.getEstadoOrigem(i));
 				pass = true;
@@ -320,20 +376,12 @@ public class Pedidos extends PedidoDados {
 			Main.loginData.setEmail("<no email>", (byte) Main.loginData.getUser().size());
 			Main.loginData.setIsEnterpriseBD(false, (byte) Main.loginData.getUser().size());
 			Main.loginData.setUser("user" + Main.loginData.getUser().size(), (byte) Main.loginData.getUser().size());
-			
 
 			System.out.println("NAO ESQUECA DE ALTERAR SEUS DADOS DEPOIS EM 'MENU' > 'ALTERAR CADASTRO' ");
-			
-			cpfDe = ""+(Main.loginData.getUser().size()-1);
 
-		} /*
-			 * else {
-			 * 
-			 * cpfDe = ""+Login.account; nomeDe = Main.loginData.getNome(Login.account);
-			 * estadoDe = tratamentoEstado(Main.loginData.getEstadoOrigem(Login.account));
-			 * 
-			 * }
-			 */
+			cpfDe = "" + (Main.loginData.getUser().size() - 1);
+
+		}
 
 		System.out.println("-----------------------------------------------");
 		System.out.println("---------------------Pacote--------------------");
@@ -379,42 +427,42 @@ public class Pedidos extends PedidoDados {
 						Main.transporteData.getPesoIndexBD((byte) (empresaEscolhida - 1)),
 						Main.transporteData.getVolumeIndexBD((byte) (empresaEscolhida - 1))),
 				(byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		// SETA A TRANSPORTADORA
-		Main.pedidoData.setTransportadoraBD((byte)(empresaEscolhida-1), (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+		Main.pedidoData.setTransportadoraBD((byte) (empresaEscolhida - 1),
+				(byte) Main.pedidoData.getCodigoRastreioBD().size());
+
 		// SETA DIMENSOES DO PACOTE
 		Main.pedidoData.setAlturaBD(altura, (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		Main.pedidoData.setLarguraBD(largura, (byte) Main.pedidoData.getCodigoRastreioBD().size());
 		Main.pedidoData.setComprimentoBD(comprimento, (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		// SETA DATA DE ENVIO
-		Main.pedidoData.setDataEnvioBD(LocalDate.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); 
-		
+		Main.pedidoData.setDataEnvioBD(LocalDate.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size());
+
 		// SETA HORA DE ENVIO
-		Main.pedidoData.setHoraEnvioBD(LocalTime.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size()); 
-		
+		Main.pedidoData.setHoraEnvioBD(LocalTime.now(), (byte) Main.pedidoData.getCodigoRastreioBD().size());
+
 		// SETA DATA DE CHEGADA - TEMP
-		Main.pedidoData.setDataChegadaBD(LocalDate.of(2022, 06, 21), (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
-		// SETA HORA DE CHEGADA - TEMP
-		
-		
+		Main.pedidoData.setDataChegadaBD(LocalDate.of(2022, 06, 21),
+				(byte) Main.pedidoData.getCodigoRastreioBD().size());
+
 		// SETA PREVISÃO DE CHEGADA - TEMP
-		Main.pedidoData.setPrevisaoChegadaBD(LocalDate.of(2022, 06, 21), (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+		Main.pedidoData.setPrevisaoChegadaBD(LocalDate.of(2022, 06, 21),
+				(byte) Main.pedidoData.getCodigoRastreioBD().size());
+
 		// SETA REMETENTE
 		Main.pedidoData.setRemetenteBD(Byte.parseByte(cpfRe), (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		// SETA DESTINATARIO
 		Main.pedidoData.setDestinatarioBD(Byte.parseByte(cpfDe), (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		// SETA LOCAL DE ENVIO
 		Main.pedidoData.setEnderecoRemetenteBD(estadoRe, (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		// SETA LOCAL DE DESINTO
 		Main.pedidoData.setEnderecoDestinoBD(estadoDe, (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
+
 		pass = false;
 
 		do {
@@ -432,19 +480,36 @@ public class Pedidos extends PedidoDados {
 		} while (pass != true);
 
 		Main.pedidoData.setCodigoRastreioBD("TR" + cod + "BR", (byte) Main.pedidoData.getCodigoRastreioBD().size());
-		
-		System.out.println("\n============================================\n PACOTE CADASTRADO COM SUCESSO! \n============================================\n");
-		System.out.println("Pacote N.: " + (Main.pedidoData.getCodigoRastreioBD().size()) + " - CODIGO: "
-				+ Main.pedidoData.getCodigoRastreioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)) + " - PRECO DO FRETE R$"
-				+ Main.pedidoData.getPrecoFreteBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)) + " - ENVIADO: "
-				+ Main.pedidoData.getDataEnvioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)).format(data) + "-"
-				+ Main.pedidoData.getHoraEnvioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)).format(time) + " - PREVISAO DE ENTREGA: "
-				+ Main.pedidoData.getPrevisaoChegadaBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)).format(data) + "-"
-				+ Main.pedidoData.getHoraChegadaBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1)).format(time) + "\n\t\t  ORIGEM: "
-				+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1))].getEstadoSigla()
-				+ " - DESTINO: "
-				+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) (Main.pedidoData.getCodigoRastreioBD().size()-1))].getEstadoSigla()
-				+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte)(Main.pedidoData.getCodigoRastreioBD().size()-1))));
+
+		System.out.println(
+				"\n============================================\n PACOTE CADASTRADO COM SUCESSO! \n============================================\n");
+		System.out
+				.println("Pacote N.: " + (Main.pedidoData.getCodigoRastreioBD().size()) + " - CODIGO: "
+						+ Main.pedidoData.getCodigoRastreioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1))
+						+ " - PRECO DO FRETE R$"
+						+ Main.pedidoData.getPrecoFreteBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1))
+						+ " - ENVIADO: "
+						+ Main.pedidoData
+								.getDataEnvioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1)).format(data)
+						+ "-"
+						+ Main.pedidoData
+								.getHoraEnvioBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1)).format(time)
+						+ " - PREVISAO DE ENTREGA: "
+						+ Main.pedidoData.getPrevisaoChegadaBD(
+								(byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1)).format(data)
+						+ "-"
+						+ Main.pedidoData.getHoraChegadaBD(
+								(byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1)).format(time)
+						+ "\n\t\t  ORIGEM: "
+						+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD(
+								(byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1))].getEstadoSigla()
+						+ " - DESTINO: "
+						+ Brasil.values()[(int) Main.pedidoData
+								.getEnderecoDestinoBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1))]
+								.getEstadoSigla()
+						+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData
+								.getTransportadoraBD((byte) (Main.pedidoData.getCodigoRastreioBD().size() - 1)))
+						);
 
 	}
 
@@ -525,31 +590,5 @@ public class Pedidos extends PedidoDados {
 		return nome;
 
 	}
-	
-	// LISTAR PACOTES DE USUARIO LOGADO
-		public static void listarPacotesFull() {
 
-			System.out.println(
-					"\n=====================================\n PACOTES \n=====================================\n");
-
-			// LISTAR PACOTES TOTAIS
-			
-				for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
-
-					
-						System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: "
-								+ Main.pedidoData.getCodigoRastreioBD((byte) i) + " - PRECO DO FRETE R$"
-								+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
-								+ Main.pedidoData.getDataEnvioBD((byte) i).format(data) + "-"
-								+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time) + " - PREVISAO DE ENTREGA: "
-								+ Main.pedidoData.getPrevisaoChegadaBD((byte) i).format(data) + "-"
-								+ Main.pedidoData.getHoraChegadaBD((byte) i).format(time) + "\n\t\t  ORIGEM: "
-								+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
-								+ " - DESTINO: "
-								+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
-								+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i)));
-						
-					}
-
-}
 }
