@@ -16,7 +16,7 @@ public class Main {
 	@WhyHere
 	public static Pedidos pedidoData = new Pedidos();
 	@WhyHere
-	public static Transporte transporteData = new Transporte(); // A FAZER
+	public static Transporte transporteData = new Transporte();
 	static String option;
 	static Scanner input = new Scanner(System.in);
 

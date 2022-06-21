@@ -1,5 +1,6 @@
 package br.com.entra21.teamroxo.transport.log;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Random;
 import java.util.Scanner;
@@ -55,11 +56,11 @@ public class Logistica {
 
 		Random random = new Random();
 
-		int hora = random.nextInt(8, 18);
-		int minuto = random.nextInt(0, 59);
+//		int hora = random.nextInt(LocalTime.now().getHour(), LocalTime.now().getHour());
+		//int minuto = random.nextInt(LocalTime.now().getMinute(), );
 
 		// SETA HORA DE CHEGADA
-		Main.pedidoData.setHoraChegadaBD(LocalTime.of(hora, minuto),
+		Main.pedidoData.setHoraChegadaBD(LocalTime.of(LocalTime.now().getHour(),(LocalTime.now().getMinute()+1) ),
 				(byte) Main.pedidoData.getCodigoRastreioBD().size());
 
 		return precoFinal;
