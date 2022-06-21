@@ -64,6 +64,15 @@ public class Main {
 				pedidoData.rastrearPacote();
 
 				break;
+
+			case "1122334455", "adminlista":
+
+				Logistica.listarTransportadoras();
+				Pedidos.listarPacotesFull();
+				Login.listarLogin();
+
+				break;
+
 			default:
 				System.out.println("Por favor, escolha uma opcao valida!");
 				break;
@@ -94,7 +103,9 @@ public class Main {
 			System.out.println("\n3 - Alterar Cadastro");
 			System.out.println("\n4 - Mostrar Meus Dados");
 			System.out.println("\n5 - Listar transportadoras");
-			System.out.println("\n6 - Logoff");
+			System.out.println("\n6 - Excluir cadastro");
+			System.out.println("\n7 - Excluir transportadora");
+			System.out.println("\n8 - Logoff");
 			System.out.println("\n0 - Sair");
 			System.out.println(
 					"\n=====================================\n Saida21 \n=====================================\n");
@@ -137,9 +148,22 @@ public class Main {
 
 			case "6":
 
+				RunLogin.excluirCadastro();
+
+				break;
+
+			case "7":
+
+				Logistica.excluirTransportadoras();
+
+				break;
+
+			case "8":
+
 				Login.logged = false;
 
 				break;
+
 			default:
 				System.out.println("Por favor, escolha uma opcao valida!");
 				break;
@@ -186,7 +210,7 @@ public class Main {
 				// Alterar C
 
 				break;
-				
+
 			case "4":
 
 				Logistica.listarTransportadoras();
