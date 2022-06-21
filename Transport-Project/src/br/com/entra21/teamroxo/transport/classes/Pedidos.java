@@ -15,8 +15,8 @@ import br.com.entra21.teamroxo.transport.log.Logistica;
 
 public class Pedidos extends PedidoDados {
 
-	DateTimeFormatter data = DateTimeFormatter.ofPattern("dd/MM/YY");
-	DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+	static DateTimeFormatter data = DateTimeFormatter.ofPattern("dd/MM/YY");
+	static DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
 	Scanner input = new Scanner(System.in);
 	boolean pass = false;
 
@@ -269,7 +269,7 @@ public class Pedidos extends PedidoDados {
 
 		pass = false;
 
-		// PROCURAR SE DESTINATARIO JÁ TEM CADASTRO
+		// PROCURAR SE DESTINATARIO JA TEM CADASTRO
 		for (byte i = 0; i < Main.loginData.getUser().size(); i++) {
 			if (Main.loginData.getCpf(i).equals(cpfDe)) {
 				System.out.println("DADOS DO DESTINATARIO ENCONTRADOS");
@@ -525,5 +525,31 @@ public class Pedidos extends PedidoDados {
 		return nome;
 
 	}
+	
+	// LISTAR PACOTES DE USUARIO LOGADO
+		public static void listarPacotesFull() {
 
+			System.out.println(
+					"\n=====================================\n PACOTES \n=====================================\n");
+
+			// LISTAR PACOTES TOTAIS
+			
+				for (int i = 0; i < Main.pedidoData.getCodigoRastreioBD().size(); i++) {
+
+					
+						System.out.println("Pacote N.: " + (i + 1) + "  CODIGO: "
+								+ Main.pedidoData.getCodigoRastreioBD((byte) i) + " - PRECO DO FRETE R$"
+								+ Main.pedidoData.getPrecoFreteBD((byte) i) + " - ENVIADO: "
+								+ Main.pedidoData.getDataEnvioBD((byte) i).format(data) + "-"
+								+ Main.pedidoData.getHoraEnvioBD((byte) i).format(time) + " - PREVISAO DE ENTREGA: "
+								+ Main.pedidoData.getPrevisaoChegadaBD((byte) i).format(data) + "-"
+								+ Main.pedidoData.getHoraChegadaBD((byte) i).format(time) + "\n\t\t  ORIGEM: "
+								+ Brasil.values()[(int) Main.pedidoData.getEnderecoRemetenteBD((byte) i)].getEstadoSigla()
+								+ " - DESTINO: "
+								+ Brasil.values()[(int) Main.pedidoData.getEnderecoDestinoBD((byte) i)].getEstadoSigla()
+								+ " - TRANSPORTADORA: " + Main.transporteData.getEmpresaBD((byte) Main.pedidoData.getTransportadoraBD((byte) i)));
+						
+					}
+
+}
 }
