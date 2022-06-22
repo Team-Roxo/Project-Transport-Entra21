@@ -13,7 +13,7 @@ public class Logistica {
 	static Scanner input = new Scanner(System.in);
 
 	@Haversine
-	public static float haversine(float lat1, float long1, float lat2, float long2) {
+	private static float haversine(float lat1, float long1, float lat2, float long2) {
 
 		float earthRad = 6371;
 
@@ -34,7 +34,7 @@ public class Logistica {
 
 	}
 
-	public static float volume(float comprimento, float largura, float altura) {
+	private static float volume(float comprimento, float largura, float altura) {
 
 		float volumeTotal = comprimento * largura * altura;
 		return volumeTotal;
@@ -55,9 +55,6 @@ public class Logistica {
 				+ (volume(comprimento, largura, altura) * volIndex)); // padrão (respectivamente): 0.01, 0.02, 0.003
 
 		Random random = new Random();
-
-//		int hora = random.nextInt(LocalTime.now().getHour(), LocalTime.now().getHour());
-		//int minuto = random.nextInt(LocalTime.now().getMinute(), );
 
 		// SETA HORA DE CHEGADA
 		Main.pedidoData.setHoraChegadaBD(LocalTime.of(LocalTime.now().getHour(),(LocalTime.now().getMinute()+1) ),
