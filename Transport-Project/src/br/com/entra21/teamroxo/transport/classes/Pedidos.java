@@ -387,13 +387,13 @@ public class Pedidos extends PedidoDados {
 		System.out.println("---------------------Pacote--------------------");
 		System.out.println("Agora, por favor, digite as dimensoes do pacote em cm: ");
 		System.out.println("Largura: ");
-		largura = input.nextFloat();
+		largura = Float.parseFloat(input.nextLine().replace(".", ","));
 
 		System.out.println("Altura: ");
-		altura = input.nextFloat();
+		altura = Float.parseFloat(input.nextLine().replace(".", ","));
 
 		System.out.println("Comprimento: ");
-		comprimento = input.nextFloat();
+		comprimento = Float.parseFloat(input.nextLine().replace(".", ","));
 
 		pass = false;
 

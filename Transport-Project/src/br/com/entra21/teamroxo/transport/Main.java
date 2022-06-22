@@ -5,7 +5,6 @@ import java.util.Scanner;
 import br.com.entra21.teamroxo.transport.anotacoes.Startup;
 import br.com.entra21.teamroxo.transport.anotacoes.WhyHere;
 import br.com.entra21.teamroxo.transport.classes.*;
-import br.com.entra21.teamroxo.transport.log.Brasil;
 import br.com.entra21.teamroxo.transport.log.Logistica;
 import br.com.entra21.teamroxo.transport.scripts.StartupScript;
 
