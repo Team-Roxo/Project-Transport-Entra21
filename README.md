@@ -157,6 +157,7 @@ Classe simples com todas as funções que um sistema de login utilizaria, no cas
   <summary><b>&nbsp; Tratamento de Cpf</b></summary>
 
 Verifica a validade do CPF(Não oficialmente,apenas pelo tamanho de caracteres) verifica se não há caracteres invalidos e guarda o valor somente o numero sem pontos nem traços,para facilitar a exibição do dado.
+  
 ![unknown](https://user-images.githubusercontent.com/53912803/174920672-2d20a8a0-3410-40ed-b45d-0560f3c4527d.png)
 
 </details>
@@ -165,6 +166,7 @@ Verifica a validade do CPF(Não oficialmente,apenas pelo tamanho de caracteres) 
   <summary><b>&nbsp; Tratamento de nome </b></summary>
 
 Não há uma validação para o nome pois pode ser qualquer um,apenas é capturado o valor transformado todas as letras em minusculas e depois é destrinchado em um vetor com o tamanho da String inserida sendo realocado os valores dentro do vetor modificando apenas a primeira letra de cada nome, que é verificado após um espaço. 
+  
 ![nome](https://user-images.githubusercontent.com/53912803/174920824-328ba4d4-6d2c-406a-ad1f-b5909f6c586c.png)
 
 </details>
@@ -173,6 +175,7 @@ Não há uma validação para o nome pois pode ser qualquer um,apenas é captura
   <summary><b>&nbsp; Tratamento de usuário</b></summary>
 
 A unica validação para o usuario é a duplicidade dele no sistema,o programa verifica se há um usuario igual e se houver pede para o cliente digitar o usuario novamente,caso contrario o usuario será cadastrado substituindo qualquer espaço por 'underline' e deixando toda a variavel em minuscula.
+  
 ![user](https://user-images.githubusercontent.com/53912803/174920834-f865b6ad-d87c-42d8-a945-1bdbead8d80e.png)
 
 </details>
@@ -181,6 +184,7 @@ A unica validação para o usuario é a duplicidade dele no sistema,o programa v
   <summary><b>&nbsp; Tratamento de estado</b></summary>
 
 É capturado o estado digitado pelo usuario e com isso ele roda todo o Enum Brasil(Que contem todos os estados) e verifica o nome digitado tanto por nome completo com acento quanto sem acento e suas respectivas siglas, retornando um byte que irá localizar o Estado desejado pela posição.
+  
   ![estado](https://user-images.githubusercontent.com/53912803/174920854-f7368ca4-9046-41f8-8c63-1daadc6bb52a.png)
 
 </details>
